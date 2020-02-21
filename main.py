@@ -1,5 +1,5 @@
-from src.ActionClassifer import ActionClassifer
+from src.ActionClassifer import ActionClassifier
 
 if __name__ == '__main__':
-    AC = ActionClassifer("files/config.json")
+    AC = ActionClassifier("files")
     AC.run()
