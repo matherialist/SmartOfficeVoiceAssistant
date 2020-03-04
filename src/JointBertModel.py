@@ -120,12 +120,6 @@ class TagsVectorizer:
             output.append(y)
         return output
 
-    def load(self):
-        pass
-
-    def save(self):
-        pass
-
 
 class AlbertLayer(tf.keras.layers.Layer):
 
@@ -246,7 +240,7 @@ class JointBertModel:
 
         self.model = Model(inputs=bert_inputs, outputs=[slots_output, intents_fc])
 
-    def fit(self, X, Y, validation_data=None, epochs=5, batch_size=32, callbacks=None):
+    def fit(self, X, Y, validation_data=None, epochs=5, batch_size=32):
         history = self.model.fit(X, Y, validation_data=validation_data, epochs=epochs, batch_size=batch_size)
         return history
 

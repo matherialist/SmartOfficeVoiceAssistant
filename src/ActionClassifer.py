@@ -89,4 +89,4 @@ class ActionClassifier:
     def __form_slot(self, name, start, end):
         if end < start:
             end = start
-        return (name, start, end)
+        return name, start, end
