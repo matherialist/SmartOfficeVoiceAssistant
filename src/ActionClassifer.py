@@ -42,8 +42,7 @@ class ActionClassifier:
             self.tags_vectorizer, self.intents_label_encoder, remove_start_end=True,
             include_intent_prob=True)
         slots = self.__fill_slots(predicted_tags[0])
-        slots = [{"slot": slot, "start": start, "end": end, "value": ' '.join(tokens[start:end + 1])}
-                 for slot, start, end in slots]
+        slots = [{"slot": name, "value": ' '.join([tokens[i] for i in slots[name]])} for name in slots.keys()]
         predictions = {
             "intent": {
                 "name": predicted_intents[0][0].strip(),
@@ -54,39 +53,17 @@ class ActionClassifier:
         return predictions
 
     def __fill_slots(self, slots_arr, no_class_tag='O', begin_prefix='B-', in_prefix='I-'):
-        previous = None
-        slots = []
-        start = -1
-        end = -1
+        slots = {}
         for i, slot in enumerate(slots_arr):
             if slot == no_class_tag:
-                current = None
-                if previous is not None:
-                    slots.append(self.__form_slot(previous, start, end))
+                continue
             if slot.startswith(begin_prefix):
-                current = slot[len(begin_prefix):]
-                if previous is not None:
-                    slots.append(self.__form_slot(previous, start, end))
-                start = i
+                name = slot[len(begin_prefix):]
+                slots[name] = [i]
             elif slot.startswith(in_prefix):
-                current = slot[len(in_prefix):]
-                if current != previous:
-                    if previous is not None:
-                        slots.append(self.__form_slot(previous, start, end))
-                    for j, sl in enumerate(slots):
-                        if current == sl[0]:
-                            sl = list(sl)
-                            sl[2] = i
-                            slots[j] = tuple(sl)
-                    current = None
+                name = slot[len(in_prefix):]
+                if name in slots.keys():
+                    slots[name].append(i)
                 else:
-                    end = i
-            previous = current
-        if previous is not None:
-            slots.append(self.__form_slot(previous, start, end))
+                    slots[name] = [i]
         return slots
-
-    def __form_slot(self, name, start, end):
-        if end < start:
-            end = start
-        return name, start, end
