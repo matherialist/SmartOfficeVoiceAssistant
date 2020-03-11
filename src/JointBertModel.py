@@ -282,7 +282,7 @@ class JointBertModel:
     @staticmethod
     def load(load_folder_path, sess):
         with open(os.path.join(load_folder_path, 'params.json'), 'r') as json_file:
-            model_params = json.load(json_file)
+            model_params = json.load(json_file)['model']
 
         slots_num = model_params['slots_num']
         intents_num = model_params['intents_num']
