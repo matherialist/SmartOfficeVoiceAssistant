@@ -18,20 +18,17 @@ class ActionClassifier:
             self.intents_label_encoder = pickle.load(handle)
         self.model = JointBertModel.load(load_folder_path, sess)
 
-    def run(self):
-        text = None
-        while text != "q":
-            text = input("New message: ")
-            if text != "q":
-                result = self.__predict(text)
-                print('Intent: ', result['intent']['name'])
-                print('Confidence: ', result['intent']['confidence'])
-                if len(result['slots']) > 0:
-                    print('Slots:')
-                    for slot in result['slots']:
-                        print(' ', slot['slot'], '=', slot['value'])
-                else:
-                    print('Slots:\n', ' None')
+    def get_response(self, text):
+        response = []
+        result = self.__predict(text)
+        if result['intent']['name'] == 'no_intent':
+            response = ['do nothing']
+        else:
+            response.append(result['intent']['name'])
+            if len(result['slots']) > 0:
+                for slot in result['slots']:
+                    response.append(slot['value'])
+        return response
 
     def __predict(self, utterance):
         tokens = utterance.split()
