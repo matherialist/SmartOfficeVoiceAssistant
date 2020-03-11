@@ -8,5 +8,5 @@ class SmartOfficeOrchestrator:
     def __init__(self, load_folder_path):
         self.action_classifier = ActionClassifier(load_folder_path)
         self.stt = SpeechToText()
-        self.tts = TextToSpeech()
+        self.tts = TextToSpeech(load_folder_path)
 

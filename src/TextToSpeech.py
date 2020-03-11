@@ -5,12 +5,19 @@ import time
 from mutagen.mp3 import MP3
 from gtts import gTTS
 from datetime import datetime
+import json
+
 
 class TextToSpeech:
-    def __init__(self, playerPath):
-        self.__playerPath = playerPath
+    def __init__(self, load_folder_path):
+        self.__playerPath = self.readConfig(load_folder_path)
         self.__logPath = None
         self.__curHash = None
+
+    def readConfig(self, load_folder_path):
+        with open(load_folder_path +'/params.json') as f:
+            data = json.load(f)
+        return data['player path']
 
     def voiceText(self, text, lang):
         self.__curHash = self.__genrateHash()
