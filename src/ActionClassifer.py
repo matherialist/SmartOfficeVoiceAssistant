@@ -19,47 +19,38 @@ class ActionClassifier:
         self.model = JointBertModel.load_model(load_folder_path, sess)
 
     def make_prediction(self, utterance):
-        intent_slots = self.__predict(utterance)
+        intent_slots = self._predict(utterance)
         if intent_slots['intent']['name'] == 'no_intent':
+            command = None
             response = "i don't understand you"
         else:
-            response = self.__construct_phrase(intent_slots)
-        return {"intent": intent_slots, "response": response}
+            command = self._get_command(intent_slots)
+            response = self._get_phrase(command)
+        return {'command': command, 'response': response}
 
-    def __construct_phrase(self, intent_slots):
-        commands = {'action.switch_on': 'switch on', 'action.switch_off': 'switch off', 'action.set': 'set',
-                    'action.open': 'open', 'action.close': 'close', 'action.mute': 'mute', 'action.unmute': 'unmute',
-                    'brightness.increase': 'brightness', 'brightness.decrease': 'brightness',
-                    'brightness.value': 'brightness', 'color': 'color', 'temperature': 'temperature',
-                    'action.increase_temp': 'increase temperature', 'action.decrease_temp': 'decrease temperature',
-                    'increase': 'increase', 'decrease': 'decrease', 'sound.decrease': 'sound',
-                    'sound.increase': 'sound', 'sound.value': 'sound'}
-        res = 'okay, i will '
-        words = []
-        for slot in intent_slots['slots']:
-            if slot['name'] in commands.keys():
-                words.append(commands[slot['name']])
-        if intent_slots['intent']['name'] == 'air':
-            res = 'the air status follows'
+    def _get_phrase(self, command):
+        if command is None:
+            return "i don't understand you"
+        device, action, parameter = command['device'], command['action'], command['parameter']
+        if action in ['switch_on', 'switch_off']:
+            action = action.replace('_', ' ')
+        if device == 'air':
+            phrase = 'the air '
+            if parameter == 'CO2':
+                phrase += 'CO2 concentration is'
+            elif parameter == 'all':
+                phrase += 'parameters follow'
+            else:
+                phrase += parameter + ' is'
+        elif device == 'timer':
+            phrase = 'okay, i will {} the {}'.format(action, device)
+        elif action in ['switch on', 'switch off', 'open', 'close', 'mute', 'unmute']:
+            phrase = 'okay, i will {} the {}'.format(action, device)
         else:
-            if len(words) > 0:
-                intent = intent_slots['intent']['name']
-                if intent == 'implicit_light':
-                    intent = 'brightness'
-                if intent == 'implicit_conditioner':
-                    intent = 'temperature'
-                if intent == 'light':
-                    apropriate_slots = ['switch on', 'switch off', 'set', 'brightness', 'color']
-                    words = [word for word in words if word in apropriate_slots]
-                if intent == 'conditioner' and ('increase temperature' in words or 'decrease temperature' in words):
-                    res += words[0]
-                else:
-                    res += words[0] + ' the ' + intent
-            if len(words) > 1:
-                res += ' ' + words[1]
-        return res
+            phrase = 'okay, i will {} the {} {}'.format(action, device, parameter)
+        return phrase
 
-    def __predict(self, utterance):
+    def _predict(self, utterance):
         tokens = utterance.split()
         input_ids, input_mask, segment_ids, valid_positions, data_sequence_lengths = \
             self.bert_vectorizer.transform([utterance])
@@ -67,18 +58,18 @@ class ActionClassifier:
             [input_ids, input_mask, segment_ids, valid_positions],
             self.tags_vectorizer, self.intents_label_encoder, remove_start_end=True,
             include_intent_prob=True)
-        slots = self.__fill_slots(predicted_tags[0])
-        slots = [{"name": name, "value": ' '.join([tokens[i] for i in slots[name]])} for name in slots.keys()]
+        slots = self._fill_slots(predicted_tags[0])
+        slots = [{'name': name, 'value': ' '.join([tokens[i] for i in slots[name]])} for name in slots.keys()]
         predictions = {
-            "intent": {
-                "name": predicted_intents[0][0].strip(),
-                "confidence": predicted_intents[0][1]
+            'intent': {
+                'name': predicted_intents[0][0].strip(),
+                'confidence': predicted_intents[0][1]
             },
-            "slots": slots
+            'slots': slots
         }
         return predictions
 
-    def __fill_slots(self, slots_arr, no_class_tag='O', begin_prefix='B-', in_prefix='I-'):
+    def _fill_slots(self, slots_arr, no_class_tag='O', begin_prefix='B-', in_prefix='I-'):
         slots = {}
         for i, slot in enumerate(slots_arr):
             if slot == no_class_tag:
@@ -93,3 +84,137 @@ class ActionClassifier:
                 else:
                     slots[name] = [i]
         return slots
+
+    def _get_command(self, intent_slots):
+        command = {'device': None, 'action': None, 'parameter': None, 'value': None}
+        intent = intent_slots['intent']['name']
+        slots = intent_slots['slots']
+        command['device'] = intent
+        # light
+        if intent == 'light':
+            for slot in slots:
+                if slot['name'] in ['action.switch_on', 'action.switch_off', 'action.set']:
+                    command['action'] = slot['name'].split('.')[1]
+                elif slot['name'] in ['brightness.increase', 'brightness.decrease']:
+                    command['action'] = slot['name'].split('.')[1]
+                    command['parameter'] = slot['name'].split('.')[0]
+                elif slot['name'] == 'brightness.value':
+                    command['parameter'] = slot['name'].split('.')[0]
+                    command['value'] = slot['value']
+                elif slot['name'] == 'color':
+                    command['parameter'] = 'color'
+                    command['value'] = slot['value']
+
+        # implicit_light
+        if intent == 'implicit_light':
+            command['device'] = 'light'
+            for slot in slots:
+                if slot['name'] in ['increase', 'decrease']:
+                    command['action'] = slot['name']
+                    command['parameter'] = 'brightness'
+                    command['value'] = 'default'
+
+        # conditioner
+        if intent == 'conditioner':
+            for slot in slots:
+                if slot['name'] in ['action.switch_on', 'action.switch_off']:
+                    command['action'] = slot['name'].split('.')[1]
+                elif slot['name'] == 'action.set':
+                    command['action'] = 'set'
+                    command['parameter'] = 'temperature'
+                elif slot['name'] in ['action.increase_temp', 'action.decrease_temp']:
+                    command['action'] = slot['name'].split('.')[1].split('_')[0]
+                    command['parameter'] = 'temperature'
+                elif slot['name'] == 'temperature':
+                    command['parameter'] = 'temperature'
+                    command['value'] = slot['value']
+
+        # implicit_conditioner
+        if intent == 'implicit_conditioner':
+            command['device'] = 'conditioner'
+            for slot in slots:
+                if slot['name'] in ['increase', 'decrease']:
+                    command['action'] = slot['name']
+                    command['parameter'] = 'temperature'
+                    command['value'] = 'default'
+
+        # curtains
+        if intent == 'curtains':
+            for slot in slots:
+                if slot['name'] in ['open', 'close']:
+                    command['action'] = slot['name']
+
+        # tv
+        if intent == 'tv':
+            for slot in slots:
+                if slot['name'] in ['action.switch_on', 'action.switch_off', 'action.set']:
+                    command['action'] = slot['name'].split('.')[1]
+                elif slot['name'] in ['action.mute', 'action.unmute']:
+                    command['action'] = slot['name'].split('.')[1]
+                elif slot['name'] in ['sound.increase', 'sound.decrease']:
+                    command['action'] = slot['name'].split('.')[1]
+                    command['parameter'] = slot['name'].split('.')[0]
+                elif slot['name'] == 'sound.value':
+                    command['parameter'] = 'sound'
+                    command['value'] = slot['value']
+
+        # air
+        if intent == 'air':
+            for slot in slots:
+                if slot['name'] in ['parameter.temperature', 'parameter.humidity', 'parameter.CO2', 'parameter.all']:
+                    command['action'] = 'get_info'
+                    command['parameter'] = slot['name'].split('.')[1]
+
+        # timer
+        if intent == 'timer':
+            time = {}
+            for slot in slots:
+                if slot['name'] == 'action.set':
+                    command['action'] = 'set'
+                elif slot['name'] == 'minutes':
+                    time['minutes'] = slot['value']
+                elif slot['name'] == 'seconds':
+                    time['seconds'] = slot['value']
+            if time:
+                command['value'] = time
+            else:
+                command = None
+
+        # reminder
+        if intent == 'reminder':
+            time = {}
+            for slot in slots:
+                if slot['name'] == 'action.set':
+                    command['action'] = 'set'
+                    command['parameter'] = 'time'
+                elif slot['name'] == 'day':
+                    time['day'] = slot['value']
+                elif slot['name'] == 'hours':
+                    time['hours'] = slot['value']
+                elif slot['name'] == 'minutes':
+                    time['minutes'] = slot['value']
+                elif slot['name'] == 'seconds':
+                    time['seconds'] = slot['value']
+                elif slot['name'] == 'message':
+                    command['value']['message'] = slot['value']
+            if time:
+                command['value']['time'] = time
+            else:
+                command = None
+
+        # Change string numbers to integer
+        str_numbers = {'half': 50, 'third': 33, 'quarter': 25, 'fourth': 25, 'fifth': 20,
+                       'one tenth': 10, 'one second': 50, 'one third': 33, 'one fourth': 25,
+                       'one fifth': 20, 'two thirds': 66, 'two fifths': 40, 'three quarters': 75,
+                       'three fifths': 60, 'four fifths': 80}
+
+        if command['value'] and command['parameter'] != 'color' and command['device'] != 'timer':
+            if command['value'] in str_numbers.keys():
+                command['value'] = str_numbers[command['value']]
+            elif command['value'].isalpha():
+                command['value'] = None
+
+        if command['action'] is None:
+            command = None
+
+        return command
