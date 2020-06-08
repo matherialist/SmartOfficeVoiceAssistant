@@ -30,7 +30,7 @@ def get_intent():
             audio_data = f.read()
         audio = base64.b64encode(audio_data)
         os.remove('audio.wav')
-    return {"command": command, "audio": audio.decode("UTF-8")}
+    return {"command": command, "response": audio.decode("UTF-8")}
 
 
 if __name__ == '__main__':
