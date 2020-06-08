@@ -7,7 +7,6 @@ from gtts import gTTS
 from datetime import datetime
 import speech_recognition as sr
 import winsound
-import requests
 import pyttsx3
 
 
@@ -33,8 +32,8 @@ class VoiceAssistant:
         # time.sleep(file.info.length)
         # openSubprocess.kill()
 
-        self.tts.say(text)
-        # self.tts.save_to_file(text, 'text.mp3')
+        # self.tts.say(text)
+        self.tts.save_to_file(text, 'audio.wav')
         self.tts.runAndWait()
 
         self.__logData("%s\t%s\tDeleted" % (datetime.now().isoformat(), self.__curHash))
@@ -55,6 +54,24 @@ class VoiceAssistant:
     def __logData(self, log):
         logging.basicConfig(format="", filename="sample.log", level=logging.INFO)
         logging.info(log)
+
+    def recognise_audio(self, AUDIO_FILE):
+        r = sr.Recognizer()
+        #with sr.AudioFile(AUDIO_FILE) as source:
+        #audio = r.record(AUDIO_FILE)  # read the entire audio file
+
+        # Convert Audio to Audio Source Format
+        audio_source = sr.AudioData(AUDIO_FILE, 16000, 2)
+
+        # recognize speech using Google Speech Recognition
+        try:
+            text = r.recognize_google(audio_source)
+            print("Google Speech Recognition thinks you said " + text)
+        except sr.UnknownValueError:
+            print("Google Speech Recognition could not understand audio")
+        except sr.RequestError as e:
+            print("Could not request results from Google Speech Recognition service; {0}".format(e))
+        return text
 
     def keyWordActivate(self):
         r = sr.Recognizer()
@@ -91,8 +108,3 @@ class VoiceAssistant:
         else:
             print("Try one more time please")
             return self.keyWordActivate()
-
-
-if __name__ == "__main__":
-    VA = VoiceAssistant()
-    VA.keyWordActivate()
