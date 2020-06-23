@@ -1,1 +1,1 @@
-{"slots_num": 42, "intents_num": 9, "bert_hub_path": "https://tfhub.dev/google/albert_base/1", "num_bert_fine_tune_layers": 2}
+{"slots_num": 57, "intents_num": 9, "bert_hub_path": "https://tfhub.dev/tensorflow/bert_multi_cased_L-12_H-768_A-12/2", "num_bert_fine_tune_layers": 2, "is_bert": true}

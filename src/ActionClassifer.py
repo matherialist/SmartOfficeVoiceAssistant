@@ -1,22 +1,21 @@
 import os
 import pickle
+import random
 from sklearn.preprocessing import LabelEncoder
-import tensorflow as tf
 from src.JointBertModel import JointBertModel, BERTVectorizer, TagsVectorizer
 
 
 class ActionClassifier:
 
-    def __init__(self, load_folder_path, sess):
-        self.sess = tf.compat.v1.Session()
-        self.bert_vectorizer = BERTVectorizer(sess)
+    def __init__(self, load_folder_path, model_hub_path, is_bert):
+        self.bert_vectorizer = BERTVectorizer(is_bert=is_bert, bert_model_hub_path=model_hub_path)
         self.tags_vectorizer = TagsVectorizer()
         self.intents_label_encoder = LabelEncoder()
         with open(os.path.join(load_folder_path, 'tags_vectorizer.pkl'), 'rb') as handle:
             self.tags_vectorizer = pickle.load(handle)
         with open(os.path.join(load_folder_path, 'intents_label_encoder.pkl'), 'rb') as handle:
             self.intents_label_encoder = pickle.load(handle)
-        self.model = JointBertModel.load_model(load_folder_path, sess)
+        self.model = JointBertModel.load_model(load_folder_path)
 
     def make_prediction(self, utterance):
         intent_slots = self._predict(utterance)
@@ -36,12 +35,16 @@ class ActionClassifier:
             action = action.replace('_', ' ')
         if device == 'air':
             phrase = 'the air '
-            if parameter == 'CO2':
-                phrase += 'CO2 concentration is'
+            if parameter == 'temperature':
+                phrase += 'temperature is {} degrees'.format(command['value'][0])
+            elif parameter == 'humidity':
+                phrase += 'humidity is {} percent'.format(command['value'][1])
+            elif parameter == 'CO2':
+                phrase += 'CO2 concentration is {} percent'.format(command['value'][2])
             elif parameter == 'all':
-                phrase += 'parameters follow'
-            else:
-                phrase += parameter + ' is'
+                phrase += 'temperature is {} degrees, humidity is {} percent, CO2 concentration is {} percent'\
+                    .format(command['value'][0], command['value'][1], command['value'][2])
+
         elif device == 'timer':
             phrase = 'okay, i will {} the {}'.format(action, device)
         elif action in ['switch on', 'switch off', 'open', 'close', 'mute', 'unmute']:
@@ -104,6 +107,8 @@ class ActionClassifier:
                 elif slot['name'] == 'color':
                     command['parameter'] = 'color'
                     command['value'] = slot['value']
+            if command['action'] in ['increase', 'decrease'] and command['value'] is None:
+                command['value'] = 'default'
 
         # implicit_light
         if intent == 'implicit_light':
@@ -128,6 +133,8 @@ class ActionClassifier:
                 elif slot['name'] == 'temperature':
                     command['parameter'] = 'temperature'
                     command['value'] = slot['value']
+            if command['action'] in ['increase', 'decrease'] and command['value'] is None:
+                command['value'] = 'default'
 
         # implicit_conditioner
         if intent == 'implicit_conditioner':
@@ -141,8 +148,8 @@ class ActionClassifier:
         # curtains
         if intent == 'curtains':
             for slot in slots:
-                if slot['name'] in ['open', 'close']:
-                    command['action'] = slot['name']
+                if slot['name'] in ['action.open', 'action.close']:
+                    command['action'] = slot['name'].split('.')[1]
 
         # tv
         if intent == 'tv':
@@ -157,6 +164,8 @@ class ActionClassifier:
                 elif slot['name'] == 'sound.value':
                     command['parameter'] = 'sound'
                     command['value'] = slot['value']
+            if command['action'] in ['increase', 'decrease'] and command['value'] is None:
+                command['value'] = 'default'
 
         # air
         if intent == 'air':
@@ -164,6 +173,8 @@ class ActionClassifier:
                 if slot['name'] in ['parameter.temperature', 'parameter.humidity', 'parameter.CO2', 'parameter.all']:
                     command['action'] = 'get_info'
                     command['parameter'] = slot['name'].split('.')[1]
+            # air parameters
+            command['value'] = [random.randint(0, 20), random.randint(0, 100), random.randint(10, 25)]
 
         # timer
         if intent == 'timer':
@@ -208,11 +219,11 @@ class ActionClassifier:
                        'one fifth': 20, 'two thirds': 66, 'two fifths': 40, 'three quarters': 75,
                        'three fifths': 60, 'four fifths': 80}
 
-        if command['value'] and command['parameter'] != 'color' and command['device'] != 'timer':
+        if command['value'] and command['parameter'] != 'color' and command['device'] != 'timer' and command['device'] != 'air':
             if command['value'] in str_numbers.keys():
                 command['value'] = str_numbers[command['value']]
-            elif command['value'].isalpha():
-                command['value'] = None
+            # elif command['value'] not in ['maximum', 'minimum']:
+            #     command['value'] = 'default'
 
         if command['action'] is None:
             command = None

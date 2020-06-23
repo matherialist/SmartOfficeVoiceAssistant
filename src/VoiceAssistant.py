@@ -17,8 +17,8 @@ class VoiceAssistant:
         self.tts = pyttsx3.init()
         self.tts.setProperty('rate', 170)  # setting up new voice rate
         self.tts.setProperty('volume', 1.0)  # setting up volume level  between 0 and 1
-        voices = self.tts.getProperty('voices')  # getting details of current voice
-        self.tts.setProperty('voice', voices[1].id)  # changing index, changes voices. 1 for female
+        self.voices = self.tts.getProperty('voices')  # getting details of current voice
+        self.tts.setProperty('voice', self.voices[1].id)  # changing index, changes voices. 1 for female
 
     def voiceText(self, text, lang):
         self.__curHash = self.__genrateHash()
@@ -33,8 +33,9 @@ class VoiceAssistant:
         # openSubprocess.kill()
 
         # self.tts.say(text)
-        self.tts.save_to_file(text, 'audio.wav')
-        self.tts.runAndWait()
+        # self.tts.runAndWait()
+        # self.tts.stop()
+        self.tts.save_to_file(text, 'audio.mp3')
 
         self.__logData("%s\t%s\tDeleted" % (datetime.now().isoformat(), self.__curHash))
         # os.remove(file.filename)
@@ -57,16 +58,15 @@ class VoiceAssistant:
 
     def recognise_audio(self, AUDIO_FILE):
         r = sr.Recognizer()
-        #with sr.AudioFile(AUDIO_FILE) as source:
-        #audio = r.record(AUDIO_FILE)  # read the entire audio file
-
         # Convert Audio to Audio Source Format
-        audio_source = sr.AudioData(AUDIO_FILE, 16000, 2)
-
+        #audio_source = sr.AudioData(AUDIO_FILE, 48000, 1)
+        with sr.AudioFile('audio.flac') as source:
+            audio_source = r.record(source)
         # recognize speech using Google Speech Recognition
+        text = "I don't understand you"
         try:
-            text = r.recognize_google(audio_source)
-            print("Google Speech Recognition thinks you said " + text)
+            text = r.recognize_google(audio_source, language='ru')
+            print("Google Speech Recognition thinks you said: " + text)
         except sr.UnknownValueError:
             print("Google Speech Recognition could not understand audio")
         except sr.RequestError as e:

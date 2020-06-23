@@ -1,35 +1,44 @@
 import base64
 import os
-import tensorflow as tf
 from flask import Flask, request
 from os import path
-from tensorflow.python.keras.backend import set_session
-from src.SmartOffise import SmartOffice
+from src.SmartOffice import SmartOffice
+from flask_cors import CORS
+from pydub import AudioSegment
+
 
 app = Flask(__name__)
+cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 config_relative_path = 'files'
 config_path = path.join(path.dirname(__file__), config_relative_path)
 
-graph = tf.compat.v1.get_default_graph()
-sess = tf.compat.v1.Session()
-tf.compat.v1.keras.backend.set_session(sess)
+so = SmartOffice("files")
 
-so = SmartOffice("files", sess)
+AudioSegment.converter = r"C:\Users\Lagrange\Desktop\SmartOfficeVoiceAssistant\ffmpeg\bin\ffmpeg.exe"
+AudioSegment.ffprobe = r"C:\Users\Lagrange\Desktop\SmartOfficeVoiceAssistant\ffmpeg\bin\ffprobe.exe"
 
 
 @app.route('/get-intent', methods=['POST'])
 def get_intent():
-    with graph.as_default():
-        set_session(sess)
-        data = request.get_json()
-        #audio = base64.decodebytes(data["audio"].encode('UTF-8'))
-        audio = base64.b64decode(data["audio"])
-        command = so.run(audio)
-        with open('audio.wav', 'rb') as f:
-            audio_data = f.read()
-        audio = base64.b64encode(audio_data)
-        os.remove('audio.wav')
+    data = request.get_json()
+    #audio = base64.decodebytes(data["audio"].encode('UTF-8'))
+    audio_str = data["audio"].replace('data:audio/mpeg-3;base64,', '')
+    audio = base64.b64decode(audio_str)
+    with open('audio.mp3', 'wb') as f:
+        f.write(audio)
+    os.system("ffmpeg\\bin\\ffmpeg.exe -y -loglevel warning -i audio.mp3 -c:a flac audio.flac")
+    with open('audio.flac', 'rb') as f:
+        audio = f.read()
+    # flac_audio = AudioSegment.from_file("audio.mp3", format="mp3")
+    # flac_audio.export("audio.flac", format="flac")
+    command = so.run(audio)
+    with open('audio.mp3', 'rb') as f:
+        audio_data = f.read()
+    audio = base64.b64encode(audio_data)
+    os.remove('audio.flac')
+    #os.remove('audio.mp3')
+    print(command)
     return {"command": command, "response": audio.decode("UTF-8")}
 
 
