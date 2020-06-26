@@ -11,8 +11,8 @@ class SmartOffice:
         self.voice_assistant = VoiceAssistant()
 
     def run(self, audio_file):
-        text = self.voice_assistant.recognise_audio(audio_file)
-        command = self.action_classifier.make_prediction(text)
-        response = command['response']
-        self.voice_assistant.voiceText(response, 'en')
-        return command['command']
+        text_en, text_ru = self.voice_assistant.recognise_audio(audio_file)
+        prediction = self.action_classifier.make_prediction([text_en, text_ru])
+        # response = command['response']
+        # self.voice_assistant.voiceText(response, 'en')
+        return prediction

@@ -32,14 +32,15 @@ def get_intent():
         audio = f.read()
     # flac_audio = AudioSegment.from_file("audio.mp3", format="mp3")
     # flac_audio.export("audio.flac", format="flac")
-    command = so.run(audio)
+    prediction = so.run(audio)
     with open('audio.mp3', 'rb') as f:
         audio_data = f.read()
     audio = base64.b64encode(audio_data)
     os.remove('audio.flac')
     #os.remove('audio.mp3')
-    print(command)
-    return {"command": command, "response": audio.decode("UTF-8")}
+    print(prediction)
+    #return {"command": command, "response": audio.decode("UTF-8")}
+    return prediction
 
 
 if __name__ == '__main__':

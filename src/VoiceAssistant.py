@@ -63,15 +63,18 @@ class VoiceAssistant:
         with sr.AudioFile('audio.flac') as source:
             audio_source = r.record(source)
         # recognize speech using Google Speech Recognition
-        text = "I don't understand you"
+        text_en = "I don't understand you"
+        text_ru = "I don't understand you"
         try:
-            text = r.recognize_google(audio_source, language='ru')
-            print("Google Speech Recognition thinks you said: " + text)
+            text_en = r.recognize_google(audio_source)
+            text_ru = r.recognize_google(audio_source, language='ru')
+            print("You said (en): " + text_en)
+            print("You said (ru): " + text_ru)
         except sr.UnknownValueError:
             print("Google Speech Recognition could not understand audio")
         except sr.RequestError as e:
             print("Could not request results from Google Speech Recognition service; {0}".format(e))
-        return text
+        return text_en, text_ru
 
     def keyWordActivate(self):
         r = sr.Recognizer()
@@ -91,11 +94,6 @@ class VoiceAssistant:
                 text = r.recognize_google(audio)
                 print(text)
 
-                # data = {"text": text}
-                # r = requests.post(url='http://127.0.0.1:5000/get-intent', json=data)
-                # reply_text = r.json()['response']
-
-                # self.voiceText(reply_text, "en")
                 return text
             except sr.UnknownValueError:
                 print("Google Speech Recognition could not understand audio")
