@@ -1,9 +1,5 @@
-import subprocess
 import logging
-import os
 import time
-from mutagen.mp3 import MP3
-from gtts import gTTS
 from datetime import datetime
 import speech_recognition as sr
 import winsound
@@ -12,57 +8,34 @@ import pyttsx3
 
 class VoiceAssistant:
     def __init__(self):
-        self.__logPath = None
-        self.__curHash = None
+        self._log_path = None
+        self._cur_hash = None
         self.tts = pyttsx3.init()
         self.tts.setProperty('rate', 170)  # setting up new voice rate
         self.tts.setProperty('volume', 1.0)  # setting up volume level  between 0 and 1
         self.voices = self.tts.getProperty('voices')  # getting details of current voice
         self.tts.setProperty('voice', self.voices[1].id)  # changing index, changes voices. 1 for female
 
-    def voiceText(self, text, lang):
-        self.__curHash = self.__genrateHash()
-        self.__logData("{ \"text\": \"%s\", \"lang\": \"%s\"}" % (text, lang))
-        self.__logData("%s\t%s\tGet" % (datetime.now().isoformat(), self.__curHash))
-        # file = self.__genVoice(text, lang)
-        self.__logData("%s\t%s\tCreated" % (datetime.now().isoformat(), self.__curHash))
-        # openSubprocess = subprocess.Popen(self.__playerPath)
-        # os.startfile(file.filename)
-        # self.__logData("%s\t%s\tPlayed" % (datetime.now().isoformat(), self.__curHash))
-        # time.sleep(file.info.length)
-        # openSubprocess.kill()
-
-        # self.tts.say(text)
-        # self.tts.runAndWait()
-        # self.tts.stop()
+    def voice_text(self, text, lang):
+        self._cur_hash = self._genrate_hash()
+        self._log_data("{ \"text\": \"%s\", \"lang\": \"%s\"}" % (text, lang))
+        self._log_data("%s\t%s\tGet" % (datetime.now().isoformat(), self._cur_hash))
         self.tts.save_to_file(text, 'audio.mp3')
+        self._log_data("%s\t%s\tDeleted" % (datetime.now().isoformat(), self._cur_hash))
 
-        self.__logData("%s\t%s\tDeleted" % (datetime.now().isoformat(), self.__curHash))
-        # os.remove(file.filename)
-        # self.__deleteLog()
+    def _genrate_hash(self):
+        int_hash = abs(hash(time.ctime()))
+        hex_hash = '{:X}'.format(int_hash)
+        return hex_hash
 
-    def __genrateHash(self):
-        intHash = abs(hash(time.ctime()))
-        hexHash = '{:X}'.format(intHash)
-        return hexHash
-
-    def __genVoice(self, text, lang):
-        tts = gTTS(text, lang=lang)
-        fileName = "%s.mp3" % self.__curHash
-        tts.save(fileName)
-        return MP3(fileName)
-
-    def __logData(self, log):
+    def _log_data(self, log):
         logging.basicConfig(format="", filename="sample.log", level=logging.INFO)
         logging.info(log)
 
-    def recognise_audio(self, AUDIO_FILE):
+    def recognise_audio(self):
         r = sr.Recognizer()
-        # Convert Audio to Audio Source Format
-        #audio_source = sr.AudioData(AUDIO_FILE, 48000, 1)
         with sr.AudioFile('audio.flac') as source:
             audio_source = r.record(source)
-        # recognize speech using Google Speech Recognition
         text_en = "I don't understand you"
         text_ru = "I don't understand you"
         try:
@@ -76,7 +49,7 @@ class VoiceAssistant:
             print("Could not request results from Google Speech Recognition service; {0}".format(e))
         return text_en, text_ru
 
-    def keyWordActivate(self):
+    def keyword_activate(self):
         r = sr.Recognizer()
         with sr.Microphone() as source:
             print("Say <<Hey Assistant!>>")
@@ -85,7 +58,7 @@ class VoiceAssistant:
             rec = r.recognize_google(audio)
             print(rec)
         except:
-            return self.keyWordActivate()
+            return self.keyword_activate()
         if rec == "hey assistant" or rec == "assistant":
             with sr.Microphone() as source:
                 winsound.Beep(500, 700)
@@ -98,11 +71,11 @@ class VoiceAssistant:
             except sr.UnknownValueError:
                 print("Google Speech Recognition could not understand audio")
                 print("Try one more time please")
-                return self.keyWordActivate()
+                return self.keyword_activate()
             except sr.RequestError as e:
                 print("Could not request results from Google Speech Recognition service; {0}".format(e))
                 print("Try one more time please")
-                return self.keyWordActivate()
+                return self.keyword_activate()
         else:
             print("Try one more time please")
-            return self.keyWordActivate()
+            return self.keyword_activate()

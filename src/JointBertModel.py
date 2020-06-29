@@ -19,7 +19,6 @@ from src.BertTokenization import FullTokenizer as BertFullTokenizer
 
 
 class BERTVectorizer:
-
     def __init__(self, is_bert, bert_model_hub_path):
         self.is_bert = is_bert
         self.bert_model_hub_path = bert_model_hub_path
@@ -81,14 +80,12 @@ class BERTVectorizer:
 
         segment_ids = [0] * len(tokens)
         input_ids = self.tokenizer.convert_tokens_to_ids(tokens)
-
         input_mask = [1] * len(input_ids)
 
         return input_ids, input_mask, segment_ids, valid_positions
 
 
 class TagsVectorizer:
-
     def __init__(self):
         self.label_encoder = LabelEncoder()
 
@@ -96,7 +93,6 @@ class TagsVectorizer:
         return [s.split() for s in tags_str_arr]
 
     def fit(self, tags_str_arr):
-
         data = ['<PAD>'] + [item for sublist in self.tokenize(tags_str_arr) for item in sublist]
         self.label_encoder.fit(data)
 
@@ -104,7 +100,6 @@ class TagsVectorizer:
         seq_length = valid_positions.shape[1]
         data = self.tokenize(tags_str_arr)
         data = [self.label_encoder.transform(['O'] + x + ['O']).astype(np.int32) for x in data]
-
         output = np.zeros((len(data), seq_length))
         for i in range(len(data)):
             idx = 0
@@ -129,7 +124,6 @@ class TagsVectorizer:
 
 
 class JointBertModel:
-
     def __init__(self, slots_num, intents_num, bert_hub_path,
                  num_bert_fine_tune_layers=1, is_bert=False):
         self.slots_num = slots_num
@@ -162,7 +156,6 @@ class JointBertModel:
 
         bert_pooled_output, bert_sequence_output = hub.KerasLayer(self.bert_hub_path, trainable=True,
                                                                   name=name)(bert_inputs)
-
         intents_fc = Dense(self.intents_num, activation='softmax', name='intent_classifier')(bert_pooled_output)
 
         slots_output = TimeDistributed(Dense(self.slots_num, activation='softmax'))(bert_sequence_output)
@@ -328,7 +321,6 @@ class JointBertModel:
         return model
 
     def evaluate_model(self, train_config_path, is_bert):
-
         def flatten(y):
             return list(chain.from_iterable(y))
 

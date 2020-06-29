@@ -2,9 +2,9 @@ import base64
 import os
 from flask import Flask, request
 from os import path
-from src.SmartOffice import SmartOffice
 from flask_cors import CORS
 from pydub import AudioSegment
+from src.SmartOffice import SmartOffice
 
 
 app = Flask(__name__)
@@ -14,32 +14,22 @@ config_relative_path = 'files'
 config_path = path.join(path.dirname(__file__), config_relative_path)
 
 so = SmartOffice("files")
-
-AudioSegment.converter = r"C:\Users\Lagrange\Desktop\SmartOfficeVoiceAssistant\ffmpeg\bin\ffmpeg.exe"
-AudioSegment.ffprobe = r"C:\Users\Lagrange\Desktop\SmartOfficeVoiceAssistant\ffmpeg\bin\ffprobe.exe"
+AudioSegment.converter = r'ffmpeg\bin\ffmpeg.exe'
+AudioSegment.ffprobe = r'ffmpeg\bin\ffprobe.exe'
 
 
 @app.route('/get-intent', methods=['POST'])
 def get_intent():
     data = request.get_json()
-    #audio = base64.decodebytes(data["audio"].encode('UTF-8'))
     audio_str = data["audio"].replace('data:audio/mpeg-3;base64,', '')
     audio = base64.b64decode(audio_str)
     with open('audio.mp3', 'wb') as f:
         f.write(audio)
     os.system("ffmpeg\\bin\\ffmpeg.exe -y -loglevel warning -i audio.mp3 -c:a flac audio.flac")
-    with open('audio.flac', 'rb') as f:
-        audio = f.read()
-    # flac_audio = AudioSegment.from_file("audio.mp3", format="mp3")
-    # flac_audio.export("audio.flac", format="flac")
-    prediction = so.run(audio)
-    with open('audio.mp3', 'rb') as f:
-        audio_data = f.read()
-    audio = base64.b64encode(audio_data)
+    prediction = so.run()
     os.remove('audio.flac')
-    #os.remove('audio.mp3')
+    os.remove('audio.mp3')
     print(prediction)
-    #return {"command": command, "response": audio.decode("UTF-8")}
     return prediction
 
 

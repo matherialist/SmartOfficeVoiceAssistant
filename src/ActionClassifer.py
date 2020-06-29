@@ -24,22 +24,17 @@ class ActionClassifier:
                 and intent_slots2['intent']['name'] != 'no_intent' or intent_slots['intent']['name'] == 'no_intent':
             intent_slots = intent_slots2
             lang = 'ru'
-
         if intent_slots['intent']['name'] == 'no_intent':
             command = None
-            response = "i don't understand you"
         else:
             command = self._get_command(intent_slots)
-            response = self._get_phrase(command)
-
         if lang == 'en':
             response = utterances[0]
         else:
             response = utterances[1]
+        return command, response
 
-        return {'command': command, 'response': response}
-
-    def _get_phrase(self, command):
+    def get_phrase(self, command):
         if command is None:
             return "i don't understand you"
         device, action, parameter = command['device'], command['action'], command['parameter']
@@ -115,7 +110,7 @@ class ActionClassifier:
                     command['parameter'] = slot['name'].split('.')[0]
                 elif slot['name'] == 'brightness.value':
                     command['parameter'] = slot['name'].split('.')[0]
-                    command['value'] = slot['value']
+                    command['value'] = slot['value'].replace('%', '')
                 elif slot['name'] == 'color':
                     command['parameter'] = 'color'
                     command['value'] = slot['value']
@@ -175,7 +170,7 @@ class ActionClassifier:
                     command['parameter'] = slot['name'].split('.')[0]
                 elif slot['name'] == 'sound.value':
                     command['parameter'] = 'sound'
-                    command['value'] = slot['value']
+                    command['value'] = slot['value'].replace('%', '')
             if command['action'] in ['increase', 'decrease'] and command['value'] is None:
                 command['value'] = 'default'
 
@@ -185,8 +180,6 @@ class ActionClassifier:
                 if slot['name'] in ['parameter.temperature', 'parameter.humidity', 'parameter.CO2', 'parameter.all']:
                     command['action'] = 'get_info'
                     command['parameter'] = slot['name'].split('.')[1]
-            # air parameters
-            command['value'] = [random.randint(0, 20), random.randint(0, 100), random.randint(10, 25)]
 
         # timer
         if intent == 'timer':
@@ -231,7 +224,8 @@ class ActionClassifier:
                        'one fifth': 20, 'two thirds': 66, 'two fifths': 40, 'three quarters': 75,
                        'three fifths': 60, 'four fifths': 80}
 
-        if command['value'] and command['parameter'] != 'color' and command['device'] != 'timer' and command['device'] != 'air':
+        if command['value'] and command['parameter'] != 'color' and command['device'] != 'timer'\
+                and command['device'] != 'air':
             if command['value'] in str_numbers.keys():
                 command['value'] = str_numbers[command['value']]
             # elif command['value'] not in ['maximum', 'minimum']:
