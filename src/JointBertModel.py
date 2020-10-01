@@ -5,7 +5,7 @@ import os
 import sys
 import tensorflow as tf
 import tensorflow_hub as hub
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import pickle
 from itertools import chain
 from tensorflow.keras.models import Model
@@ -13,7 +13,7 @@ from tensorflow.keras.layers import Input, Dense, Multiply, TimeDistributed
 from sklearn.preprocessing import LabelEncoder
 from sklearn import metrics
 from sklearn.model_selection import StratifiedKFold
-from plot_keras_history import plot_history
+# from plot_keras_history import plot_history
 from src.AlbertTokenization import FullTokenizer as AlbertFullTokenizer
 from src.BertTokenization import FullTokenizer as BertFullTokenizer
 

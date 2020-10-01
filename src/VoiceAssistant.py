@@ -2,19 +2,19 @@ import logging
 import time
 from datetime import datetime
 import speech_recognition as sr
-import winsound
-import pyttsx3
+# import winsound
+# import pyttsx3
 
 
 class VoiceAssistant:
     def __init__(self):
         self._log_path = None
         self._cur_hash = None
-        self.tts = pyttsx3.init()
-        self.tts.setProperty('rate', 170)  # setting up new voice rate
-        self.tts.setProperty('volume', 1.0)  # setting up volume level  between 0 and 1
-        self.voices = self.tts.getProperty('voices')  # getting details of current voice
-        self.tts.setProperty('voice', self.voices[1].id)  # changing index, changes voices. 1 for female
+        # self.tts = pyttsx3.init()
+        # self.tts.setProperty('rate', 170)  # setting up new voice rate
+        # self.tts.setProperty('volume', 1.0)  # setting up volume level  between 0 and 1
+        # self.voices = self.tts.getProperty('voices')  # getting details of current voice
+        # self.tts.setProperty('voice', self.voices[1].id)  # changing index, changes voices. 1 for female
 
     def voice_text(self, text, lang):
         self._cur_hash = self._genrate_hash()
