@@ -5,7 +5,7 @@ import os
 import sys
 import tensorflow as tf
 import tensorflow_hub as hub
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 import pickle
 from itertools import chain
 from tensorflow.keras.models import Model
@@ -13,7 +13,7 @@ from tensorflow.keras.layers import Input, Dense, Multiply, TimeDistributed
 from sklearn.preprocessing import LabelEncoder
 from sklearn import metrics
 from sklearn.model_selection import StratifiedKFold
-# from plot_keras_history import plot_history
+from plot_keras_history import plot_history
 from src.AlbertTokenization import FullTokenizer as AlbertFullTokenizer
 from src.BertTokenization import FullTokenizer as BertFullTokenizer
 
@@ -125,18 +125,18 @@ class TagsVectorizer:
 
 class JointBertModel:
     def __init__(self, slots_num, intents_num, bert_hub_path,
-                 num_bert_fine_tune_layers=1, is_bert=False):
+                 num_bert_fine_tune_layers=1, model_name=False):
         self.slots_num = slots_num
         self.intents_num = intents_num
         self.bert_hub_path = bert_hub_path
         self.num_bert_fine_tune_layers = num_bert_fine_tune_layers
-        self.is_bert = is_bert
+        self.model_name = model_name
         self.model_params = {
             'slots_num': slots_num,
             'intents_num': intents_num,
             'bert_hub_path': bert_hub_path,
             'num_bert_fine_tune_layers': num_bert_fine_tune_layers,
-            'is_bert': is_bert
+            'model_name': model_name
         }
         self.build_model()
         self.compile_model()
@@ -149,10 +149,12 @@ class JointBertModel:
         bert_inputs = [in_id, in_mask, in_segment]
         inputs = bert_inputs + [in_valid_positions]
 
-        if self.is_bert:
+        if self.model_name == 'BERT':
             name = 'BertLayer'
-        else:
+        elif self.model_name == 'ALBERT':
             name = 'AlbertLayer'
+        else:
+            name = 'MobileBertLayer'
 
         bert_pooled_output, bert_sequence_output = hub.KerasLayer(self.bert_hub_path, trainable=True,
                                                                   name=name)(bert_inputs)
@@ -236,7 +238,7 @@ class JointBertModel:
         return text_arr, tags_arr, labels
 
     @staticmethod
-    def train_model(train_config_path, is_bert):
+    def train_model(train_config_path, model_name):
         logging.basicConfig(stream=sys.stdout, format='%(message)s', level=logging.WARNING)
         with open(os.path.join(train_config_path, 'train_config.json'), 'r') as json_file:
             train_config = json.load(json_file)
@@ -245,16 +247,18 @@ class JointBertModel:
         epochs = train_config['epochs']
         batch_size = train_config['batch_size']
         num_bert_fine_tune_layers = train_config['num_bert_fine_tune_layers']
-        if is_bert:
+        if model_name == 'BERT':
             model_hub_path = train_config['bert_hub_path']
-        else:
+        elif model_name == 'ALBERT':
             model_hub_path = train_config['albert_hub_path']
+        else:
+            model_hub_path = train_config['mobilebert_hub_path']
 
         logging.log(logging.WARNING, 'Reading data ...')
         text_arr, tags_arr, intents = JointBertModel.read_goo(data_folder_path)
 
         logging.log(logging.WARNING, 'Vectorize data ...')
-        bert_vectorizer = BERTVectorizer(is_bert, model_hub_path)
+        bert_vectorizer = BERTVectorizer(model_name, model_hub_path)
         input_ids, input_mask, segment_ids, valid_positions, sequence_lengths = bert_vectorizer.transform(text_arr)
 
         logging.log(logging.WARNING, 'Vectorize tags ...')
@@ -269,7 +273,7 @@ class JointBertModel:
         intents_num = len(intents_label_encoder.classes_)
 
         model = JointBertModel(slots_num, intents_num, model_hub_path,
-                               num_bert_fine_tune_layers, is_bert=is_bert)
+                               num_bert_fine_tune_layers, model_name=model_name)
 
         logging.log(logging.WARNING, 'Training model ...')
         X = np.concatenate((input_ids, input_mask, segment_ids, valid_positions, tags), axis=1)

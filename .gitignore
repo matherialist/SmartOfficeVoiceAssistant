@@ -2,3 +2,4 @@
 /venv/
 .idea
 files/joint_bert_model.h5
+__pycache__

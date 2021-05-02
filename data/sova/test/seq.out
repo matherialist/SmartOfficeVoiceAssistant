@@ -1,0 +1,2298 @@
+O O B-action.set O B-object I-object B-brightness.decrease I-brightness.decrease O
+O O O B-decrease I-decrease I-decrease O O O O O O O
+O B-action.set B-object O B-brightness.value
+O O B-decrease O O O O O O O
+O O B-action.open B-object
+O B-action.set O B-object I-object O B-brightness.value
+O B-action.set O B-object O B-color
+O O O O B-parameter.all I-parameter.all O I-parameter.all
+O O B-action.switch_off B-object I-action.switch_off O
+O O B-action.close O B-object O
+O O O O O O B-parameter.humidity O O O O O O
+O O O O O O O B-parameter.humidity O O O O
+O O B-action.unmute B-object O
+O O B-action.switch_off O B-object O
+O O B-action.set B-object O B-brightness.value O
+O O B-increase O O O O
+O O O O O O O B-parameter.CO2 O O O O
+O O O O B-action.set O B-object B-brightness.value O I-object O
+O O O O O O O O O O O
+O O O O
+O O O O O B-parameter.all I-parameter.all O I-parameter.all
+O O O O B-action.set O B-object I-object B-brightness.value O I-object
+O O B-action.set B-parameter O B-sound.value O
+O B-action.mute B-object I-action.mute I-action.mute
+O O O O O O
+O B-decrease O O O O O O O
+O O O O
+O B-action.set O B-object O B-brightness.decrease
+O B-action.set B-parameter B-sound.decrease
+O O B-action.set O B-parameter O B-temperature O O O
+O O O O B-action.set B-object I-object O B-brightness.value O
+O O O O B-action.set B-object B-brightness.decrease I-brightness.decrease O
+O O O O O O B-parameter.humidity O O O O O
+O O O O O B-action.switch_off O B-object I-action.switch_off
+O O O O B-parameter.CO2 O
+O O O O B-action.decrease_temp O I-action.decrease_temp
+O O B-action.set B-object B-brightness.value I-object
+O O O O O O B-parameter.CO2 O O O
+O O O O
+O O O O O B-parameter.humidity O
+O O O O O O O B-parameter.humidity
+O O O O O O B-parameter.temperature
+O O B-action.set B-object I-object O B-brightness.value
+O O O B-action.switch_off B-object I-action.switch_off
+O O O O B-action.increase_temp O O I-action.increase_temp I-action.increase_temp
+O O B-action.set B-object O B-color
+O O B-increase I-increase O O O O O O O O
+O O B-action.set B-object I-object B-brightness.value O I-object
+O O O O O O O
+O O O O O
+O O O B-action.open B-object
+O O O O B-action.set B-object I-object O B-color O
+O O O B-parameter.CO2 I-parameter.CO2 O O O O
+O O B-parameter.all I-parameter.all O I-parameter.all O O
+O O O O O B-action.set O B-object I-object O B-brightness.value O
+O B-decrease I-decrease O O O O O O O O O O O
+O O B-action.switch_off O B-object
+O B-action.open B-object
+O O O O O O O O B-parameter.humidity
+O O B-action.switch_on O B-object O
+O O O B-action.set B-object I-object O B-brightness.value
+O B-action.set O B-object I-object O B-brightness.value
+B-action.set O B-object I-object O B-brightness.value O
+O B-decrease I-decrease O O O O
+O O B-action.set B-object B-parameter B-sound.value O O
+O O B-increase O O O O O
+O O O B-action.increase_temp O I-action.increase_temp I-action.increase_temp
+O B-decrease
+O O O O O O O
+O O O O O O O B-parameter.CO2 I-parameter.CO2 O O O O
+O O B-action.switch_on I-action.switch_on O B-object
+O O B-action.switch_off I-action.switch_off O B-object O
+O O O O O O B-parameter.all I-parameter.all
+O O B-action.set B-object O B-brightness.value
+O O B-action.set O B-object B-brightness.increase I-brightness.increase
+O O O O O
+O O O O O
+O O O O O O O O O O
+O O O O O O B-parameter.humidity O O
+O O O O O B-parameter.all I-parameter.all O I-parameter.all O O O
+O O B-action.switch_on B-object O
+O O O O O O O O
+O O O O
+O O
+O O B-action.open B-object O
+O O O O O O O O
+O O O B-action.switch_off O B-object O
+O B-action.switch_on B-object O I-action.switch_on
+O O O O O B-parameter.CO2 I-parameter.CO2 O O O O O
+O O O O O B-parameter.CO2 O O O O
+O O B-action.unmute I-action.unmute O I-action.unmute
+O O B-action.set B-object B-parameter B-sound.value O
+O O B-increase I-increase I-increase O O O O O
+O O B-increase O O O O O O O
+O O O O O O B-parameter.all I-parameter.all
+O O O B-action.increase_temp O I-action.increase_temp O
+B-action.set B-object O B-color
+O O O B-parameter.all I-parameter.all O I-parameter.all O O
+O O O O O O O B-parameter.CO2 I-parameter.CO2 O O O O
+O O B-action.set O B-object I-object O O B-brightness.increase O
+B-action.switch_off B-object O
+O O O O O O O
+O O O B-action.switch_off O B-object
+O O O O O O O O O O O O
+O O O O O B-parameter.CO2 O O O
+O B-action.set B-object I-object O B-brightness.value O
+O O B-action.set B-object I-object O O B-brightness.decrease
+O O O O O O B-parameter.temperature O O O O
+O O O O O O B-parameter.all I-parameter.all O I-parameter.all O O O O
+O O O O O O O B-parameter.temperature O
+B-action.unmute O B-object I-action.unmute I-action.unmute
+O O O B-action.switch_off I-action.switch_off O B-object
+O O B-parameter.CO2 O O
+B-action.set O B-object O B-brightness.value
+O O O O O O
+O O O O O B-parameter.all I-parameter.all
+O O O O O B-parameter.CO2 I-parameter.CO2 O O O O
+O O B-action.set O B-object I-object O B-brightness.value I-object
+O O O O O O O O
+O O B-action.set O B-object I-object O B-brightness.value O
+O O O O O B-parameter.all I-parameter.all O I-parameter.all O O
+B-action.increase_temp I-action.increase_temp
+O O O O
+B-action.set O B-object B-brightness.decrease I-brightness.decrease O
+O B-decrease O O O O O O O
+B-action.switch_on I-action.switch_on B-object O
+O B-decrease I-decrease O O O
+O O B-action.set B-object I-object O B-color
+O O O O B-parameter.all I-parameter.all O I-parameter.all O O O
+O O O B-action.set B-object O B-brightness.value
+B-action.switch_off O B-object I-action.switch_off O
+O O O
+O O O B-parameter.CO2 I-parameter.CO2 O O
+O O O O O O O B-parameter.all I-parameter.all O I-parameter.all O O O
+O O B-action.set O B-parameter B-sound.decrease
+O O B-action.set O B-object I-object B-brightness.value O I-object
+B-action.decrease_temp O O I-action.decrease_temp O
+O O O O
+O O O O O O O B-parameter.CO2 O O O O O
+O O O B-parameter.temperature O O O
+O O O O O O O B-parameter.humidity O O
+O O O B-action.switch_off I-action.switch_off O B-object
+O O O O O O O B-parameter.all I-parameter.all O I-parameter.all O
+O O O O B-action.set B-object O B-color O
+O O O B-action.set B-parameter B-temperature O
+O O B-action.mute I-action.mute I-action.mute
+O O B-action.switch_off I-action.switch_off B-object O
+O O O O O O B-parameter.humidity O O
+O B-increase I-increase I-increase O O O O O O
+O B-action.set B-object B-color
+B-action.set B-object I-object B-brightness.value O
+O O O O O O B-parameter.CO2 O O O O
+O O O O
+O O O O O O O O B-parameter.all I-parameter.all O O I-parameter.all
+O B-increase I-increase O O O O O O O O O
+O O O O O
+O O B-action.set O B-object I-object O B-brightness.increase
+O O O O O O O B-parameter.temperature O O O
+O O O O B-action.set B-object I-object O B-brightness.value O
+O O O O O O B-parameter.humidity O O O
+O O O O O O O O O O O
+O O O O O O O
+O O O B-decrease O O
+O O O B-action.switch_off B-object
+O O O O B-parameter.all I-parameter.all O O I-parameter.all
+O O B-action.unmute O B-object
+O O B-increase O O O O O O O
+O O O O O B-parameter.all I-parameter.all O I-parameter.all O O O O
+O B-action.mute B-object I-action.mute I-action.mute
+O O O B-action.switch_on B-object O
+O O B-action.set B-object I-object O B-brightness.decrease O
+O O B-action.set B-parameter B-temperature O O O
+O O O O O O O O
+O B-action.set B-object O B-color I-object O
+O O B-decrease I-decrease O O O O O O O O O
+O O B-action.set B-object I-object B-brightness.decrease
+O O O O B-parameter.CO2 O O O O
+O O B-action.switch_on I-action.switch_on O B-object O
+O O O O
+O O O O B-action.set O B-object I-object B-brightness.decrease I-brightness.decrease
+O O O O O O B-parameter.humidity O O O
+O O O O O O O B-parameter.CO2 I-parameter.CO2 O O O O O O
+O O B-action.set B-object B-parameter O B-temperature O O
+B-parameter.humidity O O O
+O B-decrease I-decrease O O O O O O O
+B-action.set B-parameter O B-sound.value
+O O O O O O B-parameter.all I-parameter.all O I-parameter.all O O O
+O O O B-action.set O B-parameter O B-temperature O O
+O O O O O O O B-parameter.humidity O
+O B-increase I-increase I-increase O O O O O
+O B-action.set O B-object I-object O B-brightness.value
+O O O B-action.switch_on I-action.switch_on B-object
+O O B-action.set B-object I-object O B-brightness.decrease
+O O B-action.set O B-object O B-brightness.decrease
+O O O
+O O B-action.set O B-object O B-brightness.value O I-object
+O O O O O O B-parameter.temperature O
+O B-action.set B-object O B-brightness.increase O
+O O B-action.set B-parameter I-parameter B-sound.increase
+O O O O O O O O O O
+O B-action.switch_on O B-object
+O B-action.set B-object O B-color I-object
+O B-action.set B-object O B-color
+O B-action.switch_off I-action.switch_off O B-object
+O B-increase I-increase O O O O O O
+O O B-action.unmute B-object I-action.unmute I-action.unmute
+O O O O B-action.set B-object I-object O B-color
+O O O O B-action.switch_on O O B-object
+O O O O O O
+O O B-action.set B-parameter O B-sound.value
+O B-action.set B-parameter B-sound.value O O
+O O B-action.open B-object
+O B-action.unmute I-action.unmute I-action.unmute
+O O O B-action.switch_off B-object
+O O B-action.switch_on O O B-object
+O O O O B-action.set O B-object B-brightness.decrease I-brightness.decrease O
+O O O B-action.set O B-object I-object B-brightness.value O
+O O O O B-action.decrease_temp O I-action.decrease_temp
+B-action.set O B-object O B-brightness.value
+O B-action.set O B-object I-object O O B-brightness.increase O
+O O O B-action.set O B-object I-object O B-brightness.value I-object
+O B-increase I-increase O O O O O O O O O
+O O O B-increase I-increase O O O O O O O O O
+B-action.switch_off I-action.switch_off B-object
+O O B-action.set B-object I-object O B-brightness.decrease
+O O B-action.set O B-object I-object O B-brightness.increase
+B-action.switch_on I-action.switch_on O B-object O
+B-action.set B-object B-color
+O O O O O O
+O B-action.switch_off O B-object
+O O B-action.switch_on O B-object I-action.switch_on
+O O B-increase O O O O O O O O O
+O O O B-action.set O B-object I-object O B-brightness.increase
+O O O O B-action.set B-object O B-brightness.value O O
+O O O O O O
+B-action.set O B-object B-color O
+O O B-action.set B-object I-object O B-brightness.value
+B-action.decrease_temp O I-action.decrease_temp
+O O B-action.set O B-parameter B-sound.value O
+O O B-action.decrease_temp I-action.decrease_temp I-action.decrease_temp
+O B-decrease I-decrease I-decrease O O O O O
+O O B-action.set B-object O B-brightness.increase
+O O O O B-parameter.CO2 O
+B-action.switch_on O B-object
+O O B-action.set O B-object I-object B-brightness.value O
+O O O O O
+O O B-action.set O B-object B-parameter B-sound.value O O
+O O O O O
+O O O O B-parameter.humidity O
+O O B-action.unmute I-action.unmute O B-object I-action.unmute
+O O B-action.decrease_temp O O O I-action.decrease_temp
+O O O O O O O B-parameter.humidity O O O
+O B-action.set O B-object O B-brightness.value
+O O O O O B-parameter.humidity O
+O O B-action.set B-parameter O B-temperature O
+O O O O O O
+O O O B-decrease I-decrease I-decrease O O O O O
+B-parameter.humidity O O O O O
+O O B-action.increase_temp O O I-action.increase_temp O
+O O B-action.set B-object O B-color
+O O B-action.decrease_temp I-action.decrease_temp I-action.decrease_temp
+O O O B-parameter.humidity O O O
+O O O O O O B-parameter.humidity O O O O
+B-action.set B-object O B-color I-object
+O O B-action.set B-object I-object O B-brightness.increase O
+B-action.set O B-object B-parameter B-sound.value O O
+O O B-action.mute B-object I-action.mute I-action.mute I-action.mute
+O B-action.mute I-action.mute B-object I-action.mute
+O O O B-action.switch_off B-object I-action.switch_off
+O O O B-parameter.temperature O O O
+O O B-parameter.temperature O O O
+O B-action.increase_temp I-action.increase_temp
+O B-action.set B-parameter O B-sound.value O
+O O B-action.switch_off O B-object I-action.switch_off O
+O O B-action.set B-object B-brightness.decrease O
+O B-action.switch_off O B-object O
+O O O B-action.close B-object
+O O B-increase I-increase I-increase O O O O O O O O O
+O O O B-action.switch_off I-action.switch_off B-object
+O O B-action.set B-object I-object O B-brightness.increase
+O O O B-action.close B-object
+O O O O O O O B-parameter.humidity O O O O
+O O B-action.switch_off O B-object O O
+O O O O O O O B-parameter.all I-parameter.all O O I-parameter.all
+O O B-action.set B-object I-object O B-brightness.value
+O O O B-action.set O B-object O B-color
+O O B-action.set O B-object O B-brightness.value
+B-action.switch_on O B-object O
+O O O B-action.set O B-object I-object O B-color
+B-action.switch_off I-action.switch_off O B-object O
+O O B-action.set O B-object B-brightness.increase I-brightness.increase
+O O O B-action.set B-object O B-brightness.increase
+O O O O O O O
+B-action.increase_temp I-action.increase_temp O O O
+O O B-increase
+O O B-action.set B-object B-brightness.value O I-object
+O O B-action.set O B-object I-object O B-brightness.value O
+O O B-action.set O B-object I-object O O B-brightness.increase
+O B-action.set B-object I-object O B-brightness.increase
+O B-action.set B-object O B-brightness.value O
+O O O B-action.switch_off O B-object
+O B-action.set O B-object O B-brightness.value O I-object
+O O O O B-parameter.humidity O O O O O
+O O O O O
+O O O B-parameter.all I-parameter.all O I-parameter.all O O O
+O O O O O
+O O B-action.set B-object B-brightness.increase O
+O O O B-parameter.CO2 I-parameter.CO2 O O O O
+O B-action.set B-parameter O B-sound.value
+B-action.switch_off I-action.switch_off O B-object
+O B-action.set B-parameter B-sound.decrease
+O O B-action.set B-object O B-color O
+O O O O B-parameter.all I-parameter.all O I-parameter.all O O O
+O O O B-increase I-increase O O O O O O O
+O B-action.switch_on B-object O
+O O O O B-action.set B-object O B-color
+O O B-action.set O B-object I-object O B-brightness.increase
+O O
+O O O O B-action.set O B-object I-object O B-brightness.value O I-object
+O O O O B-action.set O B-object I-object O B-brightness.value O I-object
+O O O B-action.set B-object I-object O B-brightness.decrease
+O B-action.set O B-object O B-brightness.decrease
+O O B-action.increase_temp O O O O I-action.increase_temp
+O O O B-action.set O B-object I-object O B-brightness.value O
+O O B-action.close O B-object O
+O O B-action.decrease_temp O O O I-action.decrease_temp
+B-action.switch_on I-action.switch_on O B-object
+O O B-increase I-increase O O O O O O O
+O O O O O O O O O
+O O B-action.set B-object I-object B-brightness.increase
+O O O O O B-parameter.CO2 I-parameter.CO2 O O O O
+O O B-action.set O B-object O B-color I-object
+O O O O O O O O B-parameter.temperature O O O
+O B-action.set O B-object I-object O B-brightness.value
+O O O O
+O O O O B-parameter.CO2 I-parameter.CO2 O O O O
+O O O B-parameter.CO2 O O O O
+O O O O O O
+O O O O O O B-parameter.all I-parameter.all O I-parameter.all O
+O O O B-action.increase_temp O O I-action.increase_temp I-action.increase_temp
+O O O O O B-action.switch_on O O B-object
+O B-action.unmute I-action.unmute O B-object I-action.unmute
+O O O B-action.set B-object B-brightness.value O
+O O B-action.set O B-object I-object B-brightness.value O I-object
+O O O B-action.switch_off I-action.switch_off B-object
+B-decrease I-decrease I-decrease O O O O O
+O B-action.set B-object I-object O B-brightness.value
+O B-action.set O B-object I-object O B-brightness.value O I-object O
+O O B-action.switch_on O B-object O
+O O O O B-parameter.humidity O O O O O
+O O B-increase O O O O O O O O O
+O B-action.set O B-parameter I-parameter B-sound.value O
+O O O O O B-parameter.all I-parameter.all O I-parameter.all O O
+O O O B-action.set O B-object I-object O B-brightness.value
+O B-action.set O B-object I-object B-brightness.increase
+O O O B-action.set O B-object O O B-brightness.increase
+O B-action.unmute I-action.unmute I-action.unmute
+O O B-action.set O B-object O B-brightness.value O
+O O B-action.decrease_temp O O I-action.decrease_temp O I-action.decrease_temp
+O O B-action.switch_on O B-object
+O O O O B-parameter.all I-parameter.all O I-parameter.all O O O
+O O B-action.set O B-parameter O B-sound.value
+O O B-action.switch_off O B-object
+O O O O O O O O O O O
+O O O B-parameter.humidity O O
+O O O O B-parameter.humidity O O
+O O B-increase I-increase O O O O O O O O
+O O B-action.open O B-object
+O B-increase I-increase O O O O O O O
+O O B-action.set O B-parameter B-sound.value O O
+O O B-action.set B-object I-object O O B-brightness.increase
+O O O O O O B-parameter.humidity O O O O O
+B-action.close B-object
+O O B-action.mute B-object I-action.mute I-action.mute I-action.mute
+B-action.mute I-action.mute I-action.mute
+B-action.set O B-object I-object O B-brightness.value
+O O O B-action.set B-object I-object O B-brightness.increase
+O B-action.set O B-object O B-color O
+O O O O O O O O O O O O O
+O O B-action.switch_off I-action.switch_off B-object
+O O B-action.set B-object I-object B-brightness.value O I-object
+O O O O B-action.set O B-object O B-color
+O O B-action.switch_off I-action.switch_off O B-object O
+O O B-action.mute O O I-action.mute
+O B-decrease I-decrease O O O O O O O O O
+O O B-action.set O B-object O B-color I-object
+O O O O B-action.set O B-object B-brightness.value O I-object O
+O O O
+O O O O O O B-parameter.humidity O O O
+O O B-action.set O B-object I-object O B-brightness.value
+O O B-decrease O O O
+O B-action.mute I-action.mute O B-object I-action.mute
+O B-parameter.CO2 O O O O
+O O B-action.set B-object B-brightness.decrease I-brightness.decrease
+O O B-action.set O B-object I-object O B-brightness.value O
+O O O O O O O O
+O O O B-parameter.CO2 O O O O O
+O O O
+O O O O O O O O O O O
+O O O O O B-parameter.all I-parameter.all O
+O O O O O B-action.set O B-object O B-color I-object
+O O O O B-parameter.CO2 O
+B-action.mute I-action.mute B-object I-action.mute
+B-action.switch_off I-action.switch_off B-object O
+O O O O O B-parameter.all I-parameter.all O I-parameter.all O
+B-increase I-increase O O
+O O O O B-action.set O B-object O B-color I-object
+O O O B-action.decrease_temp O O O O I-action.decrease_temp
+O O O O O O B-parameter.temperature O
+O B-action.set O B-parameter B-temperature O
+O O O O O B-action.set B-object B-brightness.decrease I-brightness.decrease
+O O B-action.switch_on I-action.switch_on O B-object
+O O B-action.open B-object
+O O B-action.set O B-object B-parameter I-parameter B-sound.decrease
+O O O O O O B-parameter.CO2 O
+O O O O O B-parameter.all I-parameter.all
+O O O O B-parameter.humidity O O O O
+O O B-action.increase_temp O I-action.increase_temp O I-action.increase_temp
+O O B-action.switch_off B-object O
+O O B-action.mute O B-object O I-action.mute
+O O O O O O O
+O O O O O O O B-parameter.CO2 I-parameter.CO2 O O O O
+O O O O O B-parameter.CO2 O O O O
+O O O O O B-parameter.humidity O O O O
+O O O O O O B-parameter.CO2 I-parameter.CO2 O O O O
+O O B-increase O O O O O O O
+O O O O O B-parameter.CO2 I-parameter.CO2 O O O
+O O B-action.set O B-object I-object B-brightness.decrease O
+O O O O O O O
+O O B-increase I-increase O O O O O O
+O O B-action.unmute O B-object I-action.unmute I-action.unmute
+O O O O O O
+B-action.unmute O B-object O
+O O O O B-parameter.CO2 I-parameter.CO2 O O O O
+B-action.set O B-object O B-color
+O B-action.mute B-object I-action.mute I-action.mute
+O O B-increase I-increase
+O B-increase I-increase O O O O O O
+B-action.set O B-object I-object O B-brightness.value I-object
+O O B-increase I-increase O O O
+O O O O O O O
+B-decrease I-decrease I-decrease O O O O O
+O O B-action.switch_off O B-object
+O O O O
+O O B-increase I-increase I-increase O O O O O O O O O O O
+O O O
+O O O O B-parameter.CO2 I-parameter.CO2 O O
+O B-action.set O B-object O B-color I-object
+O O O O B-parameter.CO2 O O O O
+O O O O O O O B-parameter.humidity O O
+O B-action.set B-object I-object B-brightness.value O O
+O B-increase I-increase I-increase O O O O O O O
+O O O B-parameter.CO2 I-parameter.CO2 O O O O
+B-action.set B-object I-object O B-brightness.value O O
+O O B-action.switch_off I-action.switch_off O B-object
+B-action.open B-object O
+O B-action.switch_on I-action.switch_on O B-object
+O O O O O O O B-parameter.CO2 I-parameter.CO2 O O O O
+O O O B-action.set O B-object I-object O B-brightness.increase
+O O O O O O O O O
+B-action.set O B-object O B-brightness.decrease
+B-action.set B-parameter B-temperature O O
+O B-action.set O B-parameter O B-sound.value
+O O O O O O
+O O B-action.switch_off I-action.switch_off O B-object O O
+O O O B-action.set B-object B-parameter B-temperature O O
+O O O O O
+O O B-increase I-increase O O O O O O O O O
+O O B-action.set O B-object O B-color
+O O O B-parameter.CO2 O O O O
+O O O O O
+O O B-action.set O B-object I-object O B-brightness.value
+O O O O O O B-parameter.humidity O O O
+O O B-decrease I-decrease O O O O O O O O O
+O O B-action.set B-object I-object O B-brightness.increase
+O B-action.mute O O I-action.mute
+O O O O B-action.set O B-object I-object O B-brightness.value
+O O O O B-action.set B-object I-object O B-brightness.value O
+O O B-action.set B-object O B-brightness.value O I-object
+O B-action.set B-object O B-brightness.value O I-object
+O B-action.set B-object O B-color
+O B-action.decrease_temp O O I-action.decrease_temp O
+O O O O O B-parameter.CO2 O O O O
+O O B-action.set B-object B-color
+O O B-action.set O B-object I-object O B-brightness.value O I-object
+O O B-action.switch_on O B-object I-action.switch_on
+O B-action.set B-parameter B-sound.value O
+O O O O B-parameter.all I-parameter.all O I-parameter.all O O
+O O B-action.set B-parameter B-sound.value O
+O O O O B-parameter.temperature O
+O O O O O O O O B-parameter.all I-parameter.all O I-parameter.all O O O
+B-action.close O B-object
+O O O O O O O O O
+O O O O B-parameter.CO2 O O O O
+O O B-action.increase_temp O I-action.increase_temp
+O O B-action.set B-parameter O B-temperature
+O O O B-increase O O O O
+O O B-increase I-increase I-increase O O O O O O O
+O B-action.switch_on O O B-object
+O O O B-action.switch_off B-object I-action.switch_off
+O O O O O B-action.set O B-object I-object B-brightness.decrease I-brightness.decrease
+B-increase I-increase I-increase
+O O O O O O O B-parameter.humidity O O O
+O O O O O O B-parameter.all I-parameter.all
+O O O O O B-parameter.CO2 I-parameter.CO2 O O O O O
+O O O O
+B-action.unmute I-action.unmute I-action.unmute
+O B-action.set O B-object O B-brightness.value
+O O O B-parameter.CO2 O O O O
+O O O O O O O B-parameter.humidity
+O B-increase O O O
+O O B-action.switch_off O B-object I-action.switch_off
+O O O O O O B-parameter.humidity O O O O O
+O O O O B-action.set O B-object I-object O B-color
+O O O B-action.set B-object I-object B-brightness.value O
+O O O B-parameter.CO2 O O O
+O O B-action.switch_off O B-object I-action.switch_off
+O O O O
+O B-action.set O B-parameter O B-sound.value O
+O O B-action.set B-object I-object O B-brightness.value
+O O
+B-action.set O B-object O B-brightness.value O I-object
+O O B-action.set O B-parameter O B-temperature O O
+O O O O O O O B-parameter.all I-parameter.all O I-parameter.all O O O
+O B-action.set O B-object B-parameter B-sound.decrease
+O O O O O O B-parameter.temperature
+O O O O O O
+O B-action.set O B-object O B-color I-object
+O O O B-action.switch_off I-action.switch_off O B-object
+O O B-action.set B-object I-object O B-color O
+O O B-parameter.CO2 I-parameter.CO2 O O O O
+O O O B-action.switch_on I-action.switch_on O B-object
+O O O B-action.set O B-object I-object B-brightness.increase I-brightness.increase
+O B-action.set B-object I-object O B-brightness.value O
+O O B-increase O O O O O O O O
+O O O B-action.close O B-object
+O O O B-increase O O O O O O O
+O B-action.switch_off I-action.switch_off O B-object
+B-action.mute O B-object
+O B-action.set B-object B-parameter B-sound.increase
+O O O O O O O O B-parameter.all I-parameter.all O I-parameter.all O O O
+O B-action.mute B-object
+O O O O O O B-parameter.humidity O O O
+O O B-increase O O
+O O O O O O B-parameter.temperature O O O O
+O O O O O B-parameter.humidity O O O O
+O O B-action.switch_off B-object
+O O O O O O O B-parameter.all I-parameter.all O I-parameter.all O O O
+O O O O O O B-parameter.CO2 O O O O O
+O O O B-action.set B-object O B-color
+B-action.set B-object I-object B-brightness.value O I-object
+O B-decrease O O O O O O O
+O O B-action.switch_off O B-object
+O B-action.set O B-object B-brightness.increase I-brightness.increase O
+O B-action.switch_on B-object
+O O B-action.increase_temp O O I-action.increase_temp
+O O O O B-action.set B-object I-object O O B-brightness.increase
+O O O O B-action.set O B-object I-object O B-brightness.value I-object O
+O O O O B-parameter.CO2 O O O O
+O O O O O O O O O O O O
+O O B-action.unmute I-action.unmute I-action.unmute
+B-action.set O B-parameter O B-sound.value
+O O B-action.switch_on B-object I-action.switch_on O
+O O B-action.set O B-object O B-color
+O O B-action.set O B-parameter B-sound.value O O
+O O B-action.set O B-object I-object B-brightness.decrease I-brightness.decrease
+O O B-action.set B-object I-object O B-brightness.decrease
+O O O O O O O
+O O O O O O B-parameter.CO2 O O
+O O B-action.set O B-object O B-brightness.value O O
+O O B-action.switch_on B-object I-action.switch_on
+O O B-action.close B-object
+O B-action.switch_on O O B-object
+B-action.set B-object O O B-brightness.decrease O
+O O O B-action.switch_off O B-object
+O B-decrease O O O O O
+O B-action.switch_off I-action.switch_off O B-object O
+B-action.open O B-object O
+O O B-action.set O B-object I-object O B-brightness.value O
+O B-action.set O B-object B-brightness.value O I-object
+O B-action.set B-object B-parameter B-temperature
+O O B-action.set B-object I-object B-brightness.value O O
+O O B-action.set B-object I-object O B-color
+O O O O O
+O O O O O B-action.set B-object I-object O B-color
+B-action.set B-parameter O B-temperature O
+O O O O O B-parameter.all I-parameter.all O I-parameter.all O O O O
+O O O O O O B-parameter.all I-parameter.all O I-parameter.all O O O
+O B-action.set O B-object I-object O B-brightness.value
+O O O B-action.switch_off O B-object
+O O O O O B-parameter.all I-parameter.all O I-parameter.all O
+O O O O O O O O
+B-decrease I-decrease I-decrease O O O O O
+O O B-parameter.CO2 O O O
+O O B-action.set B-object B-brightness.value O I-object O
+B-action.switch_off O B-object I-action.switch_off
+O O O B-action.switch_off B-object O I-action.switch_off
+O O B-action.mute B-object I-action.mute I-action.mute I-action.mute
+O O B-action.set B-object B-brightness.increase O
+O O B-increase I-increase O O O O O
+O O O O O O O B-parameter.CO2 O O
+O O O B-action.set B-object O B-brightness.increase
+O O B-parameter.CO2 O O O O
+O O B-action.switch_on O B-object I-action.switch_on O
+O O B-action.set B-object O B-brightness.value
+O O B-action.switch_on I-action.switch_on B-object
+B-action.set O B-parameter O B-sound.value
+B-action.set O B-object I-object B-brightness.value O I-object
+O O O B-action.switch_off I-action.switch_off O B-object
+O B-decrease I-decrease O O O O O O O O O
+O B-action.set B-object I-object O B-brightness.value
+O O O O O O O O O O O O
+O O O O O O O O O
+O O B-action.set B-object O B-brightness.value O O
+O O B-action.set B-object I-object B-brightness.decrease
+B-action.switch_on B-object I-action.switch_on
+O O B-action.set B-object O B-brightness.value
+O O B-action.mute O B-object I-action.mute I-action.mute I-action.mute
+O B-action.set B-object O B-brightness.increase O
+O O O O O O O O
+O B-action.mute O I-action.mute I-action.mute
+O O B-action.set O B-object I-object B-brightness.value I-object
+O O O O O B-parameter.CO2 I-parameter.CO2 O
+O O B-action.switch_on I-action.switch_on B-object
+O O O O O O O
+O O O O O O
+O O O O B-action.set B-object B-brightness.increase
+O O B-action.set O B-object I-object B-color
+O O O B-parameter.CO2 O O O O
+O O O B-parameter.CO2 I-parameter.CO2 O O O O
+O O O O O O O O
+O O B-action.set B-object B-parameter O B-temperature O O O
+O O B-action.set B-object B-color I-object O
+O O B-action.set O B-object I-object O B-brightness.value
+B-action.switch_off I-action.switch_off O B-object O
+O O O
+O B-action.set B-object I-object O B-brightness.value O
+O O O O
+O B-action.set B-parameter I-parameter O B-sound.value
+O O O O
+O O B-action.set B-object I-object B-brightness.decrease I-brightness.decrease O
+O O B-action.set O B-object I-object O B-brightness.value
+O O B-action.switch_on I-action.switch_on B-object
+O O O O O O B-parameter.humidity O
+B-action.set O B-object I-object B-brightness.increase I-brightness.increase
+O O O O O O O O
+B-action.increase_temp O I-action.increase_temp
+O O O B-parameter.all I-parameter.all O O I-parameter.all O
+B-action.decrease_temp O O I-action.decrease_temp
+O B-increase I-increase I-increase O O O O O
+O O O O O O O B-parameter.temperature O O O O O
+O O O O O O O O
+O B-action.set O B-object O B-color
+B-action.switch_on B-object I-action.switch_on O
+O O O B-action.increase_temp O O I-action.increase_temp I-action.increase_temp
+O O O O O O O O O O
+O O O B-parameter.CO2 O O O
+B-action.set O B-object O B-color I-object
+O B-action.set O B-object I-object B-brightness.value O
+O O O B-action.set O B-object I-object B-brightness.decrease I-brightness.decrease
+O B-action.set O B-object O B-brightness.value O
+B-action.mute I-action.mute I-action.mute I-action.mute
+B-action.set O B-object I-object O B-brightness.value O
+O O B-action.set B-object I-object O O B-brightness.increase O
+B-action.set O B-object I-object B-brightness.value O
+O O B-action.switch_on I-action.switch_on B-object O
+O O O O B-parameter.humidity O O O O
+O O B-action.set B-object I-object B-brightness.increase
+O O O B-action.set O B-object O B-brightness.value O
+O O O O B-action.decrease_temp O O O O I-action.decrease_temp
+O O O O O O
+O O B-action.switch_off B-object I-action.switch_off
+O O B-action.set B-object O B-color
+O B-parameter.CO2 I-parameter.CO2 O O O
+O O O O O B-parameter.temperature O O O
+O B-action.set O B-parameter I-parameter B-sound.value O
+O O O O B-parameter.temperature O O O
+O O O O O O O
+O O O
+O O O B-action.set B-object O B-color I-object
+B-action.set B-object B-parameter B-sound.value O
+O O O B-action.switch_off I-action.switch_off B-object
+O O B-action.switch_off B-object O I-action.switch_off
+O O B-increase I-increase O O O O O O O
+O B-action.set O B-parameter O B-sound.value O
+O O B-action.set B-object I-object O B-brightness.value O
+O B-action.set B-object O B-color
+B-action.set B-object B-parameter B-temperature O O O
+B-action.switch_off I-action.switch_off O B-object O
+O O B-action.set B-object O B-brightness.increase
+B-action.set B-object O B-brightness.value
+O O O O O
+O O B-action.switch_off O B-object O
+O O O O B-action.increase_temp O O I-action.increase_temp
+O B-action.switch_off O B-object O
+O O O B-parameter.all I-parameter.all
+O B-increase I-increase O O O O O O O O O O
+O O B-decrease I-decrease O O O O O O O O O
+O O O O B-parameter.humidity O O O O O
+O B-action.mute O O I-action.mute
+O O O O O O O B-parameter.CO2 I-parameter.CO2 O O O
+B-action.switch_off B-object O O
+O O O O O B-parameter.all I-parameter.all
+O O O O
+O O B-action.set O B-object B-brightness.increase I-brightness.increase
+B-action.set B-object I-object B-brightness.decrease I-brightness.decrease O
+O O O B-parameter.humidity O O O
+O O O O O O B-parameter.all I-parameter.all O I-parameter.all O
+O O O O O O O
+O O B-increase O O O O O O O O O O O
+O B-action.set B-object O B-color O
+O B-action.set O B-object I-object B-brightness.increase I-brightness.increase O
+B-action.set O B-object I-object O B-color O
+O O O O O O O B-parameter.CO2 O O
+O B-action.set B-parameter O B-sound.value O
+O O O O O O B-parameter.CO2 I-parameter.CO2 O
+O O B-action.set B-object I-object O B-brightness.value I-object O
+O O B-action.switch_off O B-object I-action.switch_off
+O O O B-action.close B-object
+O O O B-action.set O B-object O B-color I-object
+O B-action.set B-object I-object O B-brightness.value
+O O O O O O B-parameter.CO2 O
+O O B-action.set B-object B-brightness.increase
+O O O O O B-parameter.all I-parameter.all O
+O O O B-action.switch_off O B-object I-action.switch_off
+O O B-action.switch_on B-object O I-action.switch_on
+O O B-action.close O B-object
+O O O B-parameter.CO2 O O O O O
+O B-action.set B-parameter O B-sound.value
+O O B-action.set O B-object I-object O B-brightness.increase
+O B-action.switch_on O B-object I-action.switch_on
+O O O O B-parameter.CO2 O O
+B-action.unmute I-action.unmute B-object I-action.unmute
+O O O B-action.set O B-object O B-color I-object
+O O O O B-action.switch_on B-object I-action.switch_on
+O O B-action.switch_off I-action.switch_off B-object O
+O O B-increase I-increase I-increase O O O O O O
+O O B-action.set O B-object O B-color
+O O O B-action.set O B-object B-brightness.increase
+O O O O B-parameter.all I-parameter.all
+O O O B-parameter.CO2 O O O O O
+O O O O O
+O B-action.set B-parameter O B-sound.value
+B-action.switch_on O B-object
+O O O B-parameter.CO2 I-parameter.CO2 O O
+O O O O
+O O O B-action.switch_on O B-object I-action.switch_on
+O O B-action.set B-parameter I-parameter O B-sound.value O
+O O O O O O O O O O O O
+O B-action.set O B-parameter B-sound.value O O
+O O O O B-parameter.humidity O O O
+O O O B-action.switch_on I-action.switch_on B-object
+O O O O O B-action.set B-object I-object O B-brightness.value O
+O B-increase I-increase O O O O O O O O O
+O O O O B-action.set B-object O B-color I-object O
+O O O B-action.switch_off B-object
+O O O O O
+O O B-action.switch_off B-object I-action.switch_off
+O O O B-action.decrease_temp O O O O I-action.decrease_temp
+O O O O B-parameter.CO2 O O O O
+O O O O
+O O O B-action.switch_on I-action.switch_on B-object
+O O O O O O O O O O
+O O O B-parameter.CO2 I-parameter.CO2 O O O O O
+O O O O O O O B-parameter.all I-parameter.all O I-parameter.all O O O O
+O O O O O B-parameter.temperature O O
+O O O
+O O B-action.switch_off I-action.switch_off B-object
+O O B-action.set O B-object I-object B-brightness.increase
+O O O B-action.set O B-object I-object O B-brightness.value
+O O B-action.switch_off I-action.switch_off B-object O
+O O B-action.set B-object O B-brightness.value O
+O O O O O O B-parameter.temperature O
+O O O B-parameter.temperature O O O
+O O O O O O O O O O O O
+O O B-action.set O B-object O B-color O
+O B-action.set O B-object O B-brightness.value O
+O O O O B-action.set O B-object O B-color I-object
+O B-action.increase_temp O O I-action.increase_temp O
+O O O O O O O B-parameter.temperature O
+O O B-increase O O O O O O O O O
+O B-action.set B-object I-object B-brightness.value O I-object
+O O B-action.set B-object O O B-brightness.decrease
+B-action.open O B-object
+O O O O O B-parameter.humidity O O
+O O O B-action.set O B-object O B-color
+O O B-action.set O B-object O B-color I-object O
+O O B-action.set B-object O B-color
+O O B-action.set B-object O B-brightness.value
+O O O B-action.decrease_temp O O O I-action.decrease_temp
+B-action.decrease_temp O O I-action.decrease_temp
+O O O O O B-parameter.humidity O
+O O B-action.set B-object O B-brightness.value O
+O O B-parameter.all I-parameter.all O
+O O O O B-action.set O B-object I-object O B-brightness.value
+O O O O O O B-parameter.CO2 O O
+O B-action.set O B-object I-object O B-brightness.value O I-object O
+B-decrease I-decrease I-decrease O O O O O O
+O O O O O B-parameter.all I-parameter.all
+O O B-action.set B-object O O B-brightness.increase
+O O O O O O O O O O
+O B-action.set O B-object O B-brightness.value
+O O O O O B-parameter.all I-parameter.all O I-parameter.all O O O O
+O O B-action.set B-object B-parameter I-parameter B-sound.decrease
+O B-action.set O B-object I-object O B-brightness.value O I-object
+B-decrease I-decrease I-decrease O O O O O O O O O
+O O O O O O B-parameter.temperature O O O
+O O O B-action.set B-object I-object O B-brightness.value
+O O O B-action.set O B-object O B-brightness.decrease
+O O B-action.switch_off O B-object I-action.switch_off
+O O O B-parameter.all I-parameter.all O I-parameter.all O O
+O O B-action.set O B-object I-object O B-brightness.value O
+O O O O O B-parameter.CO2 O
+O O O B-action.increase_temp O O I-action.increase_temp O I-action.increase_temp
+O O O B-action.switch_off B-object I-action.switch_off
+O B-decrease I-decrease O O O O
+O O O O O O
+O O O O B-parameter.CO2 I-parameter.CO2 O O O
+B-action.set O B-object B-brightness.increase
+O O B-action.set O B-object O B-color
+B-action.set B-parameter O B-sound.value
+O O O O O O O
+O O B-action.set O B-parameter O B-sound.value
+O O B-action.switch_off O B-object O O
+O B-action.close B-object
+O O O O O B-action.set O B-object O B-color
+O O O O O B-parameter.humidity O
+O B-action.set O B-parameter I-parameter O B-sound.value
+O B-increase I-increase O O O O O
+O O B-action.switch_off B-object
+O O B-action.decrease_temp I-action.decrease_temp
+O O O O B-parameter.temperature O O O O O
+O B-action.set B-object O B-color
+B-action.switch_off O B-object
+O B-increase I-increase O O O
+O O B-action.set B-object O B-color
+O O O O B-parameter.CO2 I-parameter.CO2 O O O O
+O O B-action.set B-object I-object O B-brightness.decrease
+B-action.set B-object B-brightness.value O I-object
+O O B-action.set O B-object O B-color I-object
+O O O O O B-action.set O B-object I-object O B-brightness.value O
+O O O O B-parameter.temperature O
+O O B-action.set O B-object O B-color I-object
+O O B-action.set O B-object I-object O B-brightness.value O I-object
+O O B-action.switch_off B-object
+O O O O O B-parameter.humidity O
+O O O O O
+O O O O O O B-parameter.CO2 O O O O O
+O O O B-parameter.CO2 O O O O
+O B-action.set O B-parameter I-parameter B-sound.value O O
+O O O O B-action.set B-object I-object O B-brightness.decrease
+O O O O O B-parameter.CO2 I-parameter.CO2 O O O
+O O O O O B-parameter.temperature O O O
+O O B-increase I-increase O O O O O O
+O O O B-action.switch_off I-action.switch_off B-object O
+O O B-action.decrease_temp O I-action.decrease_temp I-action.decrease_temp
+O B-decrease I-decrease O O O O O O O O O
+O O O O O B-parameter.CO2 O O O O O
+O O B-action.set O B-parameter O B-temperature
+O O O O O B-parameter.CO2 I-parameter.CO2 O O O O O O
+B-action.set B-parameter O B-sound.value
+O O O O O B-parameter.CO2 O
+O O B-action.set B-object I-object O B-brightness.increase
+O O B-increase O
+O O O B-increase O O O O
+B-action.increase_temp O O I-action.increase_temp O I-action.increase_temp
+O O O B-parameter.all I-parameter.all
+O O O O O O B-parameter.temperature O O O O
+B-action.open B-object
+O B-parameter.temperature O
+B-decrease I-decrease I-decrease O O O O
+B-action.unmute B-object I-action.unmute I-action.unmute
+O O O B-parameter.humidity O O O O
+O O O O B-parameter.humidity O O O
+O O O B-action.set O B-object O B-color I-object
+O O O O B-parameter.temperature O
+O O B-action.set O B-object I-object B-brightness.decrease
+O O B-action.set O B-object O B-brightness.value O I-object O
+B-action.set O B-object I-object O B-brightness.value
+O O B-action.set O B-object I-object B-brightness.value O I-object
+O O B-decrease I-decrease O O O O O O O O O
+O O O O O O O O O O O O O
+B-action.set O B-object B-brightness.increase
+O O B-action.set O B-object I-object O B-brightness.value O O
+O O O O B-action.set B-object I-object O B-brightness.value
+O O O B-action.switch_on O B-object O I-action.switch_on
+O O B-action.open O B-object
+O O B-action.set B-object I-object O B-brightness.value
+B-action.set B-object I-object O B-color
+O O O O O O O
+O O O O O B-parameter.temperature O
+O O O O O O O B-parameter.CO2 O O O O
+O O O O O O
+O O O B-action.increase_temp O O O O I-action.increase_temp
+O O O O B-parameter.CO2 O
+O O B-action.set B-object I-object O B-brightness.value
+O O
+O B-action.set B-object B-parameter B-sound.value O O
+O O O O B-action.set O B-object I-object O B-brightness.value O
+O O O O B-parameter.all I-parameter.all O I-parameter.all
+O O O O O O O O
+O O O B-increase O O O O O
+B-action.switch_off I-action.switch_off O B-object
+O O B-action.set B-object O B-color I-object
+O O O B-parameter.temperature O O O
+O O B-parameter.CO2 I-parameter.CO2 O O O O
+O B-action.mute I-action.mute O B-object I-action.mute I-action.mute
+B-action.set B-object I-object O B-brightness.value O I-object
+B-action.set B-parameter I-parameter O B-sound.value
+O O B-action.switch_on B-object
+O O O O B-parameter.all I-parameter.all
+O O B-action.set O B-object O B-color
+B-action.set O B-object B-brightness.decrease I-brightness.decrease
+O O B-action.set B-object I-object B-brightness.decrease
+O O B-action.switch_off I-action.switch_off B-object O
+O O O O O B-action.set O B-object I-object O B-brightness.value O
+O O B-action.switch_off O B-object I-action.switch_off O
+O O O B-action.set O B-object I-object O B-brightness.value O I-object
+O O O O O O O O B-parameter.humidity O
+O O O O O O O O
+O O B-action.set O B-object I-object B-brightness.decrease I-brightness.decrease O
+B-action.switch_on B-object O
+O O B-action.increase_temp O O I-action.increase_temp
+O O B-action.switch_off I-action.switch_off B-object O O
+O O O B-parameter.all I-parameter.all O I-parameter.all O
+O O B-action.set O B-object I-object O B-brightness.increase O
+O O O O O O O O B-parameter.CO2 O O O O
+O O B-action.set B-parameter O B-sound.value
+O O B-action.switch_off O B-object I-action.switch_off
+O O O B-increase O O O O
+B-action.decrease_temp O I-action.decrease_temp
+O B-increase I-increase I-increase O O O O O
+O O O O
+O O B-action.switch_on B-object
+O O O O B-action.set B-object I-object B-brightness.value I-object O
+O O B-action.mute I-action.mute I-action.mute
+O O B-action.set B-object B-brightness.value O I-object
+O O O O B-action.decrease_temp O O O O I-action.decrease_temp
+O O B-action.switch_off O B-object O I-action.switch_off
+O O B-action.set O B-object I-object B-brightness.value O I-object
+O O O O O O O
+O O O O O O O B-parameter.humidity O O O
+O O B-action.set O B-object O B-brightness.value
+O O O O B-parameter.humidity O O
+O O O B-action.open O B-object
+B-decrease I-decrease I-decrease O O O
+O O O O O B-parameter.temperature O O
+O O B-action.set B-parameter O B-sound.value O
+B-action.switch_off B-object O
+O O B-action.switch_on I-action.switch_on B-object
+O O O B-action.switch_on O B-object O I-action.switch_on
+O O O B-action.set B-object I-object O B-brightness.value
+O B-decrease I-decrease I-decrease O O O O O O O
+O O B-action.switch_on O B-object I-action.switch_on
+O B-action.mute I-action.mute I-action.mute
+O O O O O B-parameter.humidity O O O O O O
+O O O O B-parameter.CO2 I-parameter.CO2 O
+O B-action.set O B-parameter O B-sound.value
+O B-action.close B-object
+O O O B-action.switch_on B-object I-action.switch_on
+O O B-action.set B-object O B-color
+O O O O O B-parameter.humidity O
+O O O B-action.switch_off B-object I-action.switch_off
+O B-decrease I-decrease O O O O O O
+B-action.switch_off B-object
+O O B-action.set B-object I-object B-brightness.decrease I-brightness.decrease O
+O B-action.set B-object I-object O B-brightness.value
+O O O B-action.decrease_temp O O O O I-action.decrease_temp
+O O B-action.set B-object I-object B-brightness.decrease
+O B-action.set O B-parameter I-parameter O B-sound.value O
+O O B-action.set B-object O B-brightness.increase
+O O O B-parameter.all I-parameter.all O I-parameter.all O O O
+O O B-action.set O B-object I-object O B-brightness.value O
+O O B-parameter.temperature O O O O O
+B-action.set O B-object I-object O B-brightness.value O I-object
+B-action.switch_off O B-object I-action.switch_off
+O O B-action.set B-object O B-brightness.value O
+O O O O O B-action.set B-object I-object O B-brightness.increase
+O B-increase I-increase O O O O O O O O O O O O O O
+B-action.set B-object I-object O B-brightness.decrease
+O B-action.set B-object O B-brightness.value
+O O B-action.switch_on O B-object
+O O B-action.set B-object O B-color I-object O
+O O O O O
+O O O O O B-action.set O B-object I-object B-brightness.increase I-brightness.increase
+B-action.decrease_temp O O I-action.decrease_temp
+O O B-action.switch_off O B-object
+O O O O O O O B-parameter.temperature O
+O O O O O O O O
+O O O O O B-parameter.CO2 I-parameter.CO2 O O O O O
+O O O O O
+O O O O
+O O O O B-action.set O B-object I-object B-brightness.increase
+O O B-action.set B-object B-parameter B-sound.increase
+O O B-increase I-increase O
+O O O B-action.switch_off O B-object I-action.switch_off
+O B-action.set B-object O B-color I-object
+B-action.switch_off B-object I-action.switch_off
+O O O B-parameter.humidity O O O O O
+O O B-increase I-increase O O O O O O O O O
+O O B-increase O O O O O O O O
+O O O B-action.set O B-object O B-brightness.value O
+O O B-action.switch_off B-object O I-action.switch_off
+O O O O O B-action.set O B-object I-object B-brightness.value O
+O O
+O O O B-parameter.temperature O O O
+B-action.switch_on I-action.switch_on O B-object O
+O O B-action.switch_off B-object O
+O B-action.switch_off I-action.switch_off O B-object
+O O B-action.set O B-object I-object O B-brightness.increase
+O O B-action.set B-object O B-color I-object
+O O B-parameter.all I-parameter.all O I-parameter.all O O O
+O B-action.set O B-object O B-brightness.value O
+O O O O O B-action.set B-object B-brightness.value O I-object
+O O B-action.set B-object I-object O B-color
+O O O O O O O O O B-parameter.CO2 O
+O O O O O O B-parameter.all I-parameter.all O I-parameter.all O O O
+O O O O O O O B-parameter.temperature O O
+O O O O O B-parameter.humidity O O
+O O O B-action.switch_off I-action.switch_off B-object
+O B-action.set O B-object I-object O B-brightness.value O
+O O O O B-parameter.CO2 I-parameter.CO2 O O O O O
+B-action.set B-parameter B-sound.decrease
+O O O B-action.set O B-object O B-color
+B-action.mute I-action.mute O I-action.mute I-action.mute
+O O O O B-action.set O B-object O B-brightness.value O I-object O
+O O O O O O B-parameter.CO2 O O O O
+O B-action.unmute I-action.unmute I-action.unmute
+O O O O B-action.set O B-object O B-brightness.value O
+O O B-action.unmute B-object
+O O B-action.set O B-object I-object O O B-brightness.increase
+O B-action.set B-object O B-brightness.value O O
+O O B-action.set O B-object O B-color I-object
+O O O O O
+O O O O O O O
+O B-increase O
+O O O O O
+O O B-action.switch_off B-object
+O O O O O O O B-parameter.CO2 O
+O B-action.set B-object I-object O B-brightness.increase
+O B-action.set O B-object B-parameter I-parameter B-sound.value O
+O O B-action.set B-object I-object O B-brightness.increase O
+B-action.switch_on I-action.switch_on B-object O
+O O B-increase I-increase O O O O O O O
+O O B-action.switch_on I-action.switch_on B-object O
+O O B-action.switch_off I-action.switch_off B-object
+O O O O B-parameter.CO2 O O O O
+O B-action.set B-object I-object B-brightness.increase I-brightness.increase
+O O B-action.switch_off B-object
+O O O O B-parameter.all I-parameter.all O O I-parameter.all
+O O B-action.set O B-object I-object O B-brightness.value O
+O O O O O O O B-parameter.CO2 O O
+O O B-parameter.temperature O O O
+B-action.switch_on I-action.switch_on B-object
+O O O O O O O O B-parameter.temperature O
+O O O O O B-parameter.CO2 I-parameter.CO2 O O O O
+O O O O O O O B-parameter.CO2 I-parameter.CO2 O O
+O O B-action.set B-object I-object O B-brightness.value O
+O O O O O O O B-parameter.all I-parameter.all O I-parameter.all O O O O
+O O O O O O O O B-parameter.humidity O O O O O
+O O B-action.switch_on B-object O
+O O O B-decrease I-decrease I-decrease O O O O
+O O O O O B-parameter.temperature O O
+O O B-action.switch_off O B-object
+O O B-increase I-increase O O O O O O O
+O O B-action.increase_temp I-action.increase_temp I-action.increase_temp
+B-decrease I-decrease I-decrease O O O O O O O O O O O O
+O O O O O
+O O B-action.set O B-object O B-brightness.value
+O O B-action.set O B-object I-object O O B-brightness.decrease
+O O O O B-parameter.humidity O O O O
+O O B-action.set O B-object I-object O B-brightness.value O O
+O O O O O B-parameter.temperature
+O O O O O B-parameter.humidity O O
+O O O O O B-action.set O B-object O B-color
+O O O O B-action.switch_on O O B-object
+O B-action.mute O B-object O O I-action.mute
+O O B-action.set B-object B-brightness.increase I-brightness.increase
+O O B-action.close O B-object O
+O O O O O O O B-parameter.CO2 O O O O O
+O O B-action.switch_on O B-object O
+O O B-action.set O B-object I-object O B-brightness.value O I-object
+O B-action.set O B-parameter O B-sound.value O
+O O B-action.switch_on B-object O
+O O O O O O O B-parameter.temperature O O O
+O O O O B-action.set O B-object I-object O B-brightness.value
+O O B-action.set B-object I-object B-brightness.value O
+O O O O O O O O O
+B-action.set B-object I-object O B-brightness.value O
+O O O O O B-parameter.all I-parameter.all O
+O O O O O B-parameter.humidity O O O
+O O B-action.increase_temp O O O I-action.increase_temp
+O O O O O O O
+O O O B-action.set B-object I-object O B-color
+B-action.set B-parameter O B-sound.value O
+O B-increase I-increase O O O O O O O O O
+O O O O B-action.set B-object I-object B-brightness.value O
+O O O B-action.mute O B-object
+O O B-action.open B-object
+O O O O O B-parameter.CO2 O
+B-action.set O B-object I-object B-brightness.increase I-brightness.increase O
+O O B-action.set B-parameter O B-temperature O O O
+B-action.set O B-object O B-color
+B-decrease I-decrease I-decrease O O O
+O O B-action.switch_on B-object I-action.switch_on
+O O O O B-parameter.all I-parameter.all O I-parameter.all O
+O O B-action.switch_on O B-object O
+O B-action.unmute I-action.unmute B-object I-action.unmute I-action.unmute
+O B-action.unmute O I-action.unmute I-action.unmute
+B-action.set B-object I-object O B-brightness.value O
+O O O B-action.switch_off I-action.switch_off O B-object
+O O O O O O O B-parameter.all I-parameter.all O O I-parameter.all
+B-decrease I-decrease I-decrease O O O O O O
+O O O B-action.set O B-object B-brightness.decrease I-brightness.decrease
+O O O O O B-action.set O B-object I-object B-brightness.decrease I-brightness.decrease
+O B-action.switch_on B-object I-action.switch_on
+O O O O B-action.set B-object O B-brightness.value
+B-action.set O B-object I-object O B-brightness.value O
+O O O O O O B-parameter.CO2 I-parameter.CO2 O O O
+O O O O B-parameter.CO2 O O O
+O O O O O O B-parameter.humidity O O O O
+O O O
+O O B-action.set O B-object O B-color O
+O O B-action.increase_temp O O I-action.increase_temp O
+O O O O O B-action.switch_off I-action.switch_off B-object
+O B-action.set O B-object O B-color
+O B-action.set B-object I-object O B-brightness.value O
+O O B-action.switch_off O B-object O
+O O B-action.close B-object
+O O O O B-parameter.CO2 O O O O
+O O B-action.switch_on I-action.switch_on B-object O
+O O O O B-parameter.all I-parameter.all O I-parameter.all O O O O
+O O O O O O B-parameter.CO2 I-parameter.CO2 O O O O
+O O O O O O O B-parameter.CO2 I-parameter.CO2 O O O O
+O O B-action.set O B-object I-object B-brightness.value O I-object
+O O B-parameter.temperature O O O
+O B-action.set B-parameter I-parameter O B-sound.value
+O O O B-action.set O B-object O B-color
+O B-increase I-increase I-increase O O O O O O O O O
+B-action.set O B-object O B-brightness.value O O
+O O B-action.decrease_temp O O I-action.decrease_temp
+B-action.switch_off B-object O
+O O O O B-parameter.CO2 O
+O B-action.set B-object I-object B-brightness.increase
+O O O O B-action.set B-object I-object O B-brightness.value O
+O O O O O O O O O
+O O O B-action.set O B-object I-object O B-brightness.value O
+O O B-increase I-increase O O O O
+O O O O O O B-parameter.humidity O O
+O B-action.set B-object O B-brightness.value O
+O B-increase I-increase O O O O O O O O O
+O O O B-action.switch_on O B-object I-action.switch_on
+O B-action.set B-object I-object B-brightness.increase I-brightness.increase
+O O O O O O B-parameter.CO2 O O O O
+O O O O B-parameter.CO2 O O O O
+O B-decrease I-decrease O O O
+O O O O O O O B-parameter.CO2 O
+O O B-action.set B-object B-parameter B-temperature
+O O O O O O B-parameter.humidity O O O
+O O B-action.set O B-object O B-color O
+O O O O B-parameter.CO2 O O O O
+O O B-action.switch_on O B-object I-action.switch_on O
+O O O B-action.switch_on B-object
+O O B-action.switch_off I-action.switch_off B-object
+O B-action.switch_on I-action.switch_on B-object
+O O O O B-parameter.all I-parameter.all O I-parameter.all O O O
+O O O O B-parameter.humidity O O O O O
+O O O O B-parameter.humidity O O O
+O O O O B-parameter.CO2 O O O
+O O O O B-parameter.all I-parameter.all O
+O O B-action.switch_off B-object I-action.switch_off O
+O O O O B-action.decrease_temp O O O O I-action.decrease_temp
+O O O B-action.set B-object O B-brightness.decrease
+O O B-action.set O B-object I-object O B-brightness.value
+O O O O O
+O B-increase O O O O O O O O O O
+O O O
+O O B-action.set O B-object I-object O B-brightness.value
+O O O B-action.switch_on O B-object I-action.switch_on
+O O O O B-parameter.temperature O O O
+O O O O O B-parameter.humidity O O O O
+O O O O O O O O B-parameter.temperature O O O
+O O O O O B-parameter.humidity O O O O O
+O O B-action.increase_temp O O O O I-action.increase_temp
+B-action.switch_off I-action.switch_off O B-object
+B-action.switch_off B-object I-action.switch_off O
+O O O O B-action.switch_on O O B-object O
+O O O B-parameter.CO2 O O
+O O B-action.set O B-object I-object O B-color O
+O O B-action.unmute O I-action.unmute I-action.unmute
+O O B-action.switch_on O B-object I-action.switch_on
+O O B-action.switch_off B-object I-action.switch_off
+O O O O B-action.decrease_temp O I-action.decrease_temp O
+B-action.switch_off O B-object O
+O O O B-action.switch_on O B-object
+O O O O O O O O
+O O B-action.switch_off O B-object
+O O O O
+O O B-action.set B-parameter B-sound.value O
+O O B-action.set O B-object I-object O B-brightness.value O
+O O O O O O O O B-parameter.humidity O O
+O B-action.set B-object I-object O B-brightness.value
+O B-increase I-increase I-increase O O O O O O O O O
+B-action.set O B-object B-brightness.increase
+O O O O O O O B-parameter.CO2 O O O O
+B-action.switch_on O B-object O
+O B-decrease I-decrease O O O
+O O B-action.increase_temp O O O O I-action.increase_temp
+O O B-action.set B-object I-object O B-brightness.value O
+O O B-action.set B-parameter I-parameter B-sound.value O O
+O O B-action.switch_off O B-object I-action.switch_off O
+O O O O O B-parameter.CO2 I-parameter.CO2 O O
+O O B-action.set O B-object O B-brightness.increase O
+O O O O O B-parameter.all I-parameter.all O O I-parameter.all
+B-action.set O B-object B-brightness.value O O
+O O B-action.set O B-object B-color I-object
+O O O O B-parameter.CO2 O O O O O
+O O B-action.switch_off I-action.switch_off O B-object
+B-action.switch_off I-action.switch_off B-object O
+O O O O O O O B-parameter.humidity
+O O O B-parameter.all I-parameter.all O I-parameter.all O O
+O O O O O O O O B-parameter.CO2 O
+O O O O O B-parameter.humidity O O O
+O B-action.set O B-object O B-brightness.decrease O
+O O B-action.switch_on O B-object I-action.switch_on O
+O O B-action.set B-object O O B-brightness.decrease O
+O O B-action.set O B-object O B-brightness.increase
+B-action.decrease_temp O O I-action.decrease_temp
+O B-decrease I-decrease O O O
+O B-action.set B-object I-object O B-brightness.increase
+O O O B-action.decrease_temp O O O I-action.decrease_temp
+B-action.set O B-object O B-brightness.value
+O O O O O O O O B-parameter.all I-parameter.all O I-parameter.all O O O
+O O B-action.set O B-object I-object O B-brightness.value
+O O B-increase I-increase O O O O O O O O
+O O B-action.switch_off B-object O O
+O O B-action.switch_off O B-object I-action.switch_off
+O O O O B-action.set B-object B-brightness.value O I-object
+O O O O O O O B-parameter.all I-parameter.all
+O O O O O O O B-parameter.CO2 I-parameter.CO2 O
+O O B-action.set B-object I-object O B-brightness.value
+O B-action.close B-object
+O O B-action.set O B-object I-object O B-brightness.value O I-object
+B-action.set B-object I-object O O B-brightness.increase O
+O O O O O O B-parameter.humidity O O O O O O
+O O B-action.set B-object I-object O B-brightness.increase
+O B-action.switch_on O B-object O
+B-action.set O B-parameter O B-temperature O
+O B-action.set B-object O B-color I-object
+O O O O B-parameter.all I-parameter.all O I-parameter.all O O O
+O O O O O O
+O O B-decrease I-decrease I-decrease
+O O O O O O O O B-parameter.all I-parameter.all O I-parameter.all O O O
+O B-action.set B-object O B-brightness.decrease
+O B-action.set O B-object O B-brightness.value
+O O B-action.set B-object O B-brightness.value O
+O O B-action.set O B-object I-object O B-brightness.value O
+O O B-action.set O B-object O B-color I-object
+O O B-increase I-increase O O O O O O O
+O O B-action.switch_off O B-object O
+O O O
+O B-action.switch_on I-action.switch_on B-object
+B-action.mute O B-object O
+O O O O
+B-action.switch_off O B-object I-action.switch_off
+O O O O O O O B-parameter.CO2 I-parameter.CO2 O O O O
+O O O O O B-action.switch_on O B-object
+O O B-action.set B-object I-object O B-brightness.value I-object
+O O B-action.set O B-parameter I-parameter B-sound.increase
+O O O O
+O B-increase I-increase O O O O O O O O O
+O O O O O O B-parameter.humidity O O O
+O O O O O O B-parameter.all I-parameter.all O I-parameter.all
+O O O O O B-parameter.CO2 I-parameter.CO2 O O O O
+O O B-increase O O O
+O O B-action.set B-object B-brightness.value O I-object
+O B-action.unmute O B-object I-action.unmute I-action.unmute
+O O O O B-action.set O B-object O B-brightness.value
+O O O O O O O B-parameter.all I-parameter.all O I-parameter.all O O O
+O O O B-action.increase_temp O I-action.increase_temp
+O O B-action.set B-object I-object O B-brightness.value O
+O O O B-parameter.all I-parameter.all O I-parameter.all O O O
+B-action.set O B-object B-parameter B-sound.decrease
+O O B-action.switch_on O B-object O O
+O B-action.switch_on O O B-object
+O O O B-action.decrease_temp O I-action.decrease_temp
+O O B-action.set B-object I-object O B-brightness.increase
+O B-parameter.humidity O O
+O O O O O O O O O
+O O O B-action.set O B-object I-object B-brightness.value O
+O O O O O
+O B-action.set O B-object O B-color
+O O O B-parameter.humidity O O O O O
+O B-action.set B-parameter O B-sound.value O
+O O B-action.set B-object I-object O B-brightness.value
+O O O B-action.set B-object O B-brightness.value O I-object
+O O B-action.set B-parameter B-temperature O
+O B-increase O O O O
+O O O O O O O
+O O B-action.set B-object I-object B-brightness.value I-object
+O O O O O
+O B-action.mute O I-action.mute I-action.mute
+O O O O O O B-parameter.CO2 I-parameter.CO2 O O O O
+O O B-action.switch_off B-object O O
+O O B-action.switch_off O B-object
+O B-action.set O B-object B-brightness.decrease
+O O B-action.set B-object I-object B-brightness.increase
+B-action.set O B-object O B-color
+O O O O O O O
+O O B-action.set B-object I-object O B-brightness.decrease
+O O O O
+O O B-action.switch_off I-action.switch_off B-object
+O O B-action.switch_on I-action.switch_on B-object
+O O O O
+O O O B-action.set O B-object I-object O B-brightness.value I-object
+O B-action.set B-object O B-color I-object
+B-action.set O B-parameter B-temperature O O
+O O O B-parameter.CO2 I-parameter.CO2 O O O
+O O O O B-parameter.humidity O O O
+O O B-action.set O B-parameter B-sound.decrease
+B-action.set O B-object I-object B-brightness.decrease I-brightness.decrease
+O O B-action.set B-object B-parameter O B-temperature
+O B-action.set B-object O B-color
+O O O B-action.switch_off O B-object I-action.switch_off
+O O O O B-action.set B-object O B-brightness.value
+O O B-action.mute I-action.mute O B-object I-action.mute I-action.unmute
+O O O O
+O O O O O B-parameter.all I-parameter.all
+O O O B-action.increase_temp O O I-action.increase_temp
+O O O O B-action.increase_temp O O I-action.increase_temp O I-action.increase_temp
+O O O O O O O
+O O B-action.unmute I-action.unmute O B-object I-action.unmute
+O O O O B-parameter.CO2 I-parameter.CO2 O O O O O
+O O O B-action.open O B-object
+O O O O O
+O O O O O O B-parameter.CO2 O O O O
+B-action.decrease_temp O O O I-action.decrease_temp
+O B-action.set B-object B-parameter B-sound.value O
+O O B-action.set O B-object O B-brightness.value O
+O B-increase I-increase I-increase O O O O O O O
+O O B-parameter.all I-parameter.all
+O O O O O B-action.set B-object I-object O B-color
+O O B-increase
+O O O O B-action.decrease_temp O I-action.decrease_temp O
+O O B-action.set O B-parameter B-sound.decrease
+O O B-action.set O B-object I-object O B-brightness.value O O
+O O O O O O B-parameter.CO2 I-parameter.CO2 O O O O
+O O O O O B-parameter.all I-parameter.all O I-parameter.all O O O
+O O B-action.set O B-parameter O B-sound.value O
+O O B-increase I-increase O O O O O O O O O O O
+O O B-action.switch_off O B-object I-action.switch_off
+O O O B-parameter.CO2 I-parameter.CO2 O O O O
+O O O B-action.set O B-object I-object O B-brightness.increase
+O O B-action.switch_off O B-object
+O O O O O B-parameter.humidity O O O
+O B-action.set O B-parameter O B-sound.value
+O O O O
+O O O O B-parameter.CO2 I-parameter.CO2 O O O O
+O O O
+O O O B-parameter.CO2 O O O O
+O O O O O O O
+O O B-action.set B-object I-object O B-brightness.decrease
+O B-action.unmute I-action.unmute I-action.unmute
+O O O O B-action.set O B-object O B-brightness.value O
+O O O O B-action.switch_on O O B-object O
+O B-action.set B-object I-object B-brightness.value O
+O B-decrease I-decrease O O O O O O O O O
+O O B-action.set O B-parameter O B-sound.value
+B-parameter.CO2 I-parameter.CO2 O O O O
+O O B-action.unmute I-action.unmute I-action.unmute
+O O O B-parameter.CO2 O O O O O
+O O O O O O
+O O O O O O B-parameter.CO2 I-parameter.CO2 O O
+O O B-action.set O B-parameter B-temperature O
+O O O B-action.switch_on I-action.switch_on O B-object
+O O O B-parameter.humidity O O O
+O O O B-action.switch_on I-action.switch_on O B-object
+O O O O B-action.set O B-object O B-color I-object
+B-action.set O B-parameter O B-sound.value O
+O O O O O O O O O
+B-action.open O B-object
+O O O O O O O B-parameter.humidity O
+O O O O O O O B-parameter.all I-parameter.all
+O O O O O O O
+O O O O O O O O B-parameter.CO2 I-parameter.CO2 O O O O
+O O O B-action.set B-object I-object O O B-brightness.decrease
+O B-increase I-increase O
+O O O O O O O O O O O O
+B-action.switch_on O B-object O I-action.switch_on
+O O O O O O O O O O
+O B-action.increase_temp O I-action.increase_temp
+O O B-action.switch_off I-action.switch_off B-object
+O O O O O O O B-parameter.all I-parameter.all O I-parameter.all O O O
+O O O B-action.set B-object O B-brightness.value
+O B-action.switch_on I-action.switch_on O B-object
+O O O B-action.switch_off I-action.switch_off O B-object
+O O B-action.set B-object I-object O B-brightness.value O
+O O B-increase I-increase I-increase O O O O O O O
+O O B-action.switch_off O B-object I-action.switch_off
+O O B-action.set O B-object O O B-brightness.increase O
+O O B-decrease I-decrease I-decrease O O O O O O O O O
+O B-action.set B-object O B-color
+O B-action.set B-parameter O B-sound.value
+O O O O B-parameter.CO2 O O O O
+O O O O O O B-parameter.all I-parameter.all O O I-parameter.all
+O O O O O
+B-decrease I-decrease I-decrease O
+B-action.set B-parameter O B-sound.value
+O O O O O O B-parameter.CO2 O O O O
+O O O O O B-parameter.all I-parameter.all O I-parameter.all O O O
+O O O O B-parameter.CO2 I-parameter.CO2 O O O O
+O O O O O O B-parameter.CO2 O
+O O O O B-parameter.humidity O O O O
+O O B-action.set B-object B-parameter B-sound.decrease
+O O B-action.switch_on O B-object I-action.switch_on O
+O O O O O B-parameter.CO2 O
+O O B-action.set B-object O B-brightness.increase O
+O O O B-parameter.all I-parameter.all O I-parameter.all O O O
+B-action.decrease_temp O O I-action.decrease_temp
+O O O O O O O O B-parameter.CO2 O O
+O O O O O O O O O
+O O B-action.set B-object O B-brightness.increase
+O O B-action.set O B-object O B-brightness.value O
+O O B-action.switch_on O B-object I-action.switch_on
+O O O B-action.set O B-object B-color
+O O O O O O O O B-parameter.CO2 O O O O
+O O B-action.increase_temp O O I-action.increase_temp
+O O B-action.set O B-object I-object B-brightness.increase
+O O O
+O O B-increase O O O
+O O B-action.set O B-object O B-color
+B-action.set B-object B-parameter B-temperature O O
+O O O O O O B-parameter.CO2 O O O O
+O O O O O O O
+O B-action.mute I-action.mute I-action.mute I-action.mute
+O O B-action.decrease_temp O O I-action.decrease_temp I-action.decrease_temp
+O O O B-action.switch_on O B-object
+O O O O O O O B-parameter.humidity O O O
+O O O O B-parameter.humidity O O O
+O O B-action.set O B-object O B-brightness.increase
+O O O B-action.set O B-object I-object B-brightness.decrease I-brightness.decrease
+B-action.set O B-object B-parameter B-sound.value O
+O O B-action.set B-object B-parameter O B-temperature
+O O O O B-parameter.all I-parameter.all
+O O O O O B-parameter.CO2 I-parameter.CO2 O
+O O O O O O B-parameter.humidity O O
+O O O B-action.switch_on O B-object I-action.switch_on
+O B-action.unmute B-object I-action.unmute I-action.unmute I-action.unmute
+O O B-action.unmute O I-action.unmute I-action.unmute
+O O B-action.switch_off O B-object
+O O O O B-parameter.humidity O
+O B-action.set O B-parameter I-parameter B-sound.value O
+O O O B-parameter.CO2 I-parameter.CO2 O O
+O O B-action.set B-object B-parameter B-temperature O O
+O O O O O O B-parameter.temperature
+O O O O O O O O
+O O O O O O O B-parameter.humidity O O O
+O B-action.set B-object B-parameter B-sound.value O
+O O B-action.switch_off O B-object O
+O O O O O B-parameter.all I-parameter.all O I-parameter.all O O O
+O O O O O B-parameter.CO2 O
+O O O O B-parameter.temperature O
+O O O B-parameter.CO2 I-parameter.CO2 O O O O
+O O O O O O O B-parameter.humidity O O O
+O O B-action.decrease_temp O I-action.decrease_temp I-action.decrease_temp I-action.decrease_temp
+O O O B-action.open B-object
+O O O O
+O O B-action.set O B-object O B-color
+O B-action.set B-object I-object O B-brightness.value O O
+O O B-action.switch_on I-action.switch_on B-object O
+O B-decrease I-decrease O O O O O O O O O
+O O B-action.set O B-object I-object B-brightness.decrease I-brightness.decrease
+O O O O O O B-parameter.temperature O O O
+B-action.switch_off O B-object I-action.switch_off O
+O O O O O B-action.set O B-object O B-color I-object
+O O B-action.unmute I-action.unmute O I-action.unmute
+O B-action.open O B-object
+O O B-action.set O B-object B-color
+O O O O O O B-parameter.humidity O O
+O O O O O O O O O
+O O B-action.unmute I-action.unmute O I-action.unmute I-action.unmute
+O O O O B-parameter.humidity O O O O
+O B-action.set B-parameter O B-sound.value O
+O B-action.set B-parameter B-sound.increase
+B-action.switch_on B-object I-action.switch_on O
+O B-action.set O B-parameter O B-sound.value O
+B-action.switch_off I-action.switch_off O B-object
+O O B-action.set O B-object I-object O B-brightness.value O
+O O O O B-action.set B-object B-color I-object
+O O O B-action.switch_on I-action.switch_on O B-object
+O B-action.set O B-object I-object B-brightness.increase I-brightness.increase
+O B-action.set B-object B-parameter I-parameter B-sound.value O
+O B-parameter.CO2 O O O O O
+O O O B-parameter.all I-parameter.all O I-parameter.all O
+O B-increase I-increase O O O O O O O O O
+O O O O O O
+O O B-action.switch_on O B-object O
+O O O O O O B-parameter.all I-parameter.all O
+O O O O B-parameter.CO2 O O O O
+O O B-action.increase_temp O I-action.increase_temp
+O B-increase O O O
+O O O O O
+B-action.set O B-object O B-color I-object
+O O B-action.unmute I-action.unmute B-object I-action.unmute
+O O B-action.set O B-object O O B-brightness.increase O
+O O O B-action.set B-object I-object B-brightness.increase
+O B-increase I-increase O O O O O O O O O O O
+O O O O O O O B-parameter.CO2 O O O O O
+O O B-parameter.temperature O O
+O O O O O O B-parameter.humidity O O O O
+O O O O O
+O O O O O O
+O O O O O O B-parameter.CO2 O O O
+O O O O O O
+O O B-action.mute I-action.mute I-action.mute
+B-action.mute I-action.mute O B-object I-action.mute
+O B-increase O O O
+O O O O B-parameter.all I-parameter.all
+O B-action.set O B-object O B-brightness.value
+O O B-action.decrease_temp O O I-action.decrease_temp
+O O O O O O O O
+O O O O O O O B-parameter.all I-parameter.all O I-parameter.all O
+O O O O B-action.set B-object I-object B-brightness.increase I-brightness.increase
+O O O O B-parameter.all I-parameter.all O I-parameter.all
+O B-parameter.humidity O
+O O O B-action.switch_off O B-object
+O B-action.set B-object O B-color O
+O O B-action.set B-object I-object B-brightness.value O
+O O B-action.set B-object I-object O B-brightness.value O
+O O B-action.mute I-action.mute B-object I-action.mute
+O O O B-action.set O B-parameter B-temperature
+O O O B-action.set B-object I-object O B-brightness.value O
+O O B-action.set O B-object O B-color
+O O B-action.switch_off O B-object O I-action.switch_off
+O B-action.set O B-object I-object O B-brightness.decrease O
+O O B-action.set O B-parameter O B-sound.value
+O B-action.set O B-object I-object O O B-brightness.increase
+O O O
+O O O B-parameter.humidity O O O O
+O O O O O O O O O
+O O B-increase O O O O O O O
+O O B-action.set O B-object B-brightness.increase I-brightness.increase
+O O O B-action.decrease_temp O O I-action.decrease_temp
+O O O O O
+O O B-increase I-increase O O O O O
+O B-increase I-increase O O O O
+O O O O O O O O B-parameter.CO2 O O O
+B-action.switch_off I-action.switch_off O B-object O
+O B-action.switch_off I-action.switch_off O B-object
+O O O O O O O O O
+O B-action.switch_off I-action.switch_off O B-object
+B-action.switch_on B-object
+O O B-action.set O B-parameter I-parameter B-sound.value O
+O O O O O B-parameter.all I-parameter.all O I-parameter.all O O O O
+B-action.switch_off O B-object O
+O O O O O O O O B-parameter.all I-parameter.all O I-parameter.all O O O
+O O B-action.set B-object B-brightness.value O I-object O
+O O B-action.switch_on O B-object I-action.switch_on
+O O B-action.switch_on O B-object O
+O O B-action.switch_off B-object
+O O O O B-action.switch_off B-object I-action.switch_off O
+O O B-action.set B-object B-parameter B-sound.increase
+O O O B-action.close O B-object
+O O O O O O B-parameter.temperature O
+O O O B-parameter.CO2 I-parameter.CO2 O
+B-action.unmute B-object
+O O O O B-parameter.CO2 I-parameter.CO2 O
+O O O B-action.decrease_temp O I-action.decrease_temp
+O O O B-parameter.CO2 O O O O
+O O B-action.mute O B-object I-action.mute I-action.mute
+B-action.switch_off I-action.switch_off B-object O
+O O B-action.set O B-object O B-color
+O O B-action.set O B-object B-parameter B-sound.increase
+O O B-action.set O B-object I-object O B-brightness.value O
+O O O O O O O B-parameter.temperature O O O
+O O O O B-parameter.CO2 O O
+O O B-action.set B-object I-object O B-brightness.increase
+O B-decrease I-decrease O O
+O B-action.set B-object O B-color
+O B-action.close O B-object
+O O B-action.set O B-object I-object O B-brightness.value O
+O O B-decrease I-decrease O O O
+O B-decrease O O O
+O O O O O B-parameter.humidity O O O
+O O B-decrease I-decrease I-decrease O O O
+O O B-increase I-increase O O O O O O O O
+O O O B-parameter.CO2 I-parameter.CO2 O O
+O O B-decrease I-decrease I-decrease O O O O O O O O O
+O O O O B-action.set O B-object I-object B-brightness.decrease O
+O B-action.unmute I-action.unmute B-object I-action.unmute I-action.unmute
+B-action.switch_off O B-object
+O B-action.set O B-object I-object O B-color
+O O O B-action.set B-object I-object O O B-brightness.increase
+O B-action.switch_on I-action.switch_on O B-object
+O O B-action.set B-object O O B-brightness.decrease
+O B-action.switch_on O O B-object
+O O B-action.set B-object O B-color
+O O O B-action.set B-object I-object O B-brightness.value
+O O O O O O O B-parameter.humidity O O O O O
+O O O O B-action.switch_on O O B-object O
+O O O O O O B-parameter.CO2 O O
+O O O O O B-parameter.CO2 O
+O O O O O O O B-parameter.humidity O O O O
+O O O B-action.switch_off I-action.switch_off O B-object
+B-action.unmute I-action.unmute I-action.unmute I-action.unmute
+O O O O O
+O O O B-parameter.all I-parameter.all
+O O O O B-action.set B-object B-brightness.decrease I-brightness.decrease O
+O O O O O B-parameter.CO2 O O O O
+B-action.switch_off O B-object
+O O B-action.set O B-object I-object B-brightness.increase
+O O B-action.switch_off I-action.switch_off B-object
+O B-decrease O O O O O
+O B-action.set B-object B-brightness.decrease I-brightness.decrease
+O O O O B-action.set O B-object I-object B-brightness.increase I-brightness.increase O
+B-action.set O B-object O B-brightness.value O
+O O O O O O B-parameter.CO2 I-parameter.CO2 O O O O
+O O
+O B-action.set O B-parameter B-sound.value O O
+O O O B-action.set B-object I-object B-brightness.increase
+O O B-action.switch_off I-action.switch_off B-object O
+O O B-action.set B-object B-parameter O B-temperature O O
+O O B-action.switch_off B-object O O
+O O O O
+O O O O O O
+O O B-action.switch_off I-action.switch_off O B-object O
+O O O O B-parameter.all I-parameter.all
+O O O O O B-parameter.all I-parameter.all
+O O O B-parameter.CO2 O O
+O B-action.set B-object O B-brightness.value O O
+O O O
+O O B-action.mute O I-action.mute I-action.mute
+O O B-action.mute I-action.mute I-action.mute I-action.unmute
+O O O O O O O B-parameter.all I-parameter.all O I-parameter.all
+O O O B-increase I-increase O O O O O O O
+O O B-action.decrease_temp O O I-action.decrease_temp
+O O O O O O B-parameter.all I-parameter.all O I-parameter.all O O O O
+O O O B-action.switch_off O B-object O
+O O O O
+O O O O O O B-parameter.CO2 O O O O
+O O O O O O O B-parameter.humidity O O O
+O O B-action.open B-object O
+O O B-action.set B-object I-object O B-brightness.value O
+O O O O B-parameter.CO2 O O O O O
+O O O B-parameter.CO2 O
+O O O O B-action.set B-object I-object O B-brightness.value O
+B-action.set B-object I-object O B-brightness.value
+O O O O B-action.increase_temp O I-action.increase_temp O O I-action.increase_temp
+O O O O O O O O O O
+O O O O B-parameter.CO2 O O O O
+O O O B-action.set O B-object I-object O B-brightness.value O
+O B-decrease I-decrease O O O O O O O
+O O O O O O B-parameter.all I-parameter.all
+O O B-action.switch_on I-action.switch_on B-object O
+O O O O B-action.set B-object I-object O B-brightness.value
+O O O O O O O O O
+O B-action.mute I-action.mute I-action.mute
+O B-parameter.CO2 I-parameter.CO2 O O O O O
+O O B-action.increase_temp O O O I-action.increase_temp
+O O O O O O
+O B-action.set O B-object I-object B-brightness.increase
+O O O O O B-parameter.all I-parameter.all O I-parameter.all O O
+O O B-action.set B-object I-object O O B-brightness.decrease
+O B-action.mute I-action.mute O B-object I-action.mute
+O O O O O O O O B-parameter.CO2 O
+O O O B-parameter.all I-parameter.all
+O O O O O O O O O
+O O B-action.set B-object O B-color
+O O B-parameter.all I-parameter.all O O I-parameter.all
+O O O B-action.set O B-parameter O B-temperature O
+O O O O B-parameter.all I-parameter.all O I-parameter.all O O O
+O O O O B-parameter.CO2 O O O
+O O O O O O B-parameter.CO2 I-parameter.CO2 O O O O
+O O B-action.set O B-object I-object O B-brightness.value
+O O B-action.increase_temp O O I-action.increase_temp I-action.increase_temp
+O O B-action.set O B-object O B-color I-object
+O O O O O O O B-parameter.temperature O O O O
+O O O O O O O O O O O
+O O B-action.decrease_temp O O I-action.decrease_temp O
+O O B-action.set O B-object O B-brightness.value O
+O O O O O B-action.set B-object B-brightness.decrease
+O O O O B-parameter.CO2 I-parameter.CO2 O O O O
+O O O O O O O B-parameter.CO2 I-parameter.CO2 O O
+O O O O O B-parameter.humidity O O O O O
+O O O O O O B-parameter.temperature O
+O O B-action.set B-object I-object O O B-brightness.increase
+O B-action.set O B-object O B-brightness.value O O
+O O B-action.set O B-parameter O B-temperature O
+O O O O O B-parameter.humidity O
+O O O B-parameter.humidity O O O
+O O B-action.set B-object B-brightness.value O
+B-action.switch_on I-action.switch_on O B-object
+O O O O O B-parameter.CO2 I-parameter.CO2 O
+B-action.set B-object B-parameter O B-temperature O
+O O O O
+B-action.set O B-parameter O B-sound.value
+O O B-action.set B-object B-parameter B-temperature O
+O B-action.switch_off B-object I-action.switch_off
+O B-action.set O B-object B-parameter B-sound.decrease
+O O B-action.switch_off O B-object O I-action.switch_off O
+O O O O
+O O B-action.increase_temp O I-action.increase_temp
+O B-action.open O B-object
+B-action.switch_off B-object
+O O O O B-parameter.humidity O O
+O O B-action.switch_off O B-object I-action.switch_off O
+O O O O O B-action.set O B-object I-object O B-color
+O O O B-action.set O B-object I-object O O B-brightness.decrease
+O O B-decrease I-decrease I-decrease O O O O O O O O O O
+O O B-action.set O B-object I-object O B-brightness.value
+O O O O B-action.set O B-object I-object O B-brightness.value O
+O O O O O B-parameter.humidity O O O O
+O O O B-parameter.CO2 O O O O
+O O O O O B-parameter.all I-parameter.all O I-parameter.all O O O
+O O B-action.switch_on B-object I-action.switch_on
+O O B-action.switch_on B-object O
+O O O B-decrease O O O O O O O
+O O B-action.switch_on I-action.switch_on B-object
+O O O O O O O O B-parameter.temperature
+O O B-parameter.CO2 I-parameter.CO2 O O O O O
+B-action.switch_off B-object I-action.switch_off
+B-action.set B-object B-parameter B-temperature O
+O O O O O O B-parameter.all I-parameter.all
+B-action.set B-object I-object O B-brightness.value O
+O O O O O O O O O O
+O O B-action.set O B-object O B-brightness.decrease O
+O B-action.set B-object I-object O B-color O
+O O O O O O B-parameter.temperature O O
+O O B-action.set O B-object O B-brightness.value
+O O B-action.switch_on I-action.switch_on B-object
+O O O O O O O O
+O O B-action.set B-object I-object B-brightness.increase O
+B-action.switch_off I-action.switch_off O B-object
+O B-decrease O O O
+O O O O B-parameter.CO2 O O
+O B-action.switch_on B-object I-action.switch_on
+O O B-action.set O B-object O B-color
+B-action.switch_off B-object
+O O B-action.set O B-object I-object O B-brightness.value
+O O O O O O O B-parameter.all I-parameter.all O I-parameter.all
+O O O B-action.close B-object
+O O O B-action.set O B-object I-object O B-brightness.value O
+B-action.switch_off O B-object O
+O B-parameter.CO2 O O O O O
+O O B-action.set B-object O B-brightness.value
+B-action.set B-object O B-brightness.value O
+O O B-action.set B-object O O B-brightness.increase
+O O O O B-action.switch_off I-action.switch_off O B-object
+B-action.set O B-object I-object O B-brightness.value O
+O O O O O O O O
+O O B-action.set O B-object O B-brightness.increase O
+O O O O O O O O O
+O O B-action.set B-object O B-color I-object
+O O O O O O O O O B-parameter.CO2 I-parameter.CO2 O
+B-action.switch_on O O B-object O
+O O O O O O O B-parameter.CO2 I-parameter.CO2 O O O
+O B-action.set B-object B-brightness.increase
+O B-action.set O B-parameter I-parameter B-sound.value O
+B-action.set O B-parameter O B-temperature
+O O O B-action.switch_off O B-object
+O O O B-parameter.CO2 O O O
+O O
+O O B-parameter.humidity O O O O O
+B-action.switch_off O B-object O O
+B-action.set O B-object B-parameter I-parameter B-sound.decrease
+O O O O B-parameter.temperature O
+O O O B-parameter.CO2 O O O O O
+O O O B-action.switch_on B-object I-action.switch_on
+O O O O O B-parameter.humidity O O O O
+O O O O B-action.increase_temp O I-action.increase_temp
+O B-increase O O O O O O O O O O
+O B-increase O O O O O O O
+O O O O O O O O O O
+O O O O B-parameter.humidity O O
+O O O O O O O O O
+O O O O O O O B-parameter.CO2 O O O O O
+O O O O O O
+O B-action.set B-object B-parameter I-parameter B-sound.decrease
+O O O O O O
+B-action.set B-object O B-brightness.increase O
+O B-action.mute I-action.mute B-object I-action.mute
+B-action.set B-object I-object B-brightness.decrease I-brightness.decrease
+O O O O O O O O
+O O O O O B-parameter.all I-parameter.all
+O O O O O O O
+O O B-decrease I-decrease O O O O O
+B-action.set B-object I-object B-brightness.decrease I-brightness.decrease
+O O O O B-action.increase_temp O O I-action.increase_temp
+O B-action.switch_on B-object I-action.switch_on
+O O B-action.switch_off I-action.switch_off O B-object O
+O O
+O O O B-parameter.humidity O O O O
+O O B-action.decrease_temp O O I-action.decrease_temp
+O O B-increase O
+O O O O B-parameter.all I-parameter.all
+O O B-action.mute I-action.mute O B-object I-action.mute
+O O B-action.close O B-object O
+O O O O O B-parameter.all I-parameter.all O I-parameter.all O O O
+O O B-action.set B-object B-parameter B-sound.increase
+O O O O O O B-parameter.CO2 O O O O
+O O B-action.switch_off O B-object I-action.switch_off
+O O O B-action.decrease_temp O O I-action.decrease_temp
+O B-action.set O B-object I-object B-brightness.increase O
+O O O O O B-parameter.temperature O O O
+O O O B-parameter.CO2 O O O
+O O O B-action.switch_off O B-object I-action.switch_off
+O O O O O O O O B-parameter.CO2 O O O O
+O O B-action.mute I-action.mute O I-action.mute
+O O B-action.switch_on B-object O
+O O B-increase I-increase O O O
+B-action.set B-object I-object B-brightness.value O I-object
+O O O O O O O O
+O O B-action.decrease_temp O O I-action.decrease_temp O I-action.decrease_temp
+O O B-action.switch_off I-action.switch_off O B-object
+O O B-action.set O B-object O B-brightness.value
+O O B-action.switch_off B-object
+O O O O O O B-parameter.all I-parameter.all O I-parameter.all O O O
+O O B-increase O
+O O B-action.set O B-object B-parameter B-sound.value O O
+O O O O O O O B-parameter.humidity O O O
+B-action.set O B-parameter B-sound.increase
+O O B-action.set O B-object I-object B-color
+O O O O O O B-parameter.temperature O O
+O O O O B-action.set B-object B-color
+O O B-action.set B-object I-object O B-brightness.value
+O O B-action.set B-object O B-brightness.decrease
+B-action.set O B-object B-parameter I-parameter B-sound.value O O
+B-action.increase_temp I-action.increase_temp O
+O O O O O O O B-parameter.humidity O O O O
+O O O O O O B-parameter.CO2 I-parameter.CO2 O O O O
+O B-action.set B-object B-brightness.increase I-brightness.increase
+O B-action.set B-object O B-color
+O O B-action.switch_off O B-object I-action.switch_off
+O O B-action.set B-object B-brightness.increase I-brightness.increase
+O O O O O B-parameter.humidity O O
+O B-action.set O B-object O O B-brightness.increase
+O O O O O O O B-parameter.CO2 I-parameter.CO2 O
+O O O B-action.switch_on O O B-object
+O O O O O O O B-parameter.temperature O
+O B-action.set O B-object O B-brightness.value
+O O O O O O O O B-parameter.humidity O O O O
+B-action.switch_off I-action.switch_off O B-object O
+O B-action.decrease_temp O O I-action.decrease_temp
+O B-action.set B-object O B-color I-object O
+O O O O B-action.set B-object I-object O B-brightness.increase O
+O O B-action.switch_on B-object O
+O B-action.set B-object I-object O B-brightness.value
+O O O O O B-parameter.temperature O
+O O O O O B-parameter.all I-parameter.all O I-parameter.all O O O O
+O O O B-action.increase_temp O O I-action.increase_temp O
+O O O O B-action.set O B-object I-object B-brightness.value O I-object O
+O B-action.switch_off I-action.switch_off B-object O
+B-action.set B-parameter I-parameter B-sound.value O
+O O O O O B-action.set B-object O B-brightness.value O I-object
+O O O B-action.switch_off B-object
+O O O O O O B-parameter.humidity
+O O B-action.set O B-object O B-color O
+O O B-action.decrease_temp O I-action.decrease_temp
+O O O O B-parameter.humidity O
+O O O O O B-parameter.CO2 O O O
+O O B-action.switch_on B-object I-action.switch_on
+O O B-action.increase_temp O O I-action.increase_temp O
+O O O O B-action.set O B-object O B-brightness.value O O
+O O O O B-action.set O B-object I-object O B-brightness.value O I-object
+O O O B-action.close O B-object
+O O B-action.set B-object O B-brightness.value O
+O O B-action.set B-object I-object O B-brightness.value
+O O O B-action.switch_off B-object O
+O B-action.set O B-object I-object B-brightness.value O
+O O B-parameter.all I-parameter.all
+O B-action.switch_off I-action.switch_off O B-object
+O O B-action.open B-object
+O O B-action.switch_off O B-object O I-action.switch_off O
+O O O O O O B-parameter.CO2 I-parameter.CO2 O O O O
+O O O B-action.set O B-object O B-brightness.value
+O O O B-action.switch_off I-action.switch_off O B-object O
+O O O O O O O O B-parameter.CO2 O O O O
+O O B-action.set B-object O O B-brightness.decrease
+O O O O B-parameter.all I-parameter.all O I-parameter.all
+O O B-action.set B-object O B-color I-object O
+O O O O O O O B-parameter.humidity O
+O O B-parameter.all I-parameter.all O
+O O B-increase
+O O B-decrease I-decrease O O O O O O O O O
+O B-action.mute O I-action.mute I-action.mute
+O B-action.set B-object O O B-brightness.increase
+O O O O O O O B-parameter.temperature O O O
+O O O O O B-parameter.all I-parameter.all O I-parameter.all O
+O O B-action.mute O B-object O I-action.mute
+O O O O B-action.switch_on B-object
+O B-action.switch_on I-action.switch_on O B-object
+O O B-action.switch_on I-action.switch_on O B-object O
+O O O O O O O O O O O O
+O O B-action.switch_off B-object
+O O B-action.set B-parameter O B-sound.value
+O O O O O O
+O O B-action.switch_off O B-object I-action.switch_off
+O B-action.set B-parameter B-temperature O O
+O O O O O O
+O O O O O O B-parameter.humidity O O
+O B-action.unmute B-object I-action.unmute I-action.unmute
+O O O O O O B-parameter.temperature
+O O B-action.switch_off I-action.switch_off O B-object O O
+O O O B-parameter.CO2 O O O O O
+O B-action.set O B-object I-object O B-brightness.value O O
+O O O O O O O B-parameter.CO2 O O O O
+O B-action.set B-parameter B-sound.value O
+O O O O O O O O
+O O B-action.switch_off I-action.switch_off O B-object O
+O O O O
+O O O O O
+O B-increase I-increase I-increase O
+B-action.set O B-object B-parameter B-sound.increase
+O O B-action.mute I-action.mute I-action.mute
+O O O O B-action.set B-object I-object B-brightness.decrease I-brightness.decrease
+O O B-action.switch_on O B-object O I-action.switch_on
+O O B-action.set B-object I-object O B-brightness.value O
+O O O O O O B-parameter.humidity O O O O
+O O O O O O
+O O O O B-parameter.temperature
+O O B-action.switch_on O O B-object
+O O O B-action.close B-object
+O O O O O
+O O B-action.set B-object O B-color I-object
+O O O B-action.set O B-object O B-brightness.value O
+O O O B-increase O O O O O O O
+O O O O O O O
+O O B-action.set B-parameter B-sound.decrease
+O B-action.set B-parameter B-sound.increase
+O O B-action.set O B-object I-object O B-brightness.value O
+O O O O O
+O O O O O B-parameter.all I-parameter.all O I-parameter.all O O O
+O O O O B-action.set B-object I-object O B-brightness.value O O
+O B-action.unmute O I-action.unmute I-action.unmute
+O O O O O O B-parameter.humidity O
+O O O O B-parameter.humidity O O O O
+O O B-action.set O B-object I-object O O B-brightness.increase
+O O B-action.set O B-object I-object B-brightness.decrease I-brightness.decrease
+O O O O O B-parameter.all I-parameter.all
+O O B-action.open O B-object
+O O B-increase I-increase O O O O O O O
+B-action.set O B-object I-object O B-brightness.increase
+O O B-action.set B-object O B-brightness.value O
+B-action.decrease_temp O I-action.decrease_temp I-action.decrease_temp
+O O O O O O O B-parameter.CO2 O O O O
+B-action.unmute O B-object I-action.unmute I-action.unmute
+O O O O O O O B-parameter.all I-parameter.all
+O O B-action.switch_off I-action.switch_off O B-object O
+O O B-parameter.all I-parameter.all O I-parameter.all O O
+O O O B-action.decrease_temp O I-action.decrease_temp O
+B-action.close B-object
+O B-decrease I-decrease O O O O O
+O O O O O O B-parameter.temperature O O O O
+O O B-action.set B-parameter B-sound.increase
+O O O O O B-action.set B-object O B-brightness.value O I-object
+O B-action.unmute I-action.unmute I-action.unmute
+O B-decrease I-decrease O O O O O
+O B-action.set B-object O B-color
+O O B-action.open B-object
+O O O O
+O O O O O B-parameter.all I-parameter.all
+O O O O O B-parameter.all I-parameter.all O I-parameter.all O O O
+O O O B-parameter.temperature O O
+O O O B-action.set B-object I-object O B-brightness.decrease
+B-action.unmute I-action.unmute I-action.unmute
+O O O O O B-parameter.CO2 I-parameter.CO2 O O O O
+O O B-action.switch_off O B-object
+O O O O O O O O O O
+O O B-action.switch_off O B-object
+O O O O O O
+O O O O O B-parameter.all I-parameter.all O I-parameter.all
+O O O O O
+O O B-decrease O O O
+O O O B-action.set O B-object B-brightness.value O
+O O O O B-action.set B-object I-object B-brightness.increase I-brightness.increase O
+O O O O B-action.set O B-object O B-color I-object
+O O O O O
+O O O O O O O O B-parameter.humidity O
+B-parameter.CO2 I-parameter.CO2 O O O O O
+O O O B-action.switch_off B-object
+O O B-parameter.humidity O
+O O O O O O O B-parameter.CO2 I-parameter.CO2 O O O O
+O O O B-action.set B-object I-object O B-brightness.increase
+O B-action.set O B-parameter I-parameter O B-sound.value
+O O O O O B-parameter.all I-parameter.all O I-parameter.all O O O
+O O O O B-action.increase_temp O O O I-action.increase_temp
+B-action.set O B-object I-object O B-brightness.value
+O B-action.set O B-object I-object B-brightness.decrease I-brightness.decrease
+O O B-action.decrease_temp O I-action.decrease_temp I-action.decrease_temp
+O O O O B-action.set O B-object O B-brightness.value O O
+O O B-action.increase_temp O O O I-action.increase_temp
+O O O O B-action.set B-object I-object O B-brightness.increase O
+O O O O O O
+O O B-increase I-increase O O O
+O O B-increase O O O O O O O
+O O O B-action.switch_on O B-object
+O O O O O O O B-parameter.all I-parameter.all O I-parameter.all
+O O O O O B-parameter.all I-parameter.all O I-parameter.all O
+O B-increase O O O
+O O B-action.set B-object O B-brightness.increase
+O O O O O O B-parameter.CO2 O O O O
+O O B-parameter.humidity O O
+O O O
+O O O B-action.switch_on O B-object I-action.switch_on
+O B-action.set O B-parameter O B-sound.value
+O O O O O O O O O O
+O O B-action.set O B-object B-parameter B-sound.value O
+O O O B-parameter.all I-parameter.all O O I-parameter.all
+O B-action.switch_off B-object
+O O B-action.switch_on O B-object O
+B-action.set B-object I-object O B-brightness.value
+O O O O B-action.set B-object O B-brightness.value O
+O O O B-parameter.all I-parameter.all O I-parameter.all O O O
+O O O B-action.increase_temp O O I-action.increase_temp
+O O O O B-action.set B-object I-object B-brightness.increase I-brightness.increase
+O O O O B-action.set O B-object O B-brightness.value
+O O O O B-parameter.humidity O O O
+B-action.set B-object I-object O B-color O
+B-action.set B-parameter O B-temperature O O O
+O O B-action.set B-object I-object O B-brightness.value O
+O O O O O B-parameter.CO2 O O O O
+O O B-action.set B-object B-parameter B-temperature O O
+O O O O O O O B-parameter.CO2 I-parameter.CO2 O
+O O O O O O O O O
+O B-action.switch_on O B-object
+O O O O O O O
+O O B-action.set O B-object O B-brightness.value O I-object
+O O O O B-parameter.humidity O O O O
+O O O B-action.set B-object I-object O B-brightness.value
+O O B-action.switch_on B-object
+O O B-action.set B-object I-object B-brightness.increase
+O O B-action.set O B-object I-object O B-brightness.value O
+O B-action.set O B-object O B-color I-object
+O B-action.set B-object O O B-brightness.decrease
+O O O O O O O O O
+O O
+O O O B-action.set B-object O B-color
+O O B-action.increase_temp O O O O I-action.increase_temp
+O O O O B-action.set B-object O B-brightness.increase O
+O O O O B-parameter.CO2 I-parameter.CO2 O O O O O
+O O O O O B-parameter.temperature O O O
+O O O O O O
+O O O
+O O O O B-parameter.all I-parameter.all O I-parameter.all
+O O O O O B-parameter.CO2 O O O O O
+O O B-action.switch_on O O B-object
+O O O O O O O
+O O B-action.set B-parameter O B-sound.value O
+O O O O B-action.set B-object I-object O B-brightness.value
+O O O O B-action.set O B-object I-object B-brightness.increase I-brightness.increase
+O O O O O O
+O O O O O O
+O O O O O B-parameter.all I-parameter.all
+O B-action.switch_off O B-object
+O O O O O B-parameter.CO2 I-parameter.CO2 O
+B-action.set B-object B-color
+O B-action.set B-object O B-color I-object
+O B-action.set B-parameter I-parameter O B-sound.value O
+O B-action.switch_on I-action.switch_on O B-object
+O O O O B-action.set O B-object O B-brightness.value O
+O O B-action.unmute I-action.unmute O B-object I-action.unmute
+O O B-parameter.all I-parameter.all O I-parameter.all O O O O
+O O O O B-parameter.all I-parameter.all O I-parameter.all O O O
+O O O O B-action.set B-object O B-brightness.value
+O O O O O
+O O B-action.set B-object I-object O B-brightness.value O I-object O
+O O B-decrease I-decrease O O O O O
+O B-action.switch_on O B-object O
+B-action.switch_on B-object O
+O O O B-action.set B-object I-object O B-brightness.value O
+O O O O B-parameter.all I-parameter.all O I-parameter.all O O O
+O O O O B-parameter.all I-parameter.all O O I-parameter.all
+O O O B-action.decrease_temp O O I-action.decrease_temp O I-action.decrease_temp
+O O O O O O
+O O O O O B-parameter.humidity O O O
+O B-action.switch_off O B-object I-action.switch_off
+O O B-action.set B-object I-object B-brightness.value O
+O O B-action.increase_temp O O I-action.increase_temp
+O O O B-action.switch_off I-action.switch_off O B-object O
+O B-action.set O B-object I-object O B-brightness.increase
+O O B-action.decrease_temp O O I-action.decrease_temp I-action.decrease_temp
+O O B-action.set O B-object O B-brightness.value
+O B-decrease I-decrease O
+O O O
+O B-decrease I-decrease O O O O O
+O O B-decrease O O O O O O
+O B-action.set O B-parameter I-parameter B-sound.value O O
+O O B-action.set B-object I-object O O B-brightness.increase O
+O O O O B-parameter.CO2 I-parameter.CO2 O O
+B-action.switch_on O O B-object
+O O O O O O B-parameter.all I-parameter.all
+O O B-action.decrease_temp O I-action.decrease_temp
+O O B-action.set B-parameter B-sound.value O O
+O O B-action.set B-object I-object O O B-brightness.decrease O
+O O O O B-parameter.all I-parameter.all O I-parameter.all O O
+O O O O O O O
+B-action.set O B-object O B-brightness.value
+O O B-action.switch_off I-action.switch_off O B-object O
+O B-action.set O B-object I-object O B-brightness.value O O
+O O B-action.set O B-object I-object O B-brightness.value O O
+O O B-action.set O B-object O B-brightness.increase
+O O B-action.switch_off B-object I-action.switch_off
+O O O B-action.set O B-object I-object O B-color
+O O O O O O B-parameter.humidity O O O
+O O B-action.set O B-object B-parameter B-sound.value O
+O O B-action.switch_off O B-object O
+O O O O B-action.decrease_temp O I-action.decrease_temp O I-action.decrease_temp
+O O O O O O O
+O O O O B-parameter.humidity O O O
+O O O O O O B-parameter.all I-parameter.all O I-parameter.all O
+O O O
+O B-action.switch_off I-action.switch_off B-object
+O O O O B-action.set O B-object O O B-brightness.increase
+O O O O O B-parameter.all I-parameter.all O
+O O O B-action.increase_temp O O O I-action.increase_temp
+O O O O B-parameter.CO2 O O O O
+O O O O O O O O O B-parameter.temperature
+O O B-increase
+O O O O O O O O B-parameter.temperature O
+O B-parameter.humidity O O O O O
+O O O O O O O O
+O O B-action.unmute B-object
+O O B-action.switch_on I-action.switch_on O B-object O
+O O O O B-parameter.all I-parameter.all O I-parameter.all O O
+O O O O B-parameter.temperature O O
+O O O O O O O O B-parameter.CO2 I-parameter.CO2 O O O O
+O O O O O O O O
+O O O B-action.set B-object I-object O O B-brightness.decrease
+B-action.set O B-object B-parameter B-sound.increase
+O B-decrease I-decrease O O O O O O O O
+O O O O O O B-parameter.CO2 I-parameter.CO2 O
+O B-action.unmute I-action.unmute O I-action.unmute
+O O O B-action.set B-object O O B-brightness.decrease
+O B-action.set O B-object B-brightness.value O O
+B-action.increase_temp O O I-action.increase_temp
+O O O O O O O O
+O O B-action.set O B-object I-object O B-brightness.value O I-object
+B-action.set O B-object I-object O B-brightness.increase O
+B-action.set B-object I-object O B-brightness.increase
+O O O O B-action.increase_temp O I-action.increase_temp O
+O B-increase O O O O O
+O O O O O B-action.set O B-object I-object B-brightness.decrease I-brightness.decrease
+O O O O B-action.set B-object O B-color
+O O O O O O O B-parameter.humidity O O O
+B-action.set O B-object O B-brightness.value
+O O B-action.set O B-object O B-color
+O O O O O O
+O O B-action.set B-parameter B-temperature
+O O B-action.switch_on O B-object I-action.switch_on O
+O O B-action.increase_temp I-action.increase_temp O O
+O O O B-action.set O B-object O B-brightness.increase
+O O O O B-parameter.humidity O O
+B-action.switch_on B-object I-action.switch_on
+O B-action.set B-object I-object O B-brightness.value
+O O O B-parameter.humidity O O
+O O O O O O O O
+O O O O O O O B-parameter.CO2 O O O O
+O O O O O O O O O O
+B-action.unmute O B-object I-action.unmute I-action.unmute I-action.unmute
+O O O O
+O O B-action.set B-object B-brightness.value O
+O O O B-action.switch_off O B-object
+O O O B-action.set O B-object I-object O B-brightness.value
+O O B-decrease I-decrease I-decrease O
+O O B-action.decrease_temp O O I-action.decrease_temp
+O O O O O O B-parameter.humidity O O O O O
+O O O O O O B-parameter.all I-parameter.all O I-parameter.all O O O
+O O B-action.set O B-object I-object O B-brightness.value
+O O O O O B-parameter.all I-parameter.all O O I-parameter.all
+O O B-action.set B-parameter O B-sound.value
+O B-action.increase_temp O O I-action.increase_temp O
+O O B-action.set O B-object O B-color O
+O O O O O O O B-parameter.CO2 I-parameter.CO2 O O O O
+O O O B-parameter.humidity O O O
+O O O O O O B-parameter.humidity O O O O O
+O B-decrease O O O O O O O O O O
+O O O O O O O O B-parameter.CO2 O O O O
+B-action.set B-object O B-color I-object
+O B-action.set B-parameter O B-sound.value
+O O B-action.set B-object I-object O B-brightness.value O O
+O B-increase I-increase I-increase O O O O O O O
+O O B-action.decrease_temp O O O I-action.decrease_temp
+O O B-increase O O O O O O O O
+O O B-action.set O B-object I-object O B-brightness.increase
+O O B-increase I-increase O O O O O O O O O O O O O
+O O B-action.set B-object I-object B-brightness.value O O
+O O O O O O O O O O
+O O O O O B-parameter.all I-parameter.all O I-parameter.all O O O
+O O B-action.set B-object I-object O B-brightness.decrease
+O O B-parameter.all I-parameter.all
+B-action.switch_on B-object I-action.switch_on O
+O B-action.set B-object I-object O B-brightness.value O
+O O O B-action.set B-object O B-brightness.value
+B-action.set B-object O B-color I-object
+O O O B-action.switch_on I-action.switch_on B-object
+O O O O O O O B-parameter.all I-parameter.all O I-parameter.all O O O O
+O O B-increase O O O O O O O
+O B-increase I-increase I-increase O O O O O O O O O O
+B-parameter.humidity O O O O
+O O B-action.close O B-object
+O O B-action.increase_temp I-action.increase_temp O
+O O B-action.set O B-object B-parameter B-sound.value O
+O O O O O O B-parameter.all I-parameter.all O I-parameter.all O O O
+O O B-action.switch_off O B-object I-action.switch_off
+O O O B-parameter.all I-parameter.all O
+B-action.set B-parameter O B-temperature O O
+O O O O O O O B-parameter.CO2 O O O O
+O B-action.set B-object I-object B-brightness.decrease I-brightness.decrease
+B-action.switch_on B-object I-action.switch_on O
+O O O O O B-parameter.all I-parameter.all O I-parameter.all O O
+O O O O O O
+B-action.switch_on O B-object I-action.switch_on O
+B-action.set O B-object O O B-brightness.increase
+O O B-action.close B-object O
+B-action.switch_on B-object O
+O O O O O O O O
+O O B-action.switch_on O B-object
+O O O B-parameter.humidity O O O O
+O O O O
+O O B-action.switch_off B-object I-action.switch_off
+O O B-action.set O B-object O B-color I-object
+O O B-action.open O B-object
+O O O O O O B-parameter.all I-parameter.all
+O B-decrease I-decrease I-decrease O O O O O O
+B-action.switch_on I-action.switch_on O B-object
+O O B-action.switch_off I-action.switch_off B-object
+O O B-action.switch_off O B-object I-action.switch_off O
+O O O B-action.set B-object O B-color
+O B-decrease I-decrease O O O O O
+O O O O O B-parameter.humidity O O O
+O O O O
+O O B-action.mute I-action.mute I-action.mute
+O O O O O O B-parameter.CO2 I-parameter.CO2 O O
+O O O O O O O O
+O O O O O B-parameter.all I-parameter.all
+O O B-action.increase_temp O I-action.increase_temp
+O O O O O O O O O O O O O
+O O O B-action.set O B-parameter O B-temperature
+O O O O B-parameter.CO2 I-parameter.CO2 O O O O O
+O O O O O O B-parameter.humidity O O O O
+B-action.switch_off O B-object O
+B-action.set B-object O B-brightness.value O O
+O O B-action.switch_off O B-object
+O O O O O O O B-parameter.humidity O O O O O
+O O O O B-parameter.all I-parameter.all O O I-parameter.all
+O O O O O O
+O B-action.mute O B-object I-action.mute I-action.mute
+O O O O B-parameter.CO2 I-parameter.CO2 O O O O O
+B-action.set B-object I-object O B-brightness.increase
+O O O O O O B-parameter.temperature O O O
+O O O O O O
+O O O B-action.switch_off O B-object
+O O O O O O O B-parameter.temperature O O O
+O O O O O O B-parameter.humidity O O O O O
+O O O O O O B-parameter.humidity O O
+O O B-action.unmute I-action.unmute B-object I-action.unmute
+O O B-action.set B-object O B-color I-object
+O O B-increase I-increase I-increase O O O O O O O
+O O O O O O B-parameter.CO2 O O O O
+O O O O O B-action.set O B-object I-object O B-color
+O O O B-action.switch_on O B-object O I-action.switch_on
+O O O O
+O B-action.switch_off B-object
+O O B-parameter.CO2 I-parameter.CO2 O O O
+O B-increase O O O O O O O O O
+O O O O B-parameter.humidity O O O O
+O O O B-action.open O B-object
+O O B-action.switch_off B-object
+O O B-action.switch_off I-action.switch_off O B-object
+O B-action.set B-object I-object O B-brightness.increase O
+O O O B-action.set B-object I-object B-brightness.decrease
+O B-action.set O B-object I-object O B-brightness.value
+O B-increase I-increase I-increase O O O O O O
+O O O O B-action.set B-object I-object O B-brightness.value
+O O O O O O O
+O O O B-action.set O B-parameter O B-temperature
+O O O O O B-parameter.CO2 O O O O
+O O O O O
+O O B-action.switch_off B-object
+O O O O O O O O O O O
+O O B-action.switch_off B-object
+O O O B-action.close B-object
+O O O O O O O O
+B-action.set B-object O O B-brightness.decrease
+B-decrease I-decrease I-decrease O O O O O O O O O
+O O O B-parameter.temperature O O O
+O O B-action.set O B-object O B-brightness.value O
+O O O O O O O O
+B-action.mute I-action.mute I-action.mute
+O O B-parameter.CO2 I-parameter.CO2 O O O
+O O O B-action.set O B-object O B-color
+O O B-action.switch_off I-action.switch_off B-object
+O O O O O O B-parameter.CO2 O O O O O
+O B-action.close B-object
+O O B-action.open B-object
+O O O O B-action.set O B-object I-object O B-brightness.value O
+O O O O O O B-parameter.humidity O O
+O O O O O
