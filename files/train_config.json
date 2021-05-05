@@ -1,10 +1,9 @@
 {
-  "data_folder_path": "data/snips",
+  "data_folder_path": "data/dev",
   "save_folder_path": "files",
   "epochs": 5,
   "batch_size": 128,
-  "num_bert_fine_tune_layers": 2,
-  "bert_hub_path": "https://tfhub.dev/tensorflow/bert_multi_cased_L-12_H-768_A-12/2",
-  "albert_hub_path": "https://tfhub.dev/tensorflow/albert_en_base/1",
+  "bert_hub_path": "https://tfhub.dev/tensorflow/bert_multi_cased_L-12_H-768_A-12/4",
+  "albert_hub_path": "https://tfhub.dev/tensorflow/albert_en_base/3",
   "mobilebert_hub_path": "https://tfhub.dev/tensorflow/mobilebert_multi_cased_L-24_H-128_B-512_A-4_F-4_OPT/1"
 }

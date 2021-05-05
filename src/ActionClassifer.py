@@ -6,8 +6,8 @@ from src.JointBertModel import JointBertModel, BERTVectorizer, TagsVectorizer
 
 
 class ActionClassifier:
-    def __init__(self, load_folder_path, model_hub_path, is_bert):
-        self.bert_vectorizer = BERTVectorizer(is_bert=is_bert, bert_model_hub_path=model_hub_path)
+    def __init__(self, load_folder_path, model_hub_path, model_name):
+        self.bert_vectorizer = BERTVectorizer(model_name=model_name, bert_model_hub_path=model_hub_path)
         self.tags_vectorizer = TagsVectorizer()
         self.intents_label_encoder = LabelEncoder()
         with open(os.path.join(load_folder_path, 'tags_vectorizer.pkl'), 'rb') as handle:

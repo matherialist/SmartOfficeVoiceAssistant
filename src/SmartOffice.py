@@ -139,8 +139,8 @@ class SmartOffice:
     def __init__(self, load_folder_path):
         self.action_classifier = ActionClassifier(
             load_folder_path,
-            model_hub_path="https://tfhub.dev/tensorflow/bert_multi_cased_L-12_H-768_A-12/2",
-            is_bert=True)
+            model_hub_path="https://tfhub.dev/tensorflow/mobilebert_multi_cased_L-24_H-128_B-512_A-4_F-4_OPT/1",
+            model_name='MobileBert')
         self.voice_assistant = VoiceAssistant()
         self.sova = WebSOVA()
 
