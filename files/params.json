@@ -1,5 +1,5 @@
 {
   "slots_num": 57,
   "intents_num": 9,
-  "bert_hub_path": "https://tfhub.dev/tensorflow/mobilebert_multi_cased_L-24_H-128_B-512_A-4_F-4_OPT/1",
+  "model_hub_path": "https://tfhub.dev/tensorflow/mobilebert_multi_cased_L-24_H-128_B-512_A-4_F-4_OPT/1",
   "model_name": "MobileBert"}

@@ -10,161 +10,69 @@ import matplotlib.pyplot as plt
 import pickle
 from itertools import chain
 from tensorflow.keras.models import Model
-from tensorflow.keras.layers import Input, Dense, Multiply, TimeDistributed
-from sklearn.preprocessing import LabelEncoder
+from tensorflow.keras.layers import Input, Dense, Multiply, TimeDistributed, Dropout
 from sklearn import metrics
 from sklearn.model_selection import KFold, StratifiedKFold, train_test_split
 from plot_keras_history import plot_history
 from tqdm import tqdm
-from src.AlbertTokenization import FullTokenizer as AlbertFullTokenizer
-from src.BertTokenization import FullTokenizer as BertFullTokenizer
+from src.preprocessing import Preprocessor
+from transformers import TFMobileBertModel, TFPreTrainedModel, TFDistilBertModel
+from tensorflow.keras.losses import SparseCategoricalCrossentropy
+from tensorflow.keras.metrics import SparseCategoricalAccuracy
 
 
-class BERTVectorizer:
-    def __init__(self, model_name, bert_model_hub_path):
-        self.model_name = model_name
-        self.bert_model_hub_path = bert_model_hub_path
-        self.create_tokenizer_from_hub_module(model_name=model_name)
-
-    def create_tokenizer_from_hub_module(self, model_name):
-        """Get the vocab file and casing info from the Hub module."""
-        keras_layer = hub.KerasLayer(self.bert_model_hub_path, trainable=False)
-        if model_name == 'BERT':
-            vocab_file = keras_layer.resolved_object.vocab_file.asset_path.numpy()
-            do_lower_case = keras_layer.resolved_object.do_lower_case.numpy()
-            self.tokenizer = BertFullTokenizer(vocab_file, do_lower_case)
-            self.preprocessor = hub.load("https://tfhub.dev/tensorflow/bert_multi_cased_preprocess/3")
-        elif model_name == 'ALBERT':
-            sp_model_file = keras_layer.resolved_object.sp_model_file.asset_path.numpy()
-            self.tokenizer = AlbertFullTokenizer(vocab_file=sp_model_file,
-                                                 do_lower_case=True,
-                                                 spm_model_file=sp_model_file)
-        else:
-            vocab_file = keras_layer.resolved_object.vocab_file.asset_path.numpy()
-            do_lower_case = keras_layer.resolved_object.do_lower_case.numpy()
-            self.tokenizer = BertFullTokenizer(vocab_file, do_lower_case)
-            self.preprocessor = hub.load("https://tfhub.dev/tensorflow/bert_multi_cased_preprocess/3")
-
-        del keras_layer
-
-    def tokenize(self, text: str):
-        words = text.split()  # whitespace tokenizer
-        tokens = []
-        valid_positions = []
-        for i, word in enumerate(words):
-            token = self.tokenizer.tokenize(word)
-            tokens.extend(token)
-            for i in range(len(token)):
-                if i == 0:
-                    valid_positions.append(1)
-                else:
-                    valid_positions.append(0)
-        return tokens, valid_positions
-
-    def transform(self, text_arr):
-        res = self.preprocessor(text_arr)
-        input_ids, input_mask, segment_ids = res['input_word_ids'], res['input_mask'], res['input_type_ids']
-        valid_positions = []
-        for text in tqdm(text_arr):
-            _, valid_pos = self.tokenize(text)
-            valid_pos.insert(0, 1)
-            valid_pos.append(1)
-            valid_positions.append(valid_pos)
-
-        sequence_lengths = np.array([len(i) for i in input_ids])
-        # if self.model_name != 'MobileBert':
-        #     input_ids = tf.keras.preprocessing.sequence.pad_sequences(input_ids, padding='post')
-        #     input_mask = tf.keras.preprocessing.sequence.pad_sequences(input_mask, padding='post')
-        #     segment_ids = tf.keras.preprocessing.sequence.pad_sequences(segment_ids, padding='post')
-        valid_positions = tf.keras.preprocessing.sequence.pad_sequences(valid_positions, padding='post', maxlen=42)
-        print('input_ids: ', input_ids.shape)
-        print('input_mask: ', input_mask.shape)
-        print('segment_ids: ', segment_ids.shape)
-        print('valid_positions: ', valid_positions.shape)
-        return input_ids, input_mask, segment_ids, valid_positions, sequence_lengths
-
-
-class TagsVectorizer:
-    def __init__(self):
-        self.label_encoder = LabelEncoder()
-
-    def tokenize(self, tags_str_arr):
-        return [s.split() for s in tags_str_arr]
-
-    def fit(self, tags_str_arr):
-        data = ['<PAD>'] + [item for sublist in self.tokenize(tags_str_arr) for item in sublist]
-        self.label_encoder.fit(data)
-
-    def transform(self, tags_str_arr, valid_positions):
-        seq_length = valid_positions.shape[1]
-        data = self.tokenize(tags_str_arr)
-        data = [self.label_encoder.transform(['O'] + x + ['O']).astype(np.int32) for x in data]
-        output = np.zeros((len(data), seq_length))
-        for i in tqdm(range(len(data))):
-            idx = 0
-            for j in range(seq_length):
-                if valid_positions[i][j] == 1:
-                    output[i][j] = data[i][idx]
-                    idx += 1
-        return output
-
-    def inverse_transform(self, model_output_3d, valid_positions):
-        seq_length = valid_positions.shape[1]
-        slots = np.argmax(model_output_3d, axis=-1)
-        slots = [self.label_encoder.inverse_transform(y) for y in slots]
-        output = []
-        for i in range(len(slots)):
-            y = []
-            for j in range(seq_length):
-                if valid_positions[i][j] == 1:
-                    y.append(str(slots[i][j]))
-            output.append(y)
-        return output
-
-
-class JointBertModel:
-    def __init__(self, slots_num, intents_num, bert_hub_path, model_name):
-        self.slots_num = slots_num
-        self.intents_num = intents_num
-        self.bert_hub_path = bert_hub_path
-        self.model_name = model_name
-        self.build_model()
+class JointBertModel(tf.keras.Model):
+    def __init__(self, slots_num, intents_num, model_hub_path, model_name, dropout_prob=0.1):
+        super().__init__(name='joint_intent_slot')
+        # self.slots_num = slots_num
+        # self.intents_num = intents_num
+        # self.model_hub_path = model_hub_path
+        # self.model_name = model_name
+        self.dropout = Dropout(dropout_prob)
+        self.bert = hub.KerasLayer(model_hub_path, trainable=True)
+        # self.bert = TFPreTrainedModel.from_pretrained('files/mobilebert_multi_cased_L-24_H-128_B-512_A-4_F-4_OPT_1')
+        self.intent_classifier = Dense(intents_num, activation='softmax', name='intent_classifier')
+        self.slot_tagger = Dense(slots_num, activation='softmax', name='slot_tagger')
+        # self.build_model()
         self.compile_model()
 
-    def build_model(self):
-        in_valid_positions = Input(shape=(None, self.slots_num), dtype=tf.float32, name='valid_positions')
-        text_input = Input(shape=(), dtype=tf.string)
-        encoder_inputs = hub.KerasLayer("https://tfhub.dev/tensorflow/bert_multi_cased_preprocess/3")(text_input)
-        outputs = hub.KerasLayer(self.bert_hub_path, trainable=True)(encoder_inputs)
-        pooled_output = outputs["pooled_output"]  # [batch_size, 512].
-        sequence_output = outputs["sequence_output"]  # [batch_size, seq_length, 512].
+    def call(self, inputs, **kwargs):
+        # two outputs from BERT
+        trained_bert = self.bert(inputs, **kwargs)
+        pooled_output = trained_bert["pooled_output"]
+        sequence_output = trained_bert["sequence_output"]
 
-        intents_fc = Dense(self.intents_num, activation='softmax', name='intent_classifier')(pooled_output)
-        slots_output = TimeDistributed(Dense(self.slots_num, activation='softmax'))(sequence_output)
-        slots_output = Multiply(name='slots_tagger')([slots_output, in_valid_positions])
+        # sequence_output will be used for slot_filling / classification
+        sequence_output = self.dropout(sequence_output, training=kwargs.get("training", False))
+        slot_logits = self.slot_tagger(sequence_output)
 
-        self.model = Model(inputs=[text_input, in_valid_positions], outputs=[slots_output, intents_fc])
+        # pooled_output for intent classification
+        pooled_output = self.dropout(pooled_output, training=kwargs.get("training", False))
+        intent_logits = self.intent_classifier(pooled_output)
+
+        return {'slot_tagger': slot_logits, 'intent_classifier': intent_logits}
 
     def compile_model(self):
-        optimizer = tf.keras.optimizers.Adam(learning_rate=5e-5)
+        optimizer = tf.keras.optimizers.Adam(learning_rate=5e-5, epsilon=1e-08)
+        # losses = [tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+        #           tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)]
         losses = {
-            'slots_tagger': 'sparse_categorical_crossentropy',
+            'slot_tagger': 'sparse_categorical_crossentropy',
             'intent_classifier': 'sparse_categorical_crossentropy',
         }
-        loss_weights = {'slots_tagger': 3.0, 'intent_classifier': 1.0}
-        metrics = {'intent_classifier': 'acc'}
-        self.model.compile(optimizer=optimizer, loss=losses, loss_weights=loss_weights, metrics=metrics)
-        self.model.summary()
+        # loss_weights = {'slot_tagger': 3.0, 'intent_classifier': 1.0}
+        # metrics = {'intent_classifier': 'acc'}
+        metrics = [tf.keras.metrics.SparseCategoricalAccuracy('accuracy')]
+        # self.model.compile(optimizer=optimizer, loss=losses, loss_weights=loss_weights, metrics=metrics)
+        self.compile(optimizer=optimizer, loss=losses,  # loss_weights=loss_weights,
+                     metrics=metrics)
+        # self.model.summary()
+        # self.summary()
 
-    def fit(self, X, Y, validation_data=None, epochs=5, batch_size=32):
-        # X["valid_positions"] = self.prepare_valid_positions(X["valid_positions"])
-        # if validation_data is not None:
-        #     X_val, Y_val = validation_data
-        #     X_val["valid_positions"] = self.prepare_valid_positions(X_val["valid_positions"])
-        #     validation_data = (X_val, Y_val)
-        history = self.model.fit(X, Y, validation_data=validation_data,
-                                 epochs=epochs, batch_size=batch_size)
-        return history
+    # def fit(self, X, Y, validation_data=None, epochs=5, batch_size=32):
+    #     # history = self.model.fit(X, Y, validation_data=validation_data, epochs=epochs, batch_size=batch_size)
+    #     history = self.fit(X, Y, validation_data=validation_data, epochs=epochs, batch_size=batch_size)
+    #     return history
 
     def prepare_valid_positions(self, in_valid_positions):
         in_valid_positions = np.expand_dims(in_valid_positions, axis=2)
@@ -191,7 +99,7 @@ class JointBertModel:
         model_params = {
             'slots_num': self.slots_num,
             'intents_num': self.intents_num,
-            'bert_hub_path': self.bert_hub_path,
+            'model_hub_path': self.model_hub_path,
             'model_name': self.model_name
         }
         with open(os.path.join(model_path, 'params.json'), 'w') as json_file:
@@ -209,11 +117,11 @@ class JointBertModel:
     @staticmethod
     def read_goo(dataset_folder_path):
         with open(os.path.join(dataset_folder_path, 'label'), encoding='utf-8') as f:
-            labels = f.readlines()
+            labels = f.read().splitlines()
         with open(os.path.join(dataset_folder_path, 'seq.in'), encoding='utf-8') as f:
-            text_arr = f.readlines()
+            text_arr = f.read().splitlines()
         with open(os.path.join(dataset_folder_path, 'seq.out'), encoding='utf-8') as f:
-            tags_arr = f.readlines()
+            tags_arr = f.read().splitlines()
         assert len(text_arr) == len(tags_arr) == len(labels)
         return text_arr, tags_arr, labels
 
@@ -234,45 +142,51 @@ class JointBertModel:
             model_hub_path = train_config['mobilebert_hub_path']
 
         logging.log(logging.WARNING, 'Reading data ...')
-        text_arr, tags_arr, intents = JointBertModel.read_goo(data_folder_path)
+        text_arr, slots_arr, intents = JointBertModel.read_goo(data_folder_path)
+        data = {
+            'texts': text_arr,
+            'intents': intents,
+            'slots': [slots.split() for slots in slots_arr]
+        }
 
-        logging.log(logging.WARNING, 'Vectorizing data ...')
-        bert_vectorizer = BERTVectorizer(model_name, model_hub_path)
-        # input_ids, input_mask, segment_ids, valid_positions, sequence_lengths = bert_vectorizer.transform(text_arr)
-        _, _, _, valid_positions, sequence_lengths = bert_vectorizer.transform(text_arr)
-
-        logging.log(logging.WARNING, 'Vectorizing tags ...')
-        tags_vectorizer = TagsVectorizer()
-        tags_vectorizer.fit(tags_arr)
-        tags = tags_vectorizer.transform(tags_arr, valid_positions)
-        slots_num = len(tags_vectorizer.label_encoder.classes_)
-
-        logging.log(logging.WARNING, 'Encoding labels ...')
-        intents_label_encoder = LabelEncoder()
-        intents = intents_label_encoder.fit_transform(intents).astype(np.int32)
-        intents_num = len(intents_label_encoder.classes_)
+        preprocessed_data = Preprocessor(model_name='distilbert-base-multilingual-cased').run_preprocessor(data)
 
         logging.log(logging.WARNING, 'Loading model ...')
-        model = JointBertModel(slots_num, intents_num, model_hub_path, model_name=model_name)
+        model = JointBertModel(slots_num=len(preprocessed_data.slot_map),
+                               intents_num=len(preprocessed_data.intent_map),
+                               model_hub_path=model_hub_path,
+                               model_name=model_name)
+        joint_model = JointIntentAndSlotFillingModel(model_name='distilbert-base-multilingual-cased',
+                                               intent_num_labels=len(preprocessed_data.intent_map),
+                                               slot_num_labels=len(preprocessed_data.slot_map),
+                                               dropout_prob=0.1)
 
         logging.log(logging.WARNING, 'Training model ...')
-        X = (np.array(text_arr), valid_positions)
-        Y = (tags, intents)
-
+        # X = {
+        #     # "input_word_ids": preprocessed_data.encoded_texts["input_ids"],
+        #     "input_word_ids": preprocessed_data.encoded_texts["input_word_ids"],
+        #     # "input_type_ids": preprocessed_data.encoded_texts["token_type_ids"],
+        #     "input_type_ids": preprocessed_data.encoded_texts["input_type_ids"],
+        #     # "input_mask": preprocessed_data.encoded_texts["attention_mask"]
+        #     "input_mask": preprocessed_data.encoded_texts["input_mask"]
+        # }
+        X = {"input_ids": preprocessed_data.encoded_texts["input_ids"],
+             "attention_mask": preprocessed_data.encoded_texts["attention_mask"]}
+        Y = (preprocessed_data.encoded_slots, preprocessed_data.encoded_intents)
         history = {}
-        print(X)
-        print(X[0].shape)
-        print(X[1].shape)
-        print(Y[0].shape)
-        print(Y[1].shape)
 
-        X_train, X_val = (X[0][:400], X[1][:400]), (X[0][400:], X[1][400:])
-        Y_train, Y_val = (Y[0][:400], Y[1][:400]), (Y[0][400:], Y[1][400:])
-        hist = model.model.fit(X_train, Y_train, validation_data=(X_val, Y_val), epochs=epochs, batch_size=batch_size)
-        if history:
-            history = {key: history[key] + hist.history[key] for key in hist.history}
-        else:
-            history = hist.history
+        model, history = compile_train_model(model=joint_model, x=X, y=Y,
+                                             epochs=2, batch_size=32)
+
+        # X_train, X_val = {key: val[:400] for key, val in X.items()}, {key: val[400:] for key, val in X.items()}
+        # Y_train, Y_val = (Y[0][:400], Y[1][:400]), (Y[0][400:], Y[1][400:])
+        # hist = model.model.fit(X_train, Y_train, validation_data=(X_val, Y_val), epochs=epochs, batch_size=batch_size)
+        # hist = model.fit(X_train, Y_train, validation_data=(X_val, Y_val), epochs=epochs, batch_size=batch_size)
+        # hist = model.fit(X, Y, epochs=epochs, batch_size=batch_size)
+        # if history:
+        #     history = {key: history[key] + hist.history[key] for key in hist.history}
+        # else:
+        #     history = hist.history
         plot_history(history)
         plt.show()
         plt.close()
@@ -281,11 +195,12 @@ class JointBertModel:
         if not os.path.exists(save_folder_path):
             os.makedirs(save_folder_path)
             logging.info('Folder `%s` created' % save_folder_path)
-        model.save_model(save_folder_path)
-        with open(os.path.join(save_folder_path, 'tags_vectorizer.pkl'), 'wb') as handle:
-            pickle.dump(tags_vectorizer, handle, protocol=pickle.HIGHEST_PROTOCOL)
-        with open(os.path.join(save_folder_path, 'intents_label_encoder.pkl'), 'wb') as handle:
-            pickle.dump(intents_label_encoder, handle, protocol=pickle.HIGHEST_PROTOCOL)
+        # model.save_model(save_folder_path)
+        model.save(save_folder_path)
+        # with open(os.path.join(save_folder_path, 'tags_vectorizer.pkl'), 'wb') as handle:
+        #     pickle.dump(tags_vectorizer, handle, protocol=pickle.HIGHEST_PROTOCOL)
+        # with open(os.path.join(save_folder_path, 'intents_label_encoder.pkl'), 'wb') as handle:
+        #     pickle.dump(intents_label_encoder, handle, protocol=pickle.HIGHEST_PROTOCOL)
         return model
 
     def evaluate_model(self, train_config_path, model_name):
@@ -302,8 +217,6 @@ class JointBertModel:
             model_hub_path = train_config['mobilebert_hub_path']
         load_folder_path = train_config['save_folder_path']
         test_folder_path = os.path.join(train_config['data_folder_path'], 'test')
-
-        bert_vectorizer = BERTVectorizer(model_name, model_hub_path)
 
         logging.log(logging.WARNING, 'Loading model ...')
         if not os.path.exists(load_folder_path):
@@ -331,3 +244,60 @@ class JointBertModel:
         logging.log(logging.WARNING, 'Slot f1_score = %f' % f1_score)
         logging.log(logging.WARNING, 'Intent accuracy = %f' % acc)
         return f1_score, acc
+
+
+class JointIntentAndSlotFillingModel(tf.keras.Model):
+    def __init__(self, model_name, intent_num_labels, slot_num_labels, dropout_prob=0.1):
+        super().__init__(name="joint_intent_slot_filling")
+        self.bert = TFDistilBertModel.from_pretrained(model_name, output_hidden_states=True)
+        self.dropout = Dropout(dropout_prob)
+        self.intent_classifier = Dense(intent_num_labels, name="intent_classifier")
+        self.slot_classifier = Dense(slot_num_labels, name="slot_classifier")
+
+    def call(self, inputs, **kwargs):
+        trained_bert = self.bert(inputs, **kwargs)
+        # pooled_output = trained_bert.pooler_output
+        # We only care about DistilBERT's output for the [CLS] token,
+        # which is located at index 0 of every encoded sequence.
+        # Splicing out the [CLS] tokens gives us 2D data.
+        pooled_output = trained_bert.last_hidden_state[:, 0, :]
+        sequence_output = trained_bert.last_hidden_state
+
+        # sequence_output will be used for slot_filling / classification
+        sequence_output = self.dropout(sequence_output,
+                                       training=kwargs.get("training", False))
+        slot_logits = self.slot_classifier(sequence_output)
+
+        # pooled_output for intent classification
+        pooled_output = self.dropout(pooled_output,
+                                     training=kwargs.get("training", False))
+        intent_logits = self.intent_classifier(pooled_output)
+
+        return slot_logits, intent_logits
+
+
+def compile_train_model(model, x, y,
+                        epochs, batch_size,
+                        learning_rate=3e-5, epsilon=1e-08):
+    logging.info("compile_train_model :: running")
+
+    # optimizer -> Adam
+    opt = tf.keras.optimizers.Adam(learning_rate=learning_rate, epsilon=epsilon)
+
+    # two outputs, one for slots, another for intents
+    losses = [SparseCategoricalCrossentropy(from_logits=True),
+              SparseCategoricalCrossentropy(from_logits=True)]
+
+    # metrics -> accuracy -> requirement for the project
+    metrics = [SparseCategoricalAccuracy('accuracy')]
+
+    # compile model
+    model.compile(optimizer=opt, loss=losses, metrics=metrics)
+
+    history = model.fit(x, y, epochs=epochs,
+                        batch_size=batch_size, shuffle=True,
+                        verbose=1)
+
+    logging.info("compile_train_model :: complete")
+
+    return model, history
