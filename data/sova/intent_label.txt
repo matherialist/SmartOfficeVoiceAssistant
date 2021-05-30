@@ -1,0 +1,9 @@
+UNK
+light
+implicit_light
+conditioner
+implicit_conditioner
+tv
+air
+curtains
+no_intent
