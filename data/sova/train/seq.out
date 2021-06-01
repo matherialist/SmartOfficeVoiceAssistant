@@ -1036,7 +1036,6 @@ O B-action.set O B-object B-parameter.brightness B-brightness.value O O
 O O O O O
 O O B-action.set O B-object O B-brightness.value
 B-action.set O B-object O O B-brightness.increase
-// температура
 O O B-temperature.decrease O O
 O O B-action.open O B-object O
 O B-action.switch_off B-object
@@ -3081,8 +3080,8 @@ O O O O O B-parameter.humidity
 O O O O O B-parameter.CO2 O
 O O B-parameter.all I-parameter.all
 O O O O B-parameter.CO2 O O
-O O B-action.set B-object B-parameter.brightness B-brightness.value O Ot O
-O B-brightness.decrease свет O I-brightness.decrease
+O O B-action.set B-object B-parameter.brightness B-brightness.value O O O
+O B-brightness.decrease I-brightness.decrease O I-brightness.decrease
 O O O O O O O
 O O B-action.switch_off B-object I-object
 O O B-action.increase_temp O O I-action.increase_temp
@@ -5079,7 +5078,7 @@ O B-sound.increase O B-parameter.sound B-object
 O O O B-temperature.increase O O O O O
 O O O B-action.switch_on O B-object
 O O B-action.set O B-object B-parameter.brightness O B-brightness.decrease
-O O открыть B-object
+O O B-action.open B-object
 O O O O B-action.decrease_temp O I-action.decrease_temp O I-action.decrease_temp
 O O B-action.set O B-object B-parameter.brightness O B-brightness.value O O
 O O O O O B-parameter.CO2 O
@@ -7450,7 +7449,7 @@ O B-action.switch_off B-object
 O B-temperature.increase O
 O B-action.set O B-object O B-brightness.value O O
 O B-sound.increase O B-parameter.sound O B-object
-O O открыть B-object
+O O B-action.open B-object
 O O O B-action.set O B-parameter.temperature O B-temperature.value O O
 O O O B-action.set B-object B-parameter.brightness O B-brightness.value
 O O B-sound.decrease I-sound.decrease O B-object I-object
@@ -7851,7 +7850,7 @@ O O O B-parameter.all I-parameter.all O O
 O B-brightness.increase I-brightness.increase I-brightness.increase O O O O O O O O O
 B-action.set O B-object B-parameter.brightness O B-brightness.value
 O O B-brightness.increase O O O O O O O
-O B-brightness.decrease свет O I-brightness.decrease
+O B-brightness.decrease B-object O I-brightness.decrease
 O O O O O O
 O B-action.set B-parameter.color B-object O B-color.value
 O O B-action.switch_on O B-object I-action.switch_on
@@ -8216,7 +8215,7 @@ O O O B-action.switch_on O B-object O I-action.switch_on
 O O B-action.set O B-object B-parameter.sound I-parameter.sound B-sound.value O O
 O O O O B-action.set B-object O B-color.value
 O B-action.mute O I-action.mute I-action.mute I-action.mute
-O O открыть B-object
+O O B-action.open B-object
 O B-action.set B-parameter.brightness B-object O B-brightness.value
 B-action.decrease_temp O I-action.decrease_temp
 O O O O B-action.set B-object B-parameter.brightness B-brightness.decrease I-brightness.decrease
@@ -8877,7 +8876,7 @@ O B-sound.decrease O B-parameter.sound O B-object
 O B-action.set O B-object O B-brightness.decrease
 O O B-action.set O B-object O B-color.value B-parameter.color
 O O B-action.switch_on B-object
-O O B-brightness.increase свет I-brightness.increase I-brightness.increase
+O O B-brightness.increase B-object I-brightness.increase I-brightness.increase
 O O B-action.unmute B-object I-action.unmute I-action.unmute
 B-action.switch_off O O B-object
 O O B-action.set O B-object B-brightness.increase I-brightness.increase
@@ -12830,7 +12829,7 @@ O O B-action.set B-parameter.sound O B-object O B-sound.value
 O O O O O O O O
 B-action.switch_off B-object I-action.switch_off O
 O O O O O O O O O O
-O B-brightness.increase свет O I-brightness.increase
+O B-brightness.increase B-object O I-brightness.increase
 O O O O O B-parameter.CO2 O
 O O O O B-action.set B-object O B-brightness.increase O
 O O O O B-parameter.all I-parameter.all
@@ -13064,7 +13063,7 @@ O O O O B-temperature.decrease O O
 O B-sound.increase B-parameter.sound O B-object
 O O O O B-action.set B-object B-parameter.brightness B-brightness.decrease I-brightness.decrease O
 O B-action.set B-parameter.temperature B-object B-temperature.value O O
-O O открыть B-object
+O O B-action.open B-object
 O B-action.set B-parameter.brightness B-object O B-brightness.value
 O B-action.decrease_temp B-parameter.temperature O B-temperature.value O
 O O O O O O
@@ -13752,7 +13751,7 @@ O B-action.mute I-action.mute B-object I-object
 O O O O O B-parameter.humidity O O O
 O O O O B-action.set O B-object O B-color.value
 O B-brightness.decrease O B-object B-parameter.brightness
-O O активировать B-object I-object
+O O B-action.switch_on B-object I-object
 O O B-action.set B-parameter.temperature O B-temperature.value O O O
 B-action.set O B-object B-parameter.brightness B-brightness.increase I-brightness.increase O
 O O O O O O O B-parameter.all I-parameter.all
