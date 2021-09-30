@@ -3,16 +3,13 @@ from src.VoiceAssistant import VoiceAssistant
 
 
 class SmartOffice:
-    def __init__(self, load_folder_path):
+    def __init__(self, load_folder_path='files'):
         self.action_classifier = ActionClassifier(
             load_folder_path,
-            model_hub_path="https://tfhub.dev/tensorflow/bert_multi_cased_L-12_H-768_A-12/2",
-            is_bert=True)
+            model_hub_path="https://tfhub.dev/tensorflow/albert_en_base/3",
+            is_bert=False)
         self.voice_assistant = VoiceAssistant()
 
-    def run(self, audio_file):
-        text_en, text_ru = self.voice_assistant.recognise_audio(audio_file)
-        prediction = self.action_classifier.make_prediction([text_en, text_ru])
-        # response = command['response']
-        # self.voice_assistant.voiceText(response, 'en')
-        return prediction
+    def get_command(self, text):
+        command, response = self.action_classifier.make_prediction(text)
+        return command, response

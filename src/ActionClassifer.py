@@ -10,34 +10,22 @@ class ActionClassifier:
         self.bert_vectorizer = BERTVectorizer(is_bert=is_bert, bert_model_hub_path=model_hub_path)
         self.tags_vectorizer = TagsVectorizer()
         self.intents_label_encoder = LabelEncoder()
+        print(os.getcwd())
         with open(os.path.join(load_folder_path, 'tags_vectorizer.pkl'), 'rb') as handle:
             self.tags_vectorizer = pickle.load(handle)
         with open(os.path.join(load_folder_path, 'intents_label_encoder.pkl'), 'rb') as handle:
             self.intents_label_encoder = pickle.load(handle)
         self.model = JointBertModel.load_model(load_folder_path)
 
-    def make_prediction(self, utterances):
-        intent_slots = self._predict(utterances[0])
-        intent_slots2 = self._predict(utterances[1])
-        lang = 'en'
-        if intent_slots['intent']['confidence'] < intent_slots2['intent']['confidence']\
-                and intent_slots2['intent']['name'] != 'no_intent' or intent_slots['intent']['name'] == 'no_intent':
-            intent_slots = intent_slots2
-            lang = 'ru'
-
+    def make_prediction(self, text):
+        intent_slots = self._predict(text)
         if intent_slots['intent']['name'] == 'no_intent':
             command = None
             response = "i don't understand you"
         else:
             command = self._get_command(intent_slots)
-            response = self._get_phrase(command)
-
-        if lang == 'en':
-            response = utterances[0]
-        else:
-            response = utterances[1]
-
-        return {'command': command, 'response': response}
+            response = text
+        return command, response
 
     def _get_phrase(self, command):
         if command is None:

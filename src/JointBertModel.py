@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 import pickle
 from itertools import chain
 from tensorflow.keras.models import Model
-from tensorflow.keras.layers import Input, Dense, Multiply, TimeDistributed
+from tensorflow.keras.layers import Input, Dense, Multiply, TimeDistributed, Dropout
 from sklearn.preprocessing import LabelEncoder
 from sklearn import metrics
 from sklearn.model_selection import StratifiedKFold
@@ -88,7 +88,6 @@ class BERTVectorizer:
 
 
 class TagsVectorizer:
-
     def __init__(self):
         self.label_encoder = LabelEncoder()
 
@@ -129,56 +128,56 @@ class TagsVectorizer:
 
 
 class JointBertModel:
-
-    def __init__(self, slots_num, intents_num, bert_hub_path,
-                 num_bert_fine_tune_layers=1, is_bert=False):
+    def __init__(self, slots_num, intents_num, bert_hub_path, is_bert=False):
         self.slots_num = slots_num
         self.intents_num = intents_num
         self.bert_hub_path = bert_hub_path
-        self.num_bert_fine_tune_layers = num_bert_fine_tune_layers
         self.is_bert = is_bert
         self.model_params = {
             'slots_num': slots_num,
             'intents_num': intents_num,
             'bert_hub_path': bert_hub_path,
-            'num_bert_fine_tune_layers': num_bert_fine_tune_layers,
             'is_bert': is_bert
         }
         self.build_model()
         self.compile_model()
 
     def build_model(self):
-        in_id = Input(shape=(None,), name='input_word_ids', dtype=tf.int32)
-        in_mask = Input(shape=(None,), name='input_mask', dtype=tf.int32)
-        in_segment = Input(shape=(None,), name='input_type_ids', dtype=tf.int32)
+        in_id = Input(shape=(None,), dtype=tf.int32, name='input_word_ids')
+        in_mask = Input(shape=(None,), dtype=tf.int32, name='input_mask')
+        in_segment = Input(shape=(None,), dtype=tf.int32, name='input_type_ids')
         in_valid_positions = Input(shape=(None, self.slots_num), name='valid_positions')
-        bert_inputs = [in_id, in_mask, in_segment]
-        inputs = bert_inputs + [in_valid_positions]
+        bert_inputs = {'input_mask': in_mask,
+                       'input_type_ids': in_segment,
+                       'input_word_ids': in_id}
+        inputs = [in_id, in_mask, in_segment, in_valid_positions]
+        encoder = hub.KerasLayer(self.bert_hub_path, trainable=True)(bert_inputs)
+        pooled_output = encoder['pooled_output']
+        sequence_output = encoder['sequence_output']
 
-        if self.is_bert:
-            name = 'BertLayer'
-        else:
-            name = 'AlbertLayer'
+        # sequence_output = Dropout(rate=0.1)(sequence_output, training=False)
+        # slot_logits = Dense(self.slots_num, activation='softmax', name='slot_tagger')(sequence_output)
+        #
+        # pooled_output = Dropout(rate=0.1)(pooled_output, training=False)
+        # intent_logits = Dense(self.intents_num, activation='softmax', name='intent_classifier')(pooled_output)
 
-        bert_pooled_output, bert_sequence_output = hub.KerasLayer(self.bert_hub_path, trainable=True,
-                                                                  name=name)(bert_inputs)
+        # self.model = Model(inputs=inputs, outputs=[slot_logits, intent_logits])
 
-        intents_fc = Dense(self.intents_num, activation='softmax', name='intent_classifier')(bert_pooled_output)
+        intents_fc = Dense(self.intents_num, activation='softmax', name='intent_classifier')(pooled_output)
 
-        slots_output = TimeDistributed(Dense(self.slots_num, activation='softmax'))(bert_sequence_output)
-        slots_output = Multiply(name='slots_tagger')([slots_output, in_valid_positions])
+        slots_output = TimeDistributed(Dense(self.slots_num, activation='softmax'))(sequence_output)
+        slots_output = Multiply(name='slot_tagger')([slots_output, in_valid_positions])
 
-        # super(JointBertModel, self).__init__(inputs=inputs, outputs=[slots_output, intents_fc])
         self.model = Model(inputs=inputs, outputs=[slots_output, intents_fc])
 
     def compile_model(self):
         optimizer = tf.keras.optimizers.Adam(lr=5e-5)
         losses = {
-            'slots_tagger': 'sparse_categorical_crossentropy',
+            'slot_tagger': 'sparse_categorical_crossentropy',
             'intent_classifier': 'sparse_categorical_crossentropy',
         }
-        loss_weights = {'slots_tagger': 3.0, 'intent_classifier': 1.0}
-        metrics = {'intent_classifier': 'acc'}
+        loss_weights = {'slot_tagger': 3.0, 'intent_classifier': 1.0}
+        metrics = [tf.keras.metrics.SparseCategoricalAccuracy('accuracy')]
         self.model.compile(optimizer=optimizer, loss=losses, loss_weights=loss_weights, metrics=metrics)
         self.model.summary()
 
@@ -222,9 +221,8 @@ class JointBertModel:
         slots_num = model_params['slots_num']
         intents_num = model_params['intents_num']
         bert_hub_path = model_params['bert_hub_path']
-        num_bert_fine_tune_layers = model_params['num_bert_fine_tune_layers']
 
-        model = JointBertModel(slots_num, intents_num, bert_hub_path, num_bert_fine_tune_layers)
+        model = JointBertModel(slots_num, intents_num, bert_hub_path)
         model.model.load_weights(os.path.join(load_folder_path, 'joint_bert_model.h5'))
         return model
 
@@ -251,7 +249,6 @@ class JointBertModel:
         save_folder_path = train_config['save_folder_path']
         epochs = train_config['epochs']
         batch_size = train_config['batch_size']
-        num_bert_fine_tune_layers = train_config['num_bert_fine_tune_layers']
         if is_bert:
             model_hub_path = train_config['bert_hub_path']
         else:
@@ -275,8 +272,7 @@ class JointBertModel:
         intents = intents_label_encoder.fit_transform(intents).astype(np.int32)
         intents_num = len(intents_label_encoder.classes_)
 
-        model = JointBertModel(slots_num, intents_num, model_hub_path,
-                               num_bert_fine_tune_layers, is_bert=is_bert)
+        model = JointBertModel(slots_num, intents_num, model_hub_path, is_bert=is_bert)
 
         logging.log(logging.WARNING, 'Training model ...')
         X = np.concatenate((input_ids, input_mask, segment_ids, valid_positions, tags), axis=1)

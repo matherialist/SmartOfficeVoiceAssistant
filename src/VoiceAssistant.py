@@ -2,23 +2,23 @@ import subprocess
 import logging
 import os
 import time
-from mutagen.mp3 import MP3
-from gtts import gTTS
+# from mutagen.mp3 import MP3
+# from gtts import gTTS
 from datetime import datetime
-import speech_recognition as sr
-import winsound
-import pyttsx3
+# import speech_recognition as sr
+# import winsound
+# import pyttsx3
 
 
 class VoiceAssistant:
     def __init__(self):
         self.__logPath = None
         self.__curHash = None
-        self.tts = pyttsx3.init()
-        self.tts.setProperty('rate', 170)  # setting up new voice rate
-        self.tts.setProperty('volume', 1.0)  # setting up volume level  between 0 and 1
-        self.voices = self.tts.getProperty('voices')  # getting details of current voice
-        self.tts.setProperty('voice', self.voices[1].id)  # changing index, changes voices. 1 for female
+        # self.tts = pyttsx3.init()
+        # self.tts.setProperty('rate', 170)  # setting up new voice rate
+        # self.tts.setProperty('volume', 1.0)  # setting up volume level  between 0 and 1
+        # self.voices = self.tts.getProperty('voices')  # getting details of current voice
+        # self.tts.setProperty('voice', self.voices[1].id)  # changing index, changes voices. 1 for female
 
     def voiceText(self, text, lang):
         self.__curHash = self.__genrateHash()
@@ -93,7 +93,6 @@ class VoiceAssistant:
             try:
                 text = r.recognize_google(audio)
                 print(text)
-
                 return text
             except sr.UnknownValueError:
                 print("Google Speech Recognition could not understand audio")
