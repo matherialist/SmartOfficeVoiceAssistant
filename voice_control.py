@@ -6,15 +6,16 @@ import winsound
 
 def keyword_activate():
     r = sr.Recognizer()
+    r.energy_threshold = 4000
     with sr.Microphone() as source:
-        print("Say <<Hey Assistant!>>")
+        print("Say <OK Magenta!>>")
         audio = r.listen(source)
     try:
         rec = r.recognize_google(audio)
         print(rec)
     except:
         return keyword_activate()
-    if rec == "hey assistant" or "assistant" in rec.split():
+    if rec == "okay magenta" or "magenta" in rec.split() or "okay" in rec.split() or "OK" in rec.split():
         with sr.Microphone() as source:
             winsound.Beep(500, 700)
             audio = r.listen(source)
@@ -23,8 +24,7 @@ def keyword_activate():
             print(text)
             return text
         except sr.UnknownValueError:
-            print("Google Speech Recognition could not understand audio")
-            print("Try one more time please")
+            print("Could not understand audio")
             return keyword_activate()
         except sr.RequestError as e:
             print("Could not request results from Google Speech Recognition service; {0}".format(e))
