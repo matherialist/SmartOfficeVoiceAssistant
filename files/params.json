@@ -1,1 +1,1 @@
-{"slots_num": 42, "intents_num": 9, "bert_hub_path": "https://tfhub.dev/tensorflow/albert_en_base/3", "is_bert": false}
+{"slots_num": 50, "intents_num": 9, "bert_hub_path": "https://tfhub.dev/tensorflow/albert_en_base/3", "is_bert": false}
